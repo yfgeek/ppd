@@ -133,18 +133,17 @@ MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC7luOu0RN4aC1uHxZUb7IYDe4yJAWoiR231vPbsWRo
         $header [] = 'X-PPD-TIMESTAMP-SIGN:' . $timestap_sign;
         $header [] = 'X-PPD-APPID:' . $appId;
         $header [] = 'X-PPD-SIGN:' . $request_sign;
-        return $request_sign;
-    //     if ($accessToken!= null)
-    //         $header [] = 'X-PPD-ACCESSTOKEN:' . $accessToken;
-    //         curl_setopt ( $curl, CURLOPT_HTTPHEADER, $header );
-    //         curl_setopt ( $curl, CURLOPT_POST, 1 );
-    //         curl_setopt ( $curl, CURLOPT_POSTFIELDS, $request );
-    //         curl_setopt ( $curl, CURLOPT_RETURNTRANSFER, 1 );
-    //         $result = curl_exec ( $curl );
-    //         curl_close ( $curl );
-    // //         $j = json_decode ( $result, true );
-    //         var_dump($result);
-    //         return $result;
+        if ($accessToken!= null)
+            $header [] = 'X-PPD-ACCESSTOKEN:' . $accessToken;
+            curl_setopt ( $curl, CURLOPT_HTTPHEADER, $header );
+            curl_setopt ( $curl, CURLOPT_POST, 1 );
+            curl_setopt ( $curl, CURLOPT_POSTFIELDS, $request );
+            curl_setopt ( $curl, CURLOPT_RETURNTRANSFER, 1 );
+            $result = curl_exec ( $curl );
+            curl_close ( $curl );
+    //         $j = json_decode ( $result, true );
+            var_dump($result);
+            return $result;
     }
 
     /**
