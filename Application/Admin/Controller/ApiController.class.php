@@ -12,7 +12,7 @@ class ApiController extends CommonController {
             $this->redirect('Admin/index/commit');
         }
     }
-    public function real(){
+    public function bid(){
         $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/LoanList";
     $request = '{
       "PageIndex": 1,

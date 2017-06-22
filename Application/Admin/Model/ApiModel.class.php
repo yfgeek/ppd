@@ -5,6 +5,7 @@ namespace Admin\Model;
 use Think\Model;
 
 class ApiModel extends Model{
+
     /**
      * 排序Request至待签名字符串
      *
@@ -39,7 +40,7 @@ class ApiModel extends Model{
         $appPrivateKey = C('APPPVK');
         if(openssl_sign($signdata,$sign,$appPrivateKey))
             $sign = base64_encode($sign);
-        return openssl_sign($signdata,$sign,$appPrivateKey);
+        return $sign;
     }
 
 
@@ -77,28 +78,30 @@ class ApiModel extends Model{
      * @param $decryptdata: 待解密字符串
      */
     function decrypt($encrypteddata){
-        $appPrivateKey = C('APPPVK');
+         $appPrivateKey = C('APPPVK');
         openssl_private_decrypt(base64_decode($encrypteddata),$decrypted,$appPrivateKey);
         return $decrypted;
     }
+
+
     function SendAuthRequest($url, $request) {
-    $curl = curl_init ( $url );
-    $header = array ();
-    $header [] = 'Content-Type:application/json;charset=UTF-8';
+    	$curl = curl_init ( $url );
+    	$header = array ();
+    	$header [] = 'Content-Type:application/json;charset=UTF-8';
 
-    curl_setopt ( $curl, CURLOPT_HTTPHEADER, $header );
-    curl_setopt ( $curl, CURLOPT_POST, 1 );
-    curl_setopt ( $curl, CURLOPT_POSTFIELDS, $request );
-    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-    curl_setopt ( $curl, CURLOPT_RETURNTRANSFER, 1 );
-    curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
-    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
-    curl_setopt($curl, CURLOPT_AUTOREFERER, 1);
-    curl_setopt($curl, CURLOPT_TIMEOUT, 30);
+    	curl_setopt ( $curl, CURLOPT_HTTPHEADER, $header );
+    	curl_setopt ( $curl, CURLOPT_POST, 1 );
+    	curl_setopt ( $curl, CURLOPT_POSTFIELDS, $request );
+    	curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+    	curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+    	curl_setopt ( $curl, CURLOPT_RETURNTRANSFER, 1 );
+    	curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+    	curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
+    	curl_setopt($curl, CURLOPT_AUTOREFERER, 1);
+    	curl_setopt($curl, CURLOPT_TIMEOUT, 30);
 
-    $result = curl_exec ( $curl );
-    curl_close ( $curl );
+    	$result = curl_exec ( $curl );
+    	curl_close ( $curl );
 
     // 	$auth = json_decode ( $result, true );
     // 	if ($auth == NULL || $auth == false) {
@@ -106,7 +109,7 @@ class ApiModel extends Model{
     // 	}
     // 	return $auth;
 
-        return $result;
+    	return $result;
     }
 
 
@@ -115,10 +118,10 @@ class ApiModel extends Model{
         $curl = curl_init ( $url );
 
         $timestamp = gmdate ( "Y-m-d H:i:s", time ()); // UTC format
-        $timestap_sign = sign($appId. $timestamp);
+        $timestap_sign = $this-> sign($appId. $timestamp);
 
-        $requestSignStr = sortToSign($request);
-        $request_sign = sign($requestSignStr);
+        $requestSignStr = $this->  sortToSign($request);
+        $request_sign = $this-> sign($requestSignStr);
 
         $header = array ();
         $header [] = 'Content-Type:application/json;charset=UTF-8';
@@ -126,18 +129,18 @@ class ApiModel extends Model{
         $header [] = 'X-PPD-TIMESTAMP-SIGN:' . $timestap_sign;
         $header [] = 'X-PPD-APPID:' . $appId;
         $header [] = 'X-PPD-SIGN:' . $request_sign;
-        return $request_sign;
-    //     if ($accessToken!= null)
-    //         $header [] = 'X-PPD-ACCESSTOKEN:' . $accessToken;
-    //         curl_setopt ( $curl, CURLOPT_HTTPHEADER, $header );
-    //         curl_setopt ( $curl, CURLOPT_POST, 1 );
-    //         curl_setopt ( $curl, CURLOPT_POSTFIELDS, $request );
-    //         curl_setopt ( $curl, CURLOPT_RETURNTRANSFER, 1 );
-    //         $result = curl_exec ( $curl );
-    //         curl_close ( $curl );
-    // //         $j = json_decode ( $result, true );
-    //         return $result;
+        if ($accessToken!= null)
+            $header [] = 'X-PPD-ACCESSTOKEN:' . $accessToken;
+            curl_setopt ( $curl, CURLOPT_HTTPHEADER, $header );
+            curl_setopt ( $curl, CURLOPT_POST, 1 );
+            curl_setopt ( $curl, CURLOPT_POSTFIELDS, $request );
+            curl_setopt ( $curl, CURLOPT_RETURNTRANSFER, 1 );
+            $result = curl_exec ( $curl );
+            curl_close ( $curl );
+    //         $j = json_decode ( $result, true );
+            return $result;
     }
+
 
     /**
      * 获取授权
@@ -146,10 +149,10 @@ class ApiModel extends Model{
      * @param $code
      */
     function authorize($code) {
-        $appid = C('APPID');
-        $request = '{"AppID": "'.$appid.'","Code": "'.$code.'"}';
-        $url = "https://ac.ppdai.com/oauth2/authorize";
-        return SendAuthRequest ( $url, $request );
+    	$appid = C('APPID');
+    	$request = '{"AppID": "'.$appid.'","Code": "'.$code.'"}';
+    	$url = "https://ac.ppdai.com/oauth2/authorize";
+    	return $this-> SendAuthRequest ( $url, $request );
     }
 
     /**
@@ -160,10 +163,10 @@ class ApiModel extends Model{
      * @param $refreshtoken: 刷新令牌Token
      */
     function refresh_token($openid, $refreshtoken) {
-        $appid = C('APPID');
-        $request = '{"AppID":"' . $appid . '","OpenID":"' . $openid. '","RefreshToken":"' . $refreshtoken. '"}';
-        $url = "https://ac.ppdai.com/oauth2/refreshtoken";
-        return SendAuthRequest ( $url, $request );
+    	$appid = C('APPID');
+    	$request = '{"AppID":"' . $appid . '","OpenID":"' . $openid. '","RefreshToken":"' . $refreshtoken. '"}';
+    	$url = "https://ac.ppdai.com/oauth2/refreshtoken";
+    	return $this-> SendAuthRequest ( $url, $request );
     }
 
     /**
@@ -178,9 +181,13 @@ class ApiModel extends Model{
      * @param unknown $data
      * @param string $accesstoken
      */
-    public function send($url, $request, $accesstoken = '') {
-        $appid = C('APPID');
-        $appPrivateKey = C('APPPVK');
-         return SendRequest ( $url, $request, $appid, $accesstoken );
+    function send($url, $request, $accesstoken = '') {
+    	$appid = C('APPID');
+    	$appPrivateKey = C('APPPVK');
+    	return $this-> SendRequest ( $url, $request, $appid, $accesstoken );
     }
+
+
+
+
 }
