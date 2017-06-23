@@ -5,7 +5,12 @@ namespace Admin\Model;
 use Think\Model;
 
 class ApiModel extends Model{
-
+    function getPV(){
+        return file_get_contents("/Users/ivan/d/ppd/pv.pem");
+    }
+    function getPUB(){
+        return file_get_contents("/Users/ivan/d/ppd/ppd/pub.pem");
+    }
     /**
      * 排序Request至待签名字符串
      *
@@ -37,7 +42,7 @@ class ApiModel extends Model{
      * @param $signdata: 待签名字符串
      */
     function sign($signdata){
-        $appPrivateKey = C('APPPVK');
+        $appPrivateKey =$this->getPV();
         if(openssl_sign($signdata,$sign,$appPrivateKey))
             $sign = base64_encode($sign);
         return $sign;
@@ -51,7 +56,7 @@ class ApiModel extends Model{
      * @param $signeddata: 已签名字符串
      */
     function verify($signdata,$signeddata){
-        $appPublicKey = C('APPPBK');
+        $appPublicKey = $this->getPUB();
         $signeddata = base64_decode($signeddata);
         if (openssl_verify($signdata, $signeddata, $appPublicKey))
             return true;
@@ -66,7 +71,7 @@ class ApiModel extends Model{
      * @param $encryptdata: 待加密字符串
      */
     function encrypt($encryptdata){
-        $appPublicKey = C('APPPBK');
+        $appPublicKey = $this->getPUB();
         openssl_public_encrypt($encryptdata,$encrypted,$appPublicKey);
         return base64_encode($encrypted);
     }
@@ -78,7 +83,7 @@ class ApiModel extends Model{
      * @param $decryptdata: 待解密字符串
      */
     function decrypt($encrypteddata){
-         $appPrivateKey = C('APPPVK');
+         $appPrivateKey =$this->getPV();
         openssl_private_decrypt(base64_decode($encrypteddata),$decrypted,$appPrivateKey);
         return $decrypted;
     }
@@ -138,7 +143,7 @@ class ApiModel extends Model{
             $result = curl_exec ( $curl );
             curl_close ( $curl );
     //         $j = json_decode ( $result, true );
-            return $result;
+            return $result ;
     }
 
 
@@ -183,11 +188,8 @@ class ApiModel extends Model{
      */
     function send($url, $request, $accesstoken = '') {
     	$appid = C('APPID');
-    	$appPrivateKey = C('APPPVK');
+    	$appPrivateKey =$this->getPV();
     	return $this-> SendRequest ( $url, $request, $appid, $accesstoken );
     }
-
-
-
 
 }

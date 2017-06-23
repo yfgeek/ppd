@@ -13,14 +13,17 @@ class ApiController extends CommonController {
         }
     }
     public function bid(){
-        $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/LoanList";
+    $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/LoanList";
+    date_default_timezone_set("Etc/GMT-8");
+    $dt = date("Y-m-d H:i:s");
+    $dt = date("Y-m-d H:i:s",strtotime("$dt - 200second"));
     $request = '{
       "PageIndex": 1,
-      "StartDateTime": "2016-11-11 12:00:00.000"
+      "StartDateTime": "' . $dt . '.000"
     }';
     $Api = D('Admin/Api');
     $result = $Api->send($url, $request);
-    var_dump($result);
+    echo $result;
     }
 
 

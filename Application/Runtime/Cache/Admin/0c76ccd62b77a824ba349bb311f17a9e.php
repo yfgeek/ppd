@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -7,28 +7,29 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="__STATIC__/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/ppd/Public//bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="__STATIC__/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="/ppd/Public//dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="__STATIC__/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="/ppd/Public//dist/css/skins/_all-skins.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href="__STATIC__/plugins/iCheck/flat/blue.css">
+  <link rel="stylesheet" href="/ppd/Public//plugins/iCheck/flat/blue.css">
   <!-- Morris chart -->
-  <link rel="stylesheet" href="__STATIC__/plugins/morris/morris.css">
+  <link rel="stylesheet" href="/ppd/Public//plugins/morris/morris.css">
   <!-- jvectormap -->
-  <link rel="stylesheet" href="__STATIC__/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+  <link rel="stylesheet" href="/ppd/Public//plugins/jvectormap/jquery-jvectormap-1.2.2.css">
   <!-- Date Picker -->
-  <link rel="stylesheet" href="__STATIC__/plugins/datepicker/datepicker3.css">
+  <link rel="stylesheet" href="/ppd/Public//plugins/datepicker/datepicker3.css">
   <!-- Daterange picker -->
-  <link rel="stylesheet" href="__STATIC__/plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="/ppd/Public//plugins/daterangepicker/daterangepicker.css">
   <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="__STATIC__/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="/ppd/Public//plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="/ppd/Public//dist/css/loaders.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -61,13 +62,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-              <img src="__STATIC__/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="/ppd/Public//dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">拉普拉斯</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="__STATIC__/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="/ppd/Public//dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
                   拉普拉斯
@@ -100,7 +101,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="__STATIC__/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="/ppd/Public//dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>拉普拉斯</p>
@@ -116,7 +117,7 @@
             <i class="fa fa-dashboard"></i> <span>总览</span>
           </a>
         </li>
-        <li class="active">
+        <li>
           <a href="simulate">
             <i class="fa fa-th"></i> <span>新手模拟</span>
             <span class="pull-right-container">
@@ -125,7 +126,7 @@
           </a>
         </li>
 
-        <li>
+        <li class="active">
           <a href="real">
             <i class="fa fa-pie-chart"></i> <span>投资专区</span>
           </a>
@@ -147,7 +148,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
-        <li class="active">新手模拟</li>
+        <li class="active">投资专区</li>
       </ol>
     </section>
 
@@ -155,63 +156,6 @@
     <!-- Main content -->
     <section class="content">
 
-        <div class="row">
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                  <div class="info-box bg-aqua">
-                    <span class="info-box-icon"><i class="fa fa-credit-card"></i></span>
-
-                    <div class="info-box-content">
-                      <span class="info-box-text">账户余额</span>
-                      <span class="info-box-number">41,410</span>
-
-
-                    </div>
-                    <!-- /.info-box-content -->
-                  </div>
-                  <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                  <div class="info-box bg-green">
-                    <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
-
-                    <div class="info-box-content">
-                      <span class="info-box-text">已选理财</span>
-                      <span class="info-box-number">编号1518801</span>
-
-                      <div class="progress">
-                        <div class="progress-bar" style="width: 70%"></div>
-                      </div>
-                          <span class="progress-description">
-                            还剩10期
-                          </span>
-                    </div>
-                    <!-- /.info-box-content -->
-                  </div>
-                  <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                  <div class="info-box bg-yellow">
-                    <span class="info-box-icon"><i class="fa fa-calendar"></i></span>
-
-                    <div class="info-box-content">
-                      <span class="info-box-text">预留</span>
-                      <span class="info-box-number">41,410</span>
-
-                      <div class="progress">
-                        <div class="progress-bar" style="width: 70%"></div>
-                      </div>
-                          <span class="progress-description">
-                            70% Increase in 30 Days
-                          </span>
-                    </div>
-                    <!-- /.info-box-content -->
-                  </div>
-                  <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
-              </div>
 
 
 
@@ -238,30 +182,28 @@
 
                 </tr>
                 </thead>
-                <tbody>
+                <tbody class='zhcon'>
+                    <tr class='list<?php echo ($data["ListingId"]); ?>'>
+                      <td>
+                    <div class="loadingsb" style="padding:50px 0 0px 30px;display:none;">
+                      <div class="loader">
+                          <div class="loader-inner ball-scale-multiple">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <p class="load" style="margin-left: 100px !important;padding-top:15px !important;font-size: 18px;">加载中...</p>
+                          </div>
+                      </div>
+    </div></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
 
-                <volist name="list" id="data">
-                  <tr class='list{$data.ListingId}'>
-                    <td>{$data.ListingId}</td>
-                    <td>{$data.Amount}</td>
-                    <td>{$data.Months}</td>
-                    <td>{$data.CurrentRate}%</td>
-                    <td>{$data.CreditCode}</td>
-                    <td><button type="button" class="btn btn-block btn-success btn-sm">分析</button></td>
-                    <td><button type="button" class="btn btn-block btn-info btn-sm">投资</button></td>
+                    </tr>
 
-                  </tr>
-                </volist>
-                <!--
-                <tfoot>
-                <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                </tr>
-                </tfoot> -->
               </table>
             </div>
             <!-- /.box-body -->
@@ -290,33 +232,22 @@
 </div>
 <!-- ./wrapper -->
 <!-- jQuery 2.2.3 -->
-<script src="__STATIC__/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="/ppd/Public//plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="__STATIC__/bootstrap/js/bootstrap.min.js"></script>
+<script src="/ppd/Public//bootstrap/js/bootstrap.min.js"></script>
 <!-- DataTables -->
-<script src="__STATIC__/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="__STATIC__/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script src="/ppd/Public//plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/ppd/Public//plugins/datatables/dataTables.bootstrap.min.js"></script>
 <!-- SlimScroll -->
-<script src="__STATIC__/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="/ppd/Public//plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src="__STATIC__/plugins/fastclick/fastclick.js"></script>
+<script src="/ppd/Public//plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="__STATIC__/dist/js/app.min.js"></script>
+<script src="/ppd/Public//dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="__STATIC__/dist/js/demo.js"></script>
+<script src="/ppd/Public//dist/js/demo.js"></script>
+<!-- This page's js -->
+<script src="/ppd/Public//dist/js/real.js"></script>
 <!-- page script -->
-<script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
-  });
-</script>
 </body>
 </html>

@@ -240,15 +240,16 @@
                 </thead>
                 <tbody>
 
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$data): $mod = ($i % 2 );++$i;?><tr class='list<?php echo ($data["ListingId"]); ?>'>
+                    <td><?php echo ($data["ListingId"]); ?></td>
+                    <td><?php echo ($data["Amount"]); ?></td>
+                    <td><?php echo ($data["Months"]); ?></td>
+                    <td><?php echo ($data["CurrentRate"]); ?>%</td>
+                    <td><?php echo ($data["CreditCode"]); ?></td>
                     <td><button type="button" class="btn btn-block btn-success btn-sm">分析</button></td>
                     <td><button type="button" class="btn btn-block btn-info btn-sm">投资</button></td>
 
-                  </tr>
+                  </tr><?php endforeach; endif; else: echo "" ;endif; ?>
                 <!--
                 <tfoot>
                 <tr>

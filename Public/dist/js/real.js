@@ -1,15 +1,21 @@
 $(function(){
-$.getJSON("/Fan/Admin/Api/editcon", {'action':'del','id':id,'pass':pass,'editcon':''}, function(json){
-			if(json.status == 'success'){
-			listname='.list'+id;
-			$("#myModal").modal('hide');
-			$(listname).hide();
-			}
-			else if(json.status == 'ep'){
-			$(".alert1").show();
-			}
-			else{
-			alert("删除失败！");
-			};
-			});
+    $(".loadingsb").show();
+        $.getJSON("../api/bid",function(result){
+         $(".zhcon").html("");
+         j = 0;
+         $.each(result.LoanInfos, function(i, item){
+         $(".zhcon").append("<tr><td>"+ item.ListingId +"</td><td>" + item.Amount + "</td><td>" +item.Months+ "</td><td>"+item.Rate + "%</td><td>" +item.CreditCode+ "</td><td><button type='button' class='btn btn-block btn-success btn-sm'>分析</button></td><td><button type='button' class='btn btn-block btn-info btn-sm'>投资</button></td></tr>");
+
+         j++;
+        });
+         $(".loadingsb").hide();
+         $('#example2').DataTable({
+           "paging": true,
+           "lengthChange": false,
+           "searching": false,
+           "ordering": true,
+           "info": true,
+           "autoWidth": false
+         });
+      });
 });

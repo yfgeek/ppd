@@ -29,6 +29,7 @@
   <link rel="stylesheet" href="__STATIC__/plugins/daterangepicker/daterangepicker.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="__STATIC__/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="__STATIC__/dist/css/loaders.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -147,7 +148,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
-        <li class="active">新手模拟</li>
+        <li class="active">投资专区</li>
       </ol>
     </section>
 
@@ -155,63 +156,6 @@
     <!-- Main content -->
     <section class="content">
 
-        <div class="row">
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                  <div class="info-box bg-aqua">
-                    <span class="info-box-icon"><i class="fa fa-credit-card"></i></span>
-
-                    <div class="info-box-content">
-                      <span class="info-box-text">账户余额</span>
-                      <span class="info-box-number">41,410</span>
-
-
-                    </div>
-                    <!-- /.info-box-content -->
-                  </div>
-                  <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                  <div class="info-box bg-green">
-                    <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
-
-                    <div class="info-box-content">
-                      <span class="info-box-text">已选理财</span>
-                      <span class="info-box-number">编号1518801</span>
-
-                      <div class="progress">
-                        <div class="progress-bar" style="width: 70%"></div>
-                      </div>
-                          <span class="progress-description">
-                            还剩10期
-                          </span>
-                    </div>
-                    <!-- /.info-box-content -->
-                  </div>
-                  <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                  <div class="info-box bg-yellow">
-                    <span class="info-box-icon"><i class="fa fa-calendar"></i></span>
-
-                    <div class="info-box-content">
-                      <span class="info-box-text">预留</span>
-                      <span class="info-box-number">41,410</span>
-
-                      <div class="progress">
-                        <div class="progress-bar" style="width: 70%"></div>
-                      </div>
-                          <span class="progress-description">
-                            70% Increase in 30 Days
-                          </span>
-                    </div>
-                    <!-- /.info-box-content -->
-                  </div>
-                  <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
-              </div>
 
 
 
@@ -238,30 +182,28 @@
 
                 </tr>
                 </thead>
-                <tbody>
+                <tbody class='zhcon'>
+                    <tr class='list{$data.ListingId}'>
+                      <td>
+                    <div class="loadingsb" style="padding:50px 0 0px 30px;display:none;">
+                      <div class="loader">
+                          <div class="loader-inner ball-scale-multiple">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <p class="load" style="margin-left: 100px !important;padding-top:15px !important;font-size: 18px;">加载中...</p>
+                          </div>
+                      </div>
+    </div></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
 
-                <volist name="list" id="data">
-                  <tr class='list{$data.ListingId}'>
-                    <td>{$data.ListingId}</td>
-                    <td>{$data.Amount}</td>
-                    <td>{$data.Months}</td>
-                    <td>{$data.CurrentRate}%</td>
-                    <td>{$data.CreditCode}</td>
-                    <td><button type="button" class="btn btn-block btn-success btn-sm">分析</button></td>
-                    <td><button type="button" class="btn btn-block btn-info btn-sm">投资</button></td>
+                    </tr>
 
-                  </tr>
-                </volist>
-                <!--
-                <tfoot>
-                <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                </tr>
-                </tfoot> -->
               </table>
             </div>
             <!-- /.box-body -->
@@ -307,18 +249,5 @@
 <!-- This page's js -->
 <script src="__STATIC__/dist/js/real.js"></script>
 <!-- page script -->
-<script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
-  });
-</script>
 </body>
 </html>
