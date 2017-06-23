@@ -10,7 +10,6 @@ return array(
     'TMPL_PARSE_STRING' => array(
         '__STATIC__' => __ROOT__ . '/Public/'
     ),
-
 	/* SESSION 和 COOKIE 配置 */
     'SESSION_PREFIX' => 'blog', //session前缀
     'COOKIE_PREFIX'  => 'blog_', // Cookie前缀 避免冲突

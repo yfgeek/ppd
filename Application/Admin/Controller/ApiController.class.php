@@ -13,6 +13,7 @@ class ApiController extends CommonController {
         }
     }
     public function bid(){
+    header("Content-type:text/html;charset=utf-8");
     $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/LoanList";
     date_default_timezone_set("Etc/GMT-8");
     $dt = date("Y-m-d H:i:s");

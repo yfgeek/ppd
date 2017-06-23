@@ -6,10 +6,16 @@ use Think\Model;
 
 class ApiModel extends Model{
     function getPV(){
-        return file_get_contents("/Users/ivan/d/ppd/pv.pem");
+        $str='MIICXQIBAAKBgQC7luOu0RN4aC1uHxZUb7IYDe4yJAWoiR231vPbsWRoV0s3YYSxu9iluQv6DDoNK/Ja+KAZ2ooORk/W/3GIB9Zv9heJZ6Jt50/DCghkTAAIa3rGsD9SretvHu67vSl3usxbg7frafLrMbAQjch8QyYvbx9kashvKZWnGgwWffR24wIDAQABAoGAOHLCVtOxYTUwHogaRxRJajWe7NWsIjgIik6TmRN7XG6QQr0EmhslqVDSys6tFVOZHUjdnIoHqx37Xn4FouKA4zIJSs+P8sP/3HW/YkWtrthn4FauI0CupgsyCkJCKb+AMkFGAV43WH7nTjRo3P5up23hVyTCpJQ7k0DW2isUY6ECQQDlp8kpFiueG0v9HTq8quLqs/OlC1fEylMI7dTsxG1BZ9q+4Y4VberMhaHRlg8S/gA8AhbNjrwPVplsWpPTSJHRAkEA0RvD63wrzas1xg6PvwaUAoa20M7VFguQjeVPl+85eFeDGXHX/E3FUKUuKG6xRSOT8F5j2XXcz/duM1G/tGMWcwJBALJx5CmLs4qftTTQwHIW6kjqWLf2j1U2zLxUaK0sl6RJuTu2cTuPc/FFKI585eug97eo++TvMotMg9wgqVpzufECQQC7sUldMJp8xCXDPcTG+ReXYOXtbQmU/RJmWyLjRGX4X8yb5TSyEfh/F5Tj09+oKHQcuAy133Yw8W3oAIOrXZmDAkBv+ObNKExZ1ZKDYvUnPG1cKfEzIjD37twOzTOaxLOHMRcjmE0eYR9rx3hKrBqFzEptgvFFFyRtLJlGaKnYSy58';
+		$str=chunk_split($str, 64, "\n");
+        $key = "-----BEGIN RSA PRIVATE KEY-----\n$str-----END RSA PRIVATE KEY-----\n";
+        return $key;
     }
     function getPUB(){
-        return file_get_contents("/Users/ivan/d/ppd/ppd/pub.pem");
+        $str='MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC7luOu0RN4aC1uHxZUb7IYDe4yJAWoiR231vPbsWRoV0s3YYSxu9iluQv6DDoNK/Ja+KAZ2ooORk/W/3GIB9Zv9heJZ6Jt50/DCghkTAAIa3rGsD9SretvHu67vSl3usxbg7frafLrMbAQjch8QyYvbx9kashvKZWnGgwWffR24wIDAQAB';
+		$str= chunk_split($str, 64, "\n");
+        $key = "-----BEGIN PUBLIC KEY-----\n$str-----END PUBLIC KEY-----\n";
+        return $key;
     }
     /**
      * 排序Request至待签名字符串

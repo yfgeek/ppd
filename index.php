@@ -18,7 +18,7 @@ if(version_compare(PHP_VERSION,'5.3.0','<'))  die('require PHP > 5.3.0 !');
 define('APP_DEBUG',true);
 
 ////绑定Admin模块
-//define('BIND_MODULE', 'Admin');
+define('BIND_MODULE', 'Admin');
 //// 绑定Admin模块到当前入口文件
 //define('BUILD_CONTROLLER_LIST','Index,User,Menu');
 
