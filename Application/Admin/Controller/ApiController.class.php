@@ -22,8 +22,7 @@ class ApiController extends CommonController {
       "PageIndex": 1,
       "StartDateTime": "' . $dt . '.000"
     }';
-    $Api = D('Admin/Api');
-    $result = $Api->send($url, $request);
+    $result = send($url, $request);
     echo $result;
     }
 
