@@ -224,7 +224,7 @@
                                                 <td><?php echo ($data["Months"]); ?></td>
                                                 <td><?php echo ($data["CurrentRate"]); ?>%</td>
                                                 <td><?php echo ($data["CreditCode"]); ?></td>
-                                                <td><button type="button" class="btn btn-block btn-success btn-sm">分析</button></td>
+                                                <td><button type="button" class="btn btn-block btn-success btn-sm" data-toggle="modal" data-target="#modal-analysis">分析</button></td>
                                                 <td><button type="button" class="btn btn-block btn-info btn-sm btn-deal" data-lid="<?php echo ($data["ListingId"]); ?>" data-toggle="modal" data-target="#modal-deal" >投资</button></td>
 
                                             </tr><?php endforeach; endif; else: echo "" ;endif; ?>
@@ -328,7 +328,44 @@
         <!-- /.modal-dialog -->
     </div>
 
+    <div class="modal fade" id="modal-analysis" style="display: none;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title">数据分析</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!-- BAR CHART -->
+                        <div class="box box-success">
+                          <div class="box-header with-border">
+                            <h3 class="box-title">Bar Chart</h3>
 
+                            <div class="box-tools pull-right">
+                              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                              </button>
+                              <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                          </div>
+                          <div class="box-body">
+                            <div class="chart">
+                              <canvas id="barChart" style="height:230px"></canvas>
+                            </div>
+                          </div>
+                          <!-- /.box-body -->
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary btn-dealcfm">确认</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
 
 
     <!-- ./wrapper -->
@@ -347,6 +384,8 @@
     <script src="/ppd/Public//dist/js/app.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="/ppd/Public//dist/js/demo.js"></script>
+    <!-- ChartJS 1.0.1 -->
+    <script src="/ppd/Public//plugins/chartjs/Chart.min.js"></script>
     <!-- page script -->
     <script>
     $(function () {
@@ -383,6 +422,47 @@
                 };
             });
         });
+
+
+        //-------------
+   //- BAR CHART -
+   //-------------
+   var barChartCanvas = $("#barChart").get(0).getContext("2d");
+   var barChart = new Chart(barChartCanvas);
+   var barChartData = areaChartData;
+   barChartData.datasets[1].fillColor = "#00a65a";
+   barChartData.datasets[1].strokeColor = "#00a65a";
+   barChartData.datasets[1].pointColor = "#00a65a";
+   var barChartOptions = {
+     //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+     scaleBeginAtZero: true,
+     //Boolean - Whether grid lines are shown across the chart
+     scaleShowGridLines: true,
+     //String - Colour of the grid lines
+     scaleGridLineColor: "rgba(0,0,0,.05)",
+     //Number - Width of the grid lines
+     scaleGridLineWidth: 1,
+     //Boolean - Whether to show horizontal lines (except X axis)
+     scaleShowHorizontalLines: true,
+     //Boolean - Whether to show vertical lines (except Y axis)
+     scaleShowVerticalLines: true,
+     //Boolean - If there is a stroke on each bar
+     barShowStroke: true,
+     //Number - Pixel width of the bar stroke
+     barStrokeWidth: 2,
+     //Number - Spacing between each of the X value sets
+     barValueSpacing: 5,
+     //Number - Spacing between data sets within X values
+     barDatasetSpacing: 1,
+     //String - A legend template
+     legendTemplate: "",
+     //Boolean - whether to make the chart responsive
+     responsive: true,
+     maintainAspectRatio: true
+   };
+
+   barChartOptions.datasetFill = false;
+   barChart.Bar(barChartData, barChartOptions);
 
     });
     </script>
