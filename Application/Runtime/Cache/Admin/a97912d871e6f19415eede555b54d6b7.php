@@ -7,28 +7,28 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="/ppd/Public//bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Public//bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="/ppd/Public//dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="/Public//dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
     folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="/ppd/Public//dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="/Public//dist/css/skins/_all-skins.min.css">
     <!-- iCheck -->
-    <link rel="stylesheet" href="/ppd/Public//plugins/iCheck/flat/blue.css">
+    <link rel="stylesheet" href="/Public//plugins/iCheck/flat/blue.css">
     <!-- Morris chart -->
-    <link rel="stylesheet" href="/ppd/Public//plugins/morris/morris.css">
+    <link rel="stylesheet" href="/Public//plugins/morris/morris.css">
     <!-- jvectormap -->
-    <link rel="stylesheet" href="/ppd/Public//plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+    <link rel="stylesheet" href="/Public//plugins/jvectormap/jquery-jvectormap-1.2.2.css">
     <!-- Date Picker -->
-    <link rel="stylesheet" href="/ppd/Public//plugins/datepicker/datepicker3.css">
+    <link rel="stylesheet" href="/Public//plugins/datepicker/datepicker3.css">
     <!-- Daterange picker -->
-    <link rel="stylesheet" href="/ppd/Public//plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="/Public//plugins/daterangepicker/daterangepicker.css">
     <!-- bootstrap wysihtml5 - text editor -->
-    <link rel="stylesheet" href="/ppd/Public//plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <link rel="stylesheet" href="/Public//plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -61,13 +61,13 @@
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="/ppd/Public//dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                <img src="/Public//dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                                 <span class="hidden-xs"></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                    <img src="/ppd/Public//dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                    <img src="/Public//dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                     <p>
                                         <?php echo ($user["nickname"]); ?>
@@ -100,7 +100,7 @@
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="/ppd/Public//dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="/Public//dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
                         <p> <?php echo ($user["nickname"]); ?></p>
@@ -333,20 +333,20 @@
 
     <!-- ./wrapper -->
     <!-- jQuery 2.2.3 -->
-    <script src="/ppd/Public//plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="/Public//plugins/jQuery/jquery-2.2.3.min.js"></script>
     <!-- Bootstrap 3.3.6 -->
-    <script src="/ppd/Public//bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Public//bootstrap/js/bootstrap.min.js"></script>
     <!-- DataTables -->
-    <script src="/ppd/Public//plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="/ppd/Public//plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="/Public//plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/Public//plugins/datatables/dataTables.bootstrap.min.js"></script>
     <!-- SlimScroll -->
-    <script src="/ppd/Public//plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="/Public//plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
-    <script src="/ppd/Public//plugins/fastclick/fastclick.js"></script>
+    <script src="/Public//plugins/fastclick/fastclick.js"></script>
     <!-- AdminLTE App -->
-    <script src="/ppd/Public//dist/js/app.min.js"></script>
+    <script src="/Public//dist/js/app.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="/ppd/Public//dist/js/demo.js"></script>
+    <script src="/Public//dist/js/demo.js"></script>
     <!-- page script -->
     <script>
     $(function () {
