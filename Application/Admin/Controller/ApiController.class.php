@@ -26,6 +26,35 @@ class ApiController extends CommonController {
     echo $result;
     }
 
+    public function deal($lid){
+        $bid = M('bid');
+        $bidmodel = $bid->where('uid = '.session('user.uid') . 'AND Listingid = '. $lid )->count();
+        if($bidmodel==0){
+            $row["uid"] = session('user.uid');
+            $row["listingid"] = $lid;
+            $row["share"] = "500";
+            $row["biddate"] = time();
+            $row["trandate"] = "NaN";
+            if($bid->add($row)){
+                $usrInfo = array('status'=>'success');
+
+            }else{
+                $usrInfo = array('status'=>'fail','content'=>'这个您已经投资过了');
+            }
+        }else{
+            $usrInfo = array('status'=>'fail','content'=>'这个您已经投资过了');
+        }
+        echo $this->ajaxReturn($usrInfo);
+    }
+
+    public function listd(){
+        $lid = I('get.lid');
+        $data = M('data');
+        $datamodel = $data->where('Listingid = '.$lid )->select();
+            $usrInfo = $datamodel[0];
+            echo $lid. $this->ajaxReturn($usrInfo);
+
+    }
 
 }
 ?>

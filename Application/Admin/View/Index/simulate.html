@@ -62,7 +62,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
               <img src="__STATIC__/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">拉普拉斯</span>
+              <span class="hidden-xs"></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -70,7 +70,7 @@
                 <img src="__STATIC__/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  拉普拉斯
+                 {$user.nickname}
                   <small>投资者</small>
                 </p>
               </li>
@@ -103,7 +103,7 @@
           <img src="__STATIC__/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>拉普拉斯</p>
+          <p> {$user.nickname}</p>
           <a href="#"><i class="fa fa-circle text-success"></i> 投资者</a>
         </div>
       </div>
@@ -162,7 +162,7 @@
 
                     <div class="info-box-content">
                       <span class="info-box-text">账户余额</span>
-                      <span class="info-box-number">41,410</span>
+                      <span class="info-box-number"> {$user.balance}</span>
 
 
                     </div>
@@ -171,45 +171,26 @@
                   <!-- /.info-box -->
                 </div>
                 <!-- /.col -->
+                <volist name="bid" id="data">
+
                 <div class="col-md-4 col-sm-6 col-xs-12">
                   <div class="info-box bg-green">
                     <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
-
-                    <div class="info-box-content">
-                      <span class="info-box-text">已选理财</span>
-                      <span class="info-box-number">编号1518801</span>
-
-                      <div class="progress">
-                        <div class="progress-bar" style="width: 70%"></div>
-                      </div>
-                          <span class="progress-description">
-                            还剩10期
-                          </span>
-                    </div>
-                    <!-- /.info-box-content -->
+                        <div class="info-box-content">
+                          <span class="info-box-number">编号 {$data.listingid}</span>
+                          <span class="info-box-text">起始日期:{$data.biddate}</span>
+                          <div class="progress">
+                            <div class="progress-bar" style="width: 70%"></div>
+                          </div>
+                              <span class="progress-description">
+                                还剩10期
+                              </span>
+                        </div>
                   </div>
                   <!-- /.info-box -->
                 </div>
-                <!-- /.col -->
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                  <div class="info-box bg-yellow">
-                    <span class="info-box-icon"><i class="fa fa-calendar"></i></span>
+            </volist>
 
-                    <div class="info-box-content">
-                      <span class="info-box-text">预留</span>
-                      <span class="info-box-number">41,410</span>
-
-                      <div class="progress">
-                        <div class="progress-bar" style="width: 70%"></div>
-                      </div>
-                          <span class="progress-description">
-                            70% Increase in 30 Days
-                          </span>
-                    </div>
-                    <!-- /.info-box-content -->
-                  </div>
-                  <!-- /.info-box -->
-                </div>
                 <!-- /.col -->
               </div>
 
@@ -248,7 +229,7 @@
                     <td>{$data.CurrentRate}%</td>
                     <td>{$data.CreditCode}</td>
                     <td><button type="button" class="btn btn-block btn-success btn-sm">分析</button></td>
-                    <td><button type="button" class="btn btn-block btn-info btn-sm">投资</button></td>
+                    <td><button type="button" class="btn btn-block btn-info btn-sm btn-deal" data-lid="{$data.ListingId}" data-toggle="modal" data-target="#modal-deal" >投资</button></td>
 
                   </tr>
                 </volist>
@@ -287,6 +268,74 @@
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
+<div class="modal fade" id="modal-deal" style="display: none;">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">确认要投标吗?</h4>
+              </div>
+              <div class="modal-body">
+                  <table class="table table-striped">
+                      <tbody><tr>
+                        <th>属性</th>
+                        <th>值</th>
+                      </tr>
+                      <tr>
+                        <td>编号</td>
+                        <td class="table-lid">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>可投金额</td>
+                        <td class="table-amount">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>期数</td>
+                        <td class="table-months">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>利率</td>
+                        <td>
+                            <span class="table-currentrate"></span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>生效时间</td>
+                        <td>
+                            <span class="table-auditingtime"></span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>信用评级</td>
+                        <td>
+                            <span class="table-creditcode"></span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>年龄</td>
+                        <td>
+                            <span class="table-age"></span>
+                        </td>
+                      </tr>
+                    </tbody></table>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary btn-dealcfm">确认</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+</div>
+
+
+
+
 <!-- ./wrapper -->
 <!-- jQuery 2.2.3 -->
 <script src="__STATIC__/plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -315,6 +364,32 @@
       "info": true,
       "autoWidth": false
     });
+
+    $(".btn-deal").click(function(){
+        $.getJSON("../Api/listd", {'lid': $(this).attr("data-lid")}, function(json){
+            $(".table-lid").html(json.ListingId);
+            $(".table-amount").html(json.Amount);
+            $(".table-months").html(json.Months);
+            $(".table-currentrate").html(json.CurrentRate);
+            $(".table-auditingtime").html(json.AuditingTime);
+            $(".table-creditcode").html(json.CreditCode);
+            $(".table-age").html(json.AuditingTime);
+            });
+    });
+
+    $(".btn-dealcfm").click(function(){
+        $.getJSON("../Api/deal", {'lid': $(".table-lid").html()}, function(json){
+			if(json.status == 'success'){
+			alert("投资成功！");
+            $("#modal-deal").modal.hide();
+			}
+			else{
+			alert(json.content);
+			};
+			});
+	});
+
+
   });
 </script>
 </body>
