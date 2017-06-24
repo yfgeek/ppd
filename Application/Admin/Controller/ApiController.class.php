@@ -13,17 +13,17 @@ class ApiController extends CommonController {
         }
     }
     public function bid(){
-    header("Content-type:text/html;charset=utf-8");
-    $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/LoanList";
-    date_default_timezone_set("Etc/GMT-8");
-    $dt = date("Y-m-d H:i:s");
-    $dt = date("Y-m-d H:i:s",strtotime("$dt - 200second"));
-    $request = '{
-      "PageIndex": 1,
-      "StartDateTime": "' . $dt . '.000"
-    }';
-    $result = send($url, $request);
-    echo $result;
+        header("Content-type:text/html;charset=utf-8");
+        $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/LoanList";
+        date_default_timezone_set("Etc/GMT-8");
+        $dt = date("Y-m-d H:i:s");
+        $dt = date("Y-m-d H:i:s",strtotime("$dt - 200second"));
+        $request = '{
+            "PageIndex": 1,
+            "StartDateTime": "' . $dt . '.000"
+        }';
+        $result = send($url, $request);
+        echo $result;
     }
 
     public function deal($lid){
@@ -51,8 +51,8 @@ class ApiController extends CommonController {
         $lid = I('get.lid');
         $data = M('data');
         $datamodel = $data->where('Listingid = '.$lid )->select();
-            $usrInfo = $datamodel[0];
-            echo $lid. $this->ajaxReturn($usrInfo);
+        $usrInfo = $datamodel[0];
+        echo $lid. $this->ajaxReturn($usrInfo);
 
     }
 
