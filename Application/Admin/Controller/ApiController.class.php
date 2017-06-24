@@ -52,8 +52,16 @@ class ApiController extends CommonController {
         $data = M('data');
         $datamodel = $data->where('Listingid = '.$lid )->select();
         $usrInfo = $datamodel[0];
-        echo $lid. $this->ajaxReturn($usrInfo);
+        echo $this->ajaxReturn($usrInfo);
 
+    }
+
+    public function analysis(){
+        $data = M('data');
+        $datamodel = $data->query("select Amount as x, count(Amount) as y from tp_data group by Amount");
+        if($datamodel){
+            echo $this->ajaxReturn($datamodel);
+        }
     }
 
 }
