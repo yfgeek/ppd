@@ -29,6 +29,8 @@
     <link rel="stylesheet" href="__STATIC__/plugins/daterangepicker/daterangepicker.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="__STATIC__/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <script src="__STATIC__/dist/js/echarts.min.js"></script>
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -342,6 +344,8 @@
                         <h4 class="modal-title">数据分析</h4>
                     </div>
                     <div class="modal-body">
+                        <div id="amount-diagram" style="width: 850px;height:500px;"></div>
+                        <div id="rate-diagram" style="width: 850px;height:500px;"></div>
 
                     </div>
                     <div class="modal-footer">
@@ -372,43 +376,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="__STATIC__/dist/js/demo.js"></script>
     <!-- page script -->
-    <script>
-    $(function () {
-        $("#example1").DataTable();
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false
-        });
+    <script src="__STATIC__/dist/js/simulate.js"></script>
 
-        $(".btn-deal").click(function(){
-            $.getJSON("../Api/listd", {'lid': $(this).attr("data-lid")}, function(json){
-                $(".table-lid").html(json.ListingId);
-                $(".table-amount").html(json.Amount);
-                $(".table-months").html(json.Months);
-                $(".table-currentrate").html(json.CurrentRate);
-                $(".table-auditingtime").html(json.AuditingTime);
-                $(".table-creditcode").html(json.CreditCode);
-                $(".table-age").html(json.AuditingTime);
-            });
-        });
-
-        $(".btn-dealcfm").click(function(){
-            $.getJSON("../Api/deal", {'lid': $(".table-lid").html()}, function(json){
-                if(json.status == 'success'){
-                    alert("投资成功！");
-                    $("#modal-deal").modal('hide');
-                }
-                else{
-                    alert(json.content);
-                };
-            });
-        });
-
-
-    </script>
 </body>
 </html>

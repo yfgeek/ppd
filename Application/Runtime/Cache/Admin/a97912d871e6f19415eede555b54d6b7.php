@@ -29,6 +29,8 @@
     <link rel="stylesheet" href="/ppd/Public//plugins/daterangepicker/daterangepicker.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="/ppd/Public//plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <script src="/ppd/Public//dist/js/echarts.min.js"></script>
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -337,24 +339,8 @@
                         <h4 class="modal-title">数据分析</h4>
                     </div>
                     <div class="modal-body">
-                        <!-- BAR CHART -->
-                        <div class="box box-success">
-                          <div class="box-header with-border">
-                            <h3 class="box-title">Bar Chart</h3>
-
-                            <div class="box-tools pull-right">
-                              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                              </button>
-                              <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                            </div>
-                          </div>
-                          <div class="box-body">
-                            <div class="chart">
-                              <canvas id="barChart" style="height:230px"></canvas>
-                            </div>
-                          </div>
-                          <!-- /.box-body -->
-                        </div>
+                        <div id="amount-diagram" style="width: 850px;height:500px;"></div>
+                        <div id="rate-diagram" style="width: 850px;height:500px;"></div>
 
                     </div>
                     <div class="modal-footer">
@@ -384,87 +370,8 @@
     <script src="/ppd/Public//dist/js/app.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="/ppd/Public//dist/js/demo.js"></script>
-    <!-- ChartJS 1.0.1 -->
-    <script src="/ppd/Public//plugins/chartjs/Chart.min.js"></script>
     <!-- page script -->
-    <script>
-    $(function () {
-        $("#example1").DataTable();
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false
-        });
+    <script src="/ppd/Public//dist/js/simulate.js"></script>
 
-        $(".btn-deal").click(function(){
-            $.getJSON("../Api/listd", {'lid': $(this).attr("data-lid")}, function(json){
-                $(".table-lid").html(json.ListingId);
-                $(".table-amount").html(json.Amount);
-                $(".table-months").html(json.Months);
-                $(".table-currentrate").html(json.CurrentRate);
-                $(".table-auditingtime").html(json.AuditingTime);
-                $(".table-creditcode").html(json.CreditCode);
-                $(".table-age").html(json.AuditingTime);
-            });
-        });
-
-        $(".btn-dealcfm").click(function(){
-            $.getJSON("../Api/deal", {'lid': $(".table-lid").html()}, function(json){
-                if(json.status == 'success'){
-                    alert("投资成功！");
-                    $("#modal-deal").modal('hide');
-                }
-                else{
-                    alert(json.content);
-                };
-            });
-        });
-
-
-        //-------------
-   //- BAR CHART -
-   //-------------
-   var barChartCanvas = $("#barChart").get(0).getContext("2d");
-   var barChart = new Chart(barChartCanvas);
-   var barChartData = areaChartData;
-   barChartData.datasets[1].fillColor = "#00a65a";
-   barChartData.datasets[1].strokeColor = "#00a65a";
-   barChartData.datasets[1].pointColor = "#00a65a";
-   var barChartOptions = {
-     //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-     scaleBeginAtZero: true,
-     //Boolean - Whether grid lines are shown across the chart
-     scaleShowGridLines: true,
-     //String - Colour of the grid lines
-     scaleGridLineColor: "rgba(0,0,0,.05)",
-     //Number - Width of the grid lines
-     scaleGridLineWidth: 1,
-     //Boolean - Whether to show horizontal lines (except X axis)
-     scaleShowHorizontalLines: true,
-     //Boolean - Whether to show vertical lines (except Y axis)
-     scaleShowVerticalLines: true,
-     //Boolean - If there is a stroke on each bar
-     barShowStroke: true,
-     //Number - Pixel width of the bar stroke
-     barStrokeWidth: 2,
-     //Number - Spacing between each of the X value sets
-     barValueSpacing: 5,
-     //Number - Spacing between data sets within X values
-     barDatasetSpacing: 1,
-     //String - A legend template
-     legendTemplate: "",
-     //Boolean - whether to make the chart responsive
-     responsive: true,
-     maintainAspectRatio: true
-   };
-
-   barChartOptions.datasetFill = false;
-   barChart.Bar(barChartData, barChartOptions);
-
-    });
-    </script>
 </body>
 </html>
