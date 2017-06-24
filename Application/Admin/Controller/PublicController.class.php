@@ -9,14 +9,14 @@ class PublicController extends Controller {
 	/**
      * 后台用户登录
      */
-    public function login($password = null, $verify = null){
+    public function login($username = null,$password = null, $verify = null){
         if(IS_POST){
             $db = M('user');
-			$map['username'] = 'admin';
+			$map['username'] = $username;
 			$map['status'] = 1;
 			$user = $db->where($map)->find();
 			if($user['password'] != md5($password)){
-				$this->error('密码错啦啦啦');
+				$this->error('密码错误，请重新输入');
 			}
 
 			$data = array(
@@ -34,7 +34,7 @@ class PublicController extends Controller {
 				'last_login_time' => $data['last_login_time'],
 			);
 			session('user', $auth);
-			$this->success('登录成功！', U('Index/today'));
+			$this->redirect('Index/today');
 
         } else {
             if(is_login()){
@@ -49,7 +49,7 @@ class PublicController extends Controller {
         if(is_login()){
 			session('user', null);
             session('[destroy]');
-            $this->success('退出登录辣~', U('login'));
+            $this->redirect('login');
         } else {
             $this->redirect('login');
         }
