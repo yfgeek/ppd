@@ -341,11 +341,11 @@
                     <div class="modal-body">
                         <div id="amount-diagram" style="width: 850px;height:500px;"></div>
                         <div id="rate-diagram" style="width: 850px;height:500px;"></div>
+                        <div id="credit-diagram" style="width: 850px;height:500px;"></div>
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
-                        <button type="button" class="btn btn-primary btn-dealcfm">确认</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                     </div>
                 </div>
                 <!-- /.modal-content -->

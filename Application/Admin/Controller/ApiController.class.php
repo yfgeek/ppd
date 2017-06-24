@@ -73,5 +73,15 @@ class ApiController extends CommonController {
             echo $this->ajaxReturn($datamodel);
         }
     }
+
+    public function credit(){
+        $data = M('data');
+        $sql = "select CreditCode as name, count(CreditCode) as value from tp_data group by name";
+        $datamodel = $data->query($sql);
+        if($datamodel){
+            echo $this->ajaxReturn($datamodel);
+        }
+
+    }
 }
 ?>
