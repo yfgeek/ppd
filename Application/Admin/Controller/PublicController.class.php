@@ -33,13 +33,9 @@ class PublicController extends Controller {
                 'username'        => $user['nickname'],
                 'last_login_time' => $data['last_login_time'],
             );
-            $user = M('user');
-            $usermodel = $user->where('uid = '.session('user.uid'))->find();
-            if(!$usermodel["token"]){
-                $this->redirect('index/ppdapi');
-            }else{
-                $this->redirect('index/today');
-            }
+            session('user', $auth);
+
+            $this->redirect('index/today');
 
         } else {
             if(is_login()){
