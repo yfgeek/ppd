@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/ppd/Public//dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
     folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="/ppd/Public//dist/css/loaders.css">
     <link rel="stylesheet" href="/ppd/Public//dist/css/skins/_all-skins.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="/ppd/Public//plugins/iCheck/flat/blue.css">
@@ -113,12 +114,12 @@
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
                     <li class="header">导航栏</li>
-                    <li>
+                    <li class="menu-today">
                         <a href="today">
                             <i class="fa fa-dashboard"></i> <span>总览</span>
                         </a>
                     </li>
-                    <li class="active">
+                    <li class="menu-simulate">
                         <a href="simulate">
                             <i class="fa fa-th"></i> <span>新手模拟</span>
                             <span class="pull-right-container">
@@ -127,17 +128,23 @@
                         </a>
                     </li>
 
-                    <li>
+                    <li class="menu-real">
                         <a href="real">
                             <i class="fa fa-pie-chart"></i> <span>投资专区</span>
                         </a>
                     </li>
 
+                    <li class="menu-setting">
+                        <a href="setting">
+                            <i class="fa fa-cog"></i> <span>设置</span>
+                        </a>
+                    </li>
 
                 </ul>
             </section>
             <!-- /.sidebar -->
         </aside>
+
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -152,8 +159,6 @@
                     <li class="active">新手模拟</li>
                 </ol>
             </section>
-
-
             <!-- Main content -->
             <section class="content">
 
@@ -342,6 +347,7 @@
                         <div id="amount-diagram" style="width: 850px;height:500px;"></div>
                         <div id="rate-diagram" style="width: 850px;height:500px;"></div>
                         <div id="credit-diagram" style="width: 850px;height:500px;"></div>
+                        <div id="creditratio-diagram" style="width: 850px;height:500px;"></div>
 
                     </div>
                     <div class="modal-footer">
@@ -357,6 +363,8 @@
     <!-- ./wrapper -->
     <!-- jQuery 2.2.3 -->
     <script src="/ppd/Public//plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="/ppd/Public//dist/js/header.js"></script>
+
     <!-- Bootstrap 3.3.6 -->
     <script src="/ppd/Public//bootstrap/js/bootstrap.min.js"></script>
     <!-- DataTables -->
@@ -368,8 +376,6 @@
     <script src="/ppd/Public//plugins/fastclick/fastclick.js"></script>
     <!-- AdminLTE App -->
     <script src="/ppd/Public//dist/js/app.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="/ppd/Public//dist/js/demo.js"></script>
     <!-- page script -->
     <script src="/ppd/Public//dist/js/simulate.js"></script>
 

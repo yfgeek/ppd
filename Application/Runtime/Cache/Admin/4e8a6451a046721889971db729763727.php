@@ -1,141 +1,149 @@
 <?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>拍拍哒 | 控制面板</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="/ppd/Public//bootstrap/css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="/ppd/Public//dist/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="/ppd/Public//dist/css/skins/_all-skins.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="/ppd/Public//plugins/iCheck/flat/blue.css">
-  <!-- Morris chart -->
-  <link rel="stylesheet" href="/ppd/Public//plugins/morris/morris.css">
-  <!-- jvectormap -->
-  <link rel="stylesheet" href="/ppd/Public//plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-  <!-- Date Picker -->
-  <link rel="stylesheet" href="/ppd/Public//plugins/datepicker/datepicker3.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="/ppd/Public//plugins/daterangepicker/daterangepicker.css">
-  <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="/ppd/Public//plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>拍拍哒 | 控制面板</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="/ppd/Public//bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/ppd/Public//dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+    folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="/ppd/Public//dist/css/skins/_all-skins.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="/ppd/Public//plugins/iCheck/flat/blue.css">
+    <!-- Morris chart -->
+    <link rel="stylesheet" href="/ppd/Public//plugins/morris/morris.css">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="/ppd/Public//plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="/ppd/Public//plugins/datepicker/datepicker3.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="/ppd/Public//plugins/daterangepicker/daterangepicker.css">
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="/ppd/Public//plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <script src="/ppd/Public//dist/js/echarts.min.js"></script>
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
+    <div class="wrapper">
 
-  <header class="main-header">
-    <!-- Logo -->
-    <a href="index2.html" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>拍拍哒</b></span>
-    </a>
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
-
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-
-          <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-              <img src="/ppd/Public//dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">拉普拉斯</span>
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="index2.html" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>A</b>LT</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>拍拍哒</b></span>
             </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <img src="/ppd/Public//dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
 
-                <p>
-                  拉普拉斯
-                  <small>投资者</small>
-                </p>
-              </li>
-              <!-- Menu Body -->
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
 
-              <!-- Menu Footer-->
-              <li class="user-footer">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <img src="/ppd/Public//dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                <span class="hidden-xs"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="/ppd/Public//dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
-                <div class="pull-right">
-                  <a href="../Public/logout" class="btn btn-default btn-flat">登出</a>
+                                    <p>
+                                        <?php echo ($user["nickname"]); ?>
+                                        <small>投资者</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Body -->
+
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+
+                                    <div class="pull-right">
+                                        <a href="../Public/logout" class="btn btn-default btn-flat">登出</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Control Sidebar Toggle Button -->
+
+                    </ul>
                 </div>
-              </li>
-            </ul>
-          </li>
-          <!-- Control Sidebar Toggle Button -->
-
-        </ul>
-      </div>
 
 
-    </nav>
-  </header>
-  <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-      <!-- Sidebar user panel -->
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="/ppd/Public//dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p>拉普拉斯</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> 投资者</a>
-        </div>
-      </div>
-      <!-- /.search form -->
-      <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu">
-        <li class="header">导航栏</li>
-        <li class="active">
-            <a href="today">
-            <i class="fa fa-dashboard"></i> <span>总览</span>
-          </a>
-        </li>
-        <li>
-          <a href="simulate">
-            <i class="fa fa-th"></i> <span>新手模拟</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-green">推荐</small>
-            </span>
-          </a>
-        </li>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="/ppd/Public//dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p> <?php echo ($user["nickname"]); ?></p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> 投资者</a>
+                    </div>
+                </div>
+                <!-- /.search form -->
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu">
+                    <li class="header">导航栏</li>
+                    <li class="menu-today">
+                        <a href="today">
+                            <i class="fa fa-dashboard"></i> <span>总览</span>
+                        </a>
+                    </li>
+                    <li class="menu-simulate">
+                        <a href="simulate">
+                            <i class="fa fa-th"></i> <span>新手模拟</span>
+                            <span class="pull-right-container">
+                                <small class="label pull-right bg-green">推荐</small>
+                            </span>
+                        </a>
+                    </li>
 
-        <li>
-          <a href="real">
-            <i class="fa fa-pie-chart"></i> <span>投资专区</span>
-          </a>
-        </li>
+                    <li class="menu-real">
+                        <a href="real">
+                            <i class="fa fa-pie-chart"></i> <span>投资专区</span>
+                        </a>
+                    </li>
 
+                    <li class="menu-setting">
+                        <a href="setting">
+                            <i class="fa fa-cog"></i> <span>设置</span>
+                        </a>
+                    </li>
 
-      </ul>
-    </section>
-    <!-- /.sidebar -->
-  </aside>
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -150,6 +158,8 @@
         <li class="active">Dashboard</li>
       </ol>
     </section>
+
+    <input type="hidden" id="currentpage" value="today" />
 
     <section class="content">
       <!-- Info boxes -->
@@ -541,6 +551,8 @@
 
 <!-- jQuery 2.2.3 -->
 <script src="/ppd/Public//plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="/ppd/Public//dist/js/header.js"></script>
+
 <!-- jQuery UI 1.11.4 -->
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
