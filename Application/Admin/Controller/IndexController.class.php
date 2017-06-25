@@ -30,11 +30,6 @@ class IndexController extends CommonController {
         $this->display();
     }
     public function setting(){
-        if(I('code')){
-            //去拿token
-            $authorizeResult = authorize(I('code'));
-            echo $authorizeResult;
-        }
         $user = M('user');
         $usermodel = $user->where('uid = '.session('user.uid'))->select();
         $this->assign('user',$usermodel[0]);

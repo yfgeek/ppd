@@ -7,12 +7,35 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
+<<<<<<< HEAD
+    <link rel="stylesheet" href="/Public//bootstrap/css/bootstrap.min.css">
+=======
     <link rel="stylesheet" href="/ppd/Public//bootstrap/css/bootstrap.min.css">
+>>>>>>> 22a108a8b5a82f2ccd45039825ae767e4a252b88
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
+<<<<<<< HEAD
+    <link rel="stylesheet" href="/Public//dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+    folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="/Public//dist/css/skins/_all-skins.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="/Public//plugins/iCheck/flat/blue.css">
+    <!-- Morris chart -->
+    <link rel="stylesheet" href="/Public//plugins/morris/morris.css">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="/Public//plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="/Public//plugins/datepicker/datepicker3.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="/Public//plugins/daterangepicker/daterangepicker.css">
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="/Public//plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <link rel="stylesheet" href="/Public//dist/css/loaders.css">
+=======
     <link rel="stylesheet" href="/ppd/Public//dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
     folder instead of downloading all of them to reduce the load. -->
@@ -32,6 +55,7 @@
     <link rel="stylesheet" href="/ppd/Public//plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
     <script src="/ppd/Public//dist/js/echarts.min.js"></script>
 
+>>>>>>> 22a108a8b5a82f2ccd45039825ae767e4a252b88
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -64,16 +88,28 @@
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+<<<<<<< HEAD
+                                <img src="/Public//dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                <span class="hidden-xs">拉普拉斯</span>
+=======
                                 <img src="/ppd/Public//dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                                 <span class="hidden-xs"></span>
+>>>>>>> 22a108a8b5a82f2ccd45039825ae767e4a252b88
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
+<<<<<<< HEAD
+                                    <img src="/Public//dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+
+                                    <p>
+                                        拉普拉斯
+=======
                                     <img src="/ppd/Public//dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                     <p>
                                         <?php echo ($user["nickname"]); ?>
+>>>>>>> 22a108a8b5a82f2ccd45039825ae767e4a252b88
                                         <small>投资者</small>
                                     </p>
                                 </li>
@@ -103,10 +139,17 @@
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
                     <div class="pull-left image">
+<<<<<<< HEAD
+                        <img src="/Public//dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>拉普拉斯</p>
+=======
                         <img src="/ppd/Public//dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
                         <p> <?php echo ($user["nickname"]); ?></p>
+>>>>>>> 22a108a8b5a82f2ccd45039825ae767e4a252b88
                         <a href="#"><i class="fa fa-circle text-success"></i> 投资者</a>
                     </div>
                 </div>
@@ -114,12 +157,20 @@
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
                     <li class="header">导航栏</li>
+<<<<<<< HEAD
+                    <li>
+=======
                     <li class="menu-today">
+>>>>>>> 22a108a8b5a82f2ccd45039825ae767e4a252b88
                         <a href="today">
                             <i class="fa fa-dashboard"></i> <span>总览</span>
                         </a>
                     </li>
+<<<<<<< HEAD
+                    <li>
+=======
                     <li class="menu-simulate">
+>>>>>>> 22a108a8b5a82f2ccd45039825ae767e4a252b88
                         <a href="simulate">
                             <i class="fa fa-th"></i> <span>新手模拟</span>
                             <span class="pull-right-container">
@@ -128,24 +179,34 @@
                         </a>
                     </li>
 
+<<<<<<< HEAD
+                    <li class="active">
+=======
                     <li class="menu-real">
+>>>>>>> 22a108a8b5a82f2ccd45039825ae767e4a252b88
                         <a href="real">
                             <i class="fa fa-pie-chart"></i> <span>投资专区</span>
                         </a>
                     </li>
 
+<<<<<<< HEAD
+=======
                     <li class="menu-setting">
                         <a href="setting">
                             <i class="fa fa-cog"></i> <span>设置</span>
                         </a>
                     </li>
+>>>>>>> 22a108a8b5a82f2ccd45039825ae767e4a252b88
 
                 </ul>
             </section>
             <!-- /.sidebar -->
         </aside>
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 22a108a8b5a82f2ccd45039825ae767e4a252b88
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -159,9 +220,20 @@
                     <li class="active">投资专区</li>
                 </ol>
             </section>
+<<<<<<< HEAD
+
+
             <!-- Main content -->
             <section class="content">
 
+
+
+
+=======
+            <!-- Main content -->
+            <section class="content">
+
+>>>>>>> 22a108a8b5a82f2ccd45039825ae767e4a252b88
                 <div class="row">
 
                     <div class="col-xs-12">
@@ -224,7 +296,11 @@
                     <div class="pull-right hidden-xs">
                         <b>Version</b> 1.0.0
                     </div>
+<<<<<<< HEAD
+                    <strong>©拉普拉斯妖</strong> 2017-2017
+=======
                     <strong>©拉普拉斯团队</strong> 2017-2017
+>>>>>>> 22a108a8b5a82f2ccd45039825ae767e4a252b88
                 </footer>
 
 
@@ -232,95 +308,26 @@
                 immediately after the control sidebar -->
                 <div class="control-sidebar-bg"></div>
             </div>
-            <div class="modal fade" id="modal-deal" style="display: none;">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span></button>
-                                <h4 class="modal-title">确认要投标吗?</h4>
-                            </div>
-                            <div class="modal-body">
-                                <table class="table table-striped">
-                                    <tbody><tr>
-                                        <th>属性</th>
-                                        <th>值</th>
-                                    </tr>
-                                    <tr>
-                                        <td>编号</td>
-                                        <td class="table-lid">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>可投金额</td>
-                                        <td class="table-amount">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>期数</td>
-                                        <td class="table-months">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>利率</td>
-                                        <td>
-                                            <span class="table-currentrate"></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>生效时间</td>
-                                        <td>
-                                            <span class="table-auditingtime"></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>信用评级</td>
-                                        <td>
-                                            <span class="table-creditcode"></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>年龄</td>
-                                        <td>
-                                            <span class="table-age"></span>
-                                        </td>
-                                    </tr>
-                                </tbody></table>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
-                                <button type="button" class="btn btn-primary btn-dealcfm">确认</button>
-                            </div>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-
-                <div class="modal fade" id="modal-analysis" style="display: none;">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span></button>
-                                    <h4 class="modal-title">数据分析</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div id="amount-diagram" style="width: 850px;height:500px;"></div>
-                                    <div id="rate-diagram" style="width: 850px;height:500px;"></div>
-                                    <div id="credit-diagram" style="width: 850px;height:500px;"></div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                </div>
-                            </div>
-                            <!-- /.modal-content -->
-                        </div>
-                        <!-- /.modal-dialog -->
-                    </div>
-
             <!-- ./wrapper -->
             <!-- jQuery 2.2.3 -->
+<<<<<<< HEAD
+            <script src="/Public//plugins/jQuery/jquery-2.2.3.min.js"></script>
+            <!-- Bootstrap 3.3.6 -->
+            <script src="/Public//bootstrap/js/bootstrap.min.js"></script>
+            <!-- DataTables -->
+            <script src="/Public//plugins/datatables/jquery.dataTables.min.js"></script>
+            <script src="/Public//plugins/datatables/dataTables.bootstrap.min.js"></script>
+            <!-- SlimScroll -->
+            <script src="/Public//plugins/slimScroll/jquery.slimscroll.min.js"></script>
+            <!-- FastClick -->
+            <script src="/Public//plugins/fastclick/fastclick.js"></script>
+            <!-- AdminLTE App -->
+            <script src="/Public//dist/js/app.min.js"></script>
+            <!-- AdminLTE for demo purposes -->
+            <script src="/Public//dist/js/demo.js"></script>
+            <!-- This page's js -->
+            <script src="/Public//dist/js/real.js"></script>
+=======
             <script src="/ppd/Public//plugins/jQuery/jquery-2.2.3.min.js"></script>
             <script src="/ppd/Public//dist/js/header.js"></script>
 
@@ -337,8 +344,7 @@
             <script src="/ppd/Public//dist/js/app.min.js"></script>
             <!-- This page's js -->
             <script src="/ppd/Public//dist/js/real.js"></script>
+>>>>>>> 22a108a8b5a82f2ccd45039825ae767e4a252b88
             <!-- page script -->
-            <script src="/ppd/Public//dist/js/simulate.js"></script>
-
         </body>
         </html>
