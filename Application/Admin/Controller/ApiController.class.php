@@ -72,5 +72,9 @@ class ApiController extends CommonController {
     public function creditratio(){
         echo $this->ajaxReturn(F('creditratio'));
     }
+
+    public function cleartoken(){
+        S('token',null);
+    }
 }
 ?>

@@ -74,7 +74,6 @@
 
                                     <p>
                                         <?php echo ($user["nickname"]); ?>
-                                        <small>投资者</small>
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
@@ -107,7 +106,9 @@
                     </div>
                     <div class="pull-left info">
                         <p> <?php echo ($user["nickname"]); ?></p>
-                        <a href="#"><i class="fa fa-circle text-success"></i> 投资者</a>
+                        <a href="#">
+                            <?php if(S('token')){echo "<span class='label label-success'>已授权";} else {echo "<span class='label label-warning'>未授权";} ?>
+                        </span></a>
                     </div>
                 </div>
                 <!-- /.search form -->
