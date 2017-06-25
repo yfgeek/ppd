@@ -27,8 +27,8 @@ class IndexController extends CommonController {
 
 
         $user = M('user');
-        $usermodel = $user->where('uid = '.session('user.uid'))->select();
-        $this->assign('user',$usermodel[0]);
+        $usermodel = $user->where('uid = '.session('user.uid'))->find();
+        $this->assign('user',$usermodel);
 
         $bid = M('bid');
         $bidmodel = $bid->where('uid = '.session('user.uid'))->select();
@@ -46,14 +46,14 @@ class IndexController extends CommonController {
             $this->redirect('index/setting');
         }
         $user = M('user');
-        $usermodel = $user->where('uid = '.session('user.uid'))->select();
-        $this->assign('user',$usermodel[0]);
+        $usermodel = $user->where('uid = '.session('user.uid'))->find();
+        $this->assign('user',$usermodel);
         $this->display();
     }
     public function real(){
         $user = M('user');
-        $usermodel = $user->where('uid = '.session('user.uid'))->select();
-        $this->assign('user',$usermodel[0]);
+        $usermodel = $user->where('uid = '.session('user.uid'))->find();
+        $this->assign('user',$usermodel);
         $this->display();
     }
     public function ppdapi(){

@@ -107,7 +107,7 @@
                     <div class="pull-left info">
                         <p> {$user.nickname}</p>
                         <a href="#">
-                            <?php if($user.token){echo "<span class='label label-success'>已授权";} else {echo "<span class='label label-warning'>未授权";} ?>
+                            <?php if($user["token"]){echo "<span class='label label-success'>已授权";} else {echo "<span class='label label-warning'>未授权";} ?>
                         </span></a>
                     </div>
                 </div>
