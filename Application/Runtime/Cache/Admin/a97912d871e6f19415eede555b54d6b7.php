@@ -74,7 +74,6 @@
 
                                     <p>
                                         <?php echo ($user["nickname"]); ?>
-                                        <small>投资者</small>
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
@@ -107,7 +106,9 @@
                     </div>
                     <div class="pull-left info">
                         <p> <?php echo ($user["nickname"]); ?></p>
-                        <a href="#"><i class="fa fa-circle text-success"></i> 投资者</a>
+                        <a href="#">
+                            <?php if(S('token')){echo "<span class='label label-success'>已授权";} else {echo "<span class='label label-warning'>未授权";} ?>
+                        </span></a>
                     </div>
                 </div>
                 <!-- /.search form -->
@@ -225,13 +226,13 @@
                                     </thead>
                                     <tbody>
 
-                                        <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$data): $mod = ($i % 2 );++$i;?><tr class='list<?php echo ($data["ListingId"]); ?>'>
+                                        <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$data): $mod = ($i % 2 );++$i;?><tr class='list<?php echo ($data["ListingId"]); ?>' data-amount="<?php echo ($data["Amount"]); ?>" data-months="<?php echo ($data["Months"]); ?>" data-rate="<?php echo ($data["CurrentRate"]); ?>" data-code="<?php echo ($data["CreditCode"]); ?>">
                                                 <td><?php echo ($data["ListingId"]); ?></td>
                                                 <td><?php echo ($data["Amount"]); ?></td>
                                                 <td><?php echo ($data["Months"]); ?></td>
                                                 <td><?php echo ($data["CurrentRate"]); ?>%</td>
                                                 <td><?php echo ($data["CreditCode"]); ?></td>
-                                                <td><button type="button" class="btn btn-block btn-success btn-sm" data-toggle="modal" data-target="#modal-analysis">分析</button></td>
+                                                <td><button type="button" class="btn btn-block btn-success btn-sm btn-analysis" data-toggle="modal" data-lid="<?php echo ($data["ListingId"]); ?>" data-target="#modal-analysis">分析</button></td>
                                                 <td><button type="button" class="btn btn-block btn-info btn-sm btn-deal" data-lid="<?php echo ($data["ListingId"]); ?>" data-toggle="modal" data-target="#modal-deal" >投资</button></td>
 
                                             </tr><?php endforeach; endif; else: echo "" ;endif; ?>
@@ -347,8 +348,6 @@
                         <div id="amount-diagram" style="width: 850px;height:500px;"></div>
                         <div id="rate-diagram" style="width: 850px;height:500px;"></div>
                         <div id="credit-diagram" style="width: 850px;height:500px;"></div>
-                        <div id="creditratio-diagram" style="width: 850px;height:500px;"></div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
