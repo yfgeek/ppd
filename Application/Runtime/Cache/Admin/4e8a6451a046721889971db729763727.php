@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/ppd/Public//dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
     folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="/ppd/Public//dist/css/loaders.css">
     <link rel="stylesheet" href="/ppd/Public//dist/css/skins/_all-skins.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="/ppd/Public//plugins/iCheck/flat/blue.css">
@@ -158,9 +159,6 @@
         <li class="active">Dashboard</li>
       </ol>
     </section>
-
-    <input type="hidden" id="currentpage" value="today" />
-
     <section class="content">
       <!-- Info boxes -->
       <div class="row">

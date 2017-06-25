@@ -347,8 +347,6 @@
                         <div id="amount-diagram" style="width: 850px;height:500px;"></div>
                         <div id="rate-diagram" style="width: 850px;height:500px;"></div>
                         <div id="credit-diagram" style="width: 850px;height:500px;"></div>
-                        <div id="creditratio-diagram" style="width: 850px;height:500px;"></div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
