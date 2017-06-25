@@ -9,7 +9,11 @@ class ApiController extends CommonController {
         if( !UID ){
             $this->redirect('Public/login');
         }else{
-            $this->redirect('Admin/index/commit');
+            if(!S('token')){
+                $this->redirect('https://ac.ppdai.com/oauth2/login?AppID=5223d676d9dd48f5bf486b73d60e206c&ReturnUrl=http://ppd.yfgeek.com/index/today');
+            }else{
+                $this->redirect('Admin/index/today');
+            }
         }
     }
     public function bid(){
@@ -21,6 +25,17 @@ class ApiController extends CommonController {
         $request = '{
             "PageIndex": 1,
             "StartDateTime": "' . $dt . '.000"
+        }';
+        $result = send($url, $request);
+        echo $result;
+    }
+
+    public function bidd(){
+        header("Content-type:text/html;charset=utf-8");
+        $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingInfos";
+        date_default_timezone_set("Etc/GMT-8");
+        $request = '{
+            "ListingIds": [' .I('lid') . ']
         }';
         $result = send($url, $request);
         echo $result;
