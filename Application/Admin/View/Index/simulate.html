@@ -83,13 +83,13 @@
                                     <tbody>
 
                                         <volist name="list" id="data">
-                                            <tr class='list{$data.ListingId}'>
+                                            <tr class='list{$data.ListingId}' data-amount="{$data.Amount}" data-months="{$data.Months}" data-rate="{$data.CurrentRate}" data-code="{$data.CreditCode}">
                                                 <td>{$data.ListingId}</td>
                                                 <td>{$data.Amount}</td>
                                                 <td>{$data.Months}</td>
                                                 <td>{$data.CurrentRate}%</td>
                                                 <td>{$data.CreditCode}</td>
-                                                <td><button type="button" class="btn btn-block btn-success btn-sm" data-toggle="modal" data-target="#modal-analysis">分析</button></td>
+                                                <td><button type="button" class="btn btn-block btn-success btn-sm btn-analysis" data-toggle="modal" data-lid="{$data.ListingId}" data-target="#modal-analysis">分析</button></td>
                                                 <td><button type="button" class="btn btn-block btn-info btn-sm btn-deal" data-lid="{$data.ListingId}" data-toggle="modal" data-target="#modal-deal" >投资</button></td>
 
                                             </tr>
