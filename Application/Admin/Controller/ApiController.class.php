@@ -10,9 +10,9 @@ class ApiController extends CommonController {
             $this->redirect('Public/login');
         }else{
             if(!S('token')){
-                $this->redirect('https://ac.ppdai.com/oauth2/login?AppID=5223d676d9dd48f5bf486b73d60e206c&ReturnUrl=http://ppd.yfgeek.com/index/today');
+                $this->redirect('index/ppdapi');
             }else{
-                $this->redirect('Admin/index/today');
+                $this->redirect('index/today');
             }
         }
     }

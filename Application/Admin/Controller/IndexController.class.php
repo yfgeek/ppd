@@ -8,9 +8,10 @@ class IndexController extends CommonController {
             $this->redirect('Public/login');
         }else{
             if(!S('token')){
-                $this->redirect('https://ac.ppdai.com/oauth2/login?AppID=5223d676d9dd48f5bf486b73d60e206c&ReturnUrl=http://ppd.yfgeek.com/index/today');
+                if(!S('token')){
+                    $this->redirect('index/ppdapi');
             }else{
-                $this->redirect('Admin/index/today');
+                $this->redirect('index/today');
             }
         }
     }
@@ -48,6 +49,9 @@ class IndexController extends CommonController {
         $user = M('user');
         $usermodel = $user->where('uid = '.session('user.uid'))->select();
         $this->assign('user',$usermodel[0]);
+        $this->display();
+    }
+    public function ppdapi(){
         $this->display();
     }
 }
