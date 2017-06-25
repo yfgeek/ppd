@@ -51,37 +51,26 @@ class ApiController extends CommonController {
         $lid = I('get.lid');
         $data = M('data');
         $datamodel = $data->where('Listingid = '.$lid )->select();
-        $usrInfo = $datamodel[0];
-        echo $this->ajaxReturn($usrInfo);
-
+        echo $this->ajaxReturn($datamodel[0]);
+    }
+    public function update(){
+        $data = D('Data');
+        echo $data->update();
     }
 
     public function amount(){
-        $data = M('data');
-        $sql = "select count(Amount) as y,case when Amount > 15000  then 15000 when Amount > 14000  then 14000 when Amount > 13000  then 13000 when Amount > 12000  then 12000 when Amount > 11000  then 11000 when Amount > 10000  then 10000 when Amount > 9000  then 9000 when Amount > 8000  then 8000 when Amount > 7000  then 7000 when Amount > 6000  then 6000 when Amount > 5000  then 5000 when Amount > 4000  then 4000 when Amount > 3000  then 3000 when Amount > 2000  then 2000 when Amount > 1000  then 1000 else 0 end as x from tp_data group by x";
-        $datamodel = $data->query($sql);
-        if($datamodel){
-            echo $this->ajaxReturn($datamodel);
-        }
+        echo $this->ajaxReturn(F('amount'));
     }
 
     public function rate(){
-        $data = M('data');
-        $sql = "select CurrentRate as x, count(CurrentRate) as y from tp_data group by x";
-        $datamodel = $data->query($sql);
-        if($datamodel){
-            echo $this->ajaxReturn($datamodel);
-        }
+        echo $this->ajaxReturn(F('rate'));
     }
 
     public function credit(){
-        $data = M('data');
-        $sql = "select CreditCode as name, count(CreditCode) as value from tp_data group by name";
-        $datamodel = $data->query($sql);
-        if($datamodel){
-            echo $this->ajaxReturn($datamodel);
-        }
-
+        echo $this->ajaxReturn(F('credit'));
+    }
+    public function creditratio(){
+        echo $this->ajaxReturn(F('creditratio'));
     }
 }
 ?>

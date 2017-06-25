@@ -176,52 +176,62 @@ $(function () {
     var creditDiagram = echarts.init(document.getElementById('credit-diagram'));
 
     var xAxis3 = [];
-    var data3 = [];
+        $.getJSON('../api/credit', function (data3) {
+            $.getJSON('../api/creditratio', function (data4) {
 
-    $.getJSON('../api/credit', function (data3) {
+            creditoption = {
+                backgroundColor: '#fff',
 
-        creditoption = {
-            backgroundColor: '#fff',
-
-            title: {
-                text: '信用评级比例图',
-                left: 'center',
-                top: 20,
-                textStyle: {
-                    color: '#333'
-                }
+                title: {
+                    text: '信用评级比例图',
+                    left: 'center',
+                    top: 20,
+                    textStyle: {
+                        color: '#333'
+                    }
+                },
+                tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
             },
-            tooltip : {
-            trigger: 'item',
-            formatter: "{a} <br/>{b} : {c} ({d}%)"
-        },
-        legend: {
-            orient: 'vertical',
-            left: 'left',
-            data: ['A','B','C','D','E','F']
-        },
-        series : [
-            {
-                name: '信用评级',
-                type: 'pie',
-                radius : '55%',
-                center: ['50%', '60%'],
-                data:data3,
-                itemStyle: {
-                    emphasis: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: ['A','B','C','D','E','F']
+            },
+            series : [
+                {
+                    name: '信用评级',
+                    type: 'pie',
+                    radius : '50%',
+                    center: ['30%', '50%'],
+                    data:data3,
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                },{
+                    name: '历史正常还款比例',
+                    type: 'pie',
+                    radius : '50%',
+                    center: ['80%', '50%'],
+                    data:data4,
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
                     }
                 }
-            }
-        ]
-
-
-        };
-        creditDiagram.setOption(creditoption);
+            ]
+            };
+            creditDiagram.setOption(creditoption);
+        });
     });
-
 
 
 });
