@@ -36,11 +36,6 @@ class IndexController extends CommonController {
         $this->display();
     }
     public function setting(){
-        if(I('code')){
-            //去拿token
-            $authorizeResult = authorize(I('code'));
-            S('token',json_decode($authorizeResult)->AccessToken,json_decode($authorizeResult)->ExpiresIn);
-        }
         $user = M('user');
         $usermodel = $user->where('uid = '.session('user.uid'))->select();
         $this->assign('user',$usermodel[0]);
@@ -53,6 +48,11 @@ class IndexController extends CommonController {
         $this->display();
     }
     public function ppdapi(){
+        if(I('code')){
+            //去拿token
+            $authorizeResult = authorize(I('code'));
+            S('token',json_decode($authorizeResult)->AccessToken,json_decode($authorizeResult)->ExpiresIn);
+        }
         $this->display();
     }
 }
