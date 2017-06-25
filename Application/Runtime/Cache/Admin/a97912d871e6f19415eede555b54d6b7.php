@@ -207,7 +207,7 @@
 
                         <div class="box">
                             <div class="box-header">
-                                <h3 class="box-title">所有选择</h3>
+                                <h3 class="box-title">当前可投资标</h3>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
@@ -263,7 +263,7 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> 1.0.0
         </div>
-        <strong>©拉普拉斯团队</strong> 2017-2017
+        <strong>©拉普拉斯妖</strong> 2017-2017
     </footer>
 
 
