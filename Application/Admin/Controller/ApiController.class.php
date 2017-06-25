@@ -75,6 +75,8 @@ class ApiController extends CommonController {
 
     public function cleartoken(){
         S('token',null);
+        $data["content"] = "清除授权成功";
+        echo $this->ajaxReturn($data);
     }
 }
 ?>
