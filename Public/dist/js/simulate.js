@@ -55,6 +55,14 @@ $(function () {
         };
 
         option = {
+            title: {
+                text: '借款额度累计图',
+                left: 'center',
+                top: 20,
+                textStyle: {
+                    color: '#333'
+                }
+            },
             backgroundColor: '#fff',
             legend: {
                 data: ['bar'],
@@ -93,10 +101,15 @@ $(function () {
                             color: '#629dc4'
                         },
                         emphasis: {
-                            color: '#48a3e0'
+                            color: '#03a9f4'
                         }
                     },
-                    data: data1
+                    data: data1,
+                    markLine: {
+                        data: [
+                            {type: 'average', name: '平均值'}
+                        ]
+                    }
                 }
             ]
         };
@@ -128,6 +141,14 @@ $(function () {
         };
 
         rateoption = {
+            title: {
+                text: '借款利率累计图',
+                left: 'center',
+                top: 20,
+                textStyle: {
+                    color: '#333'
+                }
+            },
             backgroundColor: '#fff',
             legend: {
                 data: ['bar'],
@@ -162,10 +183,15 @@ $(function () {
                             color: '#629dc4'
                         },
                         emphasis: {
-                            color: '#48a3e0'
+                            color: '#03a9f4'
                         }
                     },
-                    data: data2
+                    data: data2,
+                    markLine: {
+                        data: [
+                            {type: 'average', name: '平均值'}
+                        ]
+                    }
                 }
             ]
         };
@@ -176,21 +202,23 @@ $(function () {
     var creditDiagram = echarts.init(document.getElementById('credit-diagram'));
 
     var xAxis3 = [];
-        $.getJSON('../api/credit', function (data3) {
-            $.getJSON('../api/creditratio', function (data4) {
 
-            creditoption = {
-                backgroundColor: '#fff',
+    var data3json = $.ajax({url : '../api/credit'});
+    var data4json = $.ajax({url : '../api/creditratio'});
 
-                title: {
-                    text: '信用评级比例图',
-                    left: 'center',
-                    top: 20,
-                    textStyle: {
-                        color: '#333'
-                    }
-                },
-                tooltip : {
+    $.when(data3json, data4json).done(function(){
+        creditoption = {
+            backgroundColor: '#fff',
+
+            title: {
+                text: '信用评级与历史正常还款比例图',
+                left: 'center',
+                top: 20,
+                textStyle: {
+                    color: '#333'
+                }
+            },
+            tooltip : {
                 trigger: 'item',
                 formatter: "{a} <br/>{b} : {c} ({d}%)"
             },
@@ -205,7 +233,7 @@ $(function () {
                     type: 'pie',
                     radius : '50%',
                     center: ['30%', '50%'],
-                    data:data3,
+                    data:data3json.responseJSON,
                     itemStyle: {
                         emphasis: {
                             shadowBlur: 10,
@@ -218,7 +246,7 @@ $(function () {
                     type: 'pie',
                     radius : '50%',
                     center: ['80%', '50%'],
-                    data:data4,
+                    data:data4json.responseJSON,
                     itemStyle: {
                         emphasis: {
                             shadowBlur: 10,
@@ -228,8 +256,31 @@ $(function () {
                     }
                 }
             ]
-            };
-            creditDiagram.setOption(creditoption);
+        };
+        creditDiagram.setOption(creditoption);
+    });
+
+    $('.btn-analysis').on('click', function() {
+        var lid = $(this).attr("data-lid");
+        var amount =  parseInt($(".list" + lid).attr("data-amount") / 1000);
+        var rate =  parseInt($(".list" + lid).attr("data-rate")); // 暂时无解，可用解决方案：隐藏域，但是不太好，我觉得
+
+        var name = $(".list" + lid).attr("data-code");
+        console.log(rate);
+
+        creditDiagram.dispatchAction({
+            type: 'highlight',
+            name: name
+        });
+
+        amountDiagram.dispatchAction({
+            type: 'highlight',
+            dataIndex: amount
+        });
+
+        rateDiagram.dispatchAction({
+            type: 'highlight',
+            name: rate
         });
     });
 

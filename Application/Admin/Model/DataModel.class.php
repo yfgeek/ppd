@@ -54,7 +54,7 @@ class DataModel extends Model{
     }
 
     public function updatecreditratio(){
-        $sql = "select CreditCode, round(sum(SuccessCount)/(sum(SuccessCount)+sum(OverdueCount)), 4) as Creditratio from tp_data where FirstSuccessBorrowTime = '0' group by CreditCode";
+        $sql = "select CreditCode as name, round(sum(SuccessCount)/(sum(SuccessCount)+sum(OverdueCount)), 4) as value from tp_data where FirstSuccessBorrowTime = '0' group by name";
         $datamodel = $this->query($sql);
         if($datamodel){
             F('creditratio',$datamodel);
