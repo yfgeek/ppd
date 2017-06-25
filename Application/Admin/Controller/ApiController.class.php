@@ -17,7 +17,7 @@ class ApiController extends CommonController {
         $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/LoanList";
         date_default_timezone_set("Etc/GMT-8");
         $dt = date("Y-m-d H:i:s");
-        $dt = date("Y-m-d H:i:s",strtotime("$dt - 200second"));
+        $dt = date("Y-m-d H:i:s",strtotime("$dt - 500second"));
         $request = '{
             "PageIndex": 1,
             "StartDateTime": "' . $dt . '.000"
