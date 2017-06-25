@@ -34,7 +34,7 @@ class PublicController extends Controller {
                 'last_login_time' => $data['last_login_time'],
             );
             session('user', $auth);
-            $this->redirect('index/today');
+            $this->redirect('index/index');
 
         } else {
             if(is_login()){
@@ -54,7 +54,7 @@ class PublicController extends Controller {
             $this->redirect('login');
         }
     }
-
+    
     public function verify(){
         ob_end_clean();
         $verify = new \Think\Verify();

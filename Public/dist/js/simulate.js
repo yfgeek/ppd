@@ -16,7 +16,7 @@ $(function () {
             $(".table-currentrate").html(json.CurrentRate);
             $(".table-auditingtime").html(json.AuditingTime);
             $(".table-creditcode").html(json.CreditCode);
-            $(".table-age").html(json.AuditingTime);
+            $(".table-age").html(json.Age);
         });
     });
 

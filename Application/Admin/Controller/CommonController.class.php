@@ -1,4 +1,8 @@
 <?php
+/**
+** 控制层
+** 共用控制器，用于跳转登录
+*/
 namespace Admin\Controller;
 use Think\Controller;
 
