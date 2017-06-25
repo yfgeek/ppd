@@ -34,7 +34,11 @@ class PublicController extends Controller {
                 'last_login_time' => $data['last_login_time'],
             );
             session('user', $auth);
-            $this->redirect('index/today');
+            if(!S('token')){
+                $this->redirect('https://ac.ppdai.com/oauth2/login?AppID=5223d676d9dd48f5bf486b73d60e206c&ReturnUrl=http://ppd.yfgeek.com/index/today');
+            }else{
+                $this->redirect('Admin/index/today');
+            }
 
         } else {
             if(is_login()){
