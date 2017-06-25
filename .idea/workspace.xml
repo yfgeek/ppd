@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="a1779057-46f7-46f0-8b00-6fae8461e6e0" name="Default" comment="" />
+=======
+    <list default="true" id="a1779057-46f7-46f0-8b00-6fae8461e6e0" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Runtime/Cache/Admin/840e08246e611bc7f19150e4f68f9d16.php" afterPath="$PROJECT_DIR$/Application/Runtime/Cache/Admin/840e08246e611bc7f19150e4f68f9d16.php" />
+    </list>
+>>>>>>> 647833f902a93004781d594d81479271f9b228f3
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -217,7 +223,11 @@
       <updated>1498246652959</updated>
       <workItem from="1498246664258" duration="306000" />
       <workItem from="1498265972717" duration="151000" />
+<<<<<<< HEAD
       <workItem from="1498409248772" duration="178000" />
+=======
+      <workItem from="1498409248772" duration="91000" />
+>>>>>>> 647833f902a93004781d594d81479271f9b228f3
     </task>
     <task id="LOCAL-00001" summary="idea">
       <created>1498246777640</created>
@@ -244,7 +254,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="635000" />
+=======
+    <option name="totallyTimeSpent" value="548000" />
+>>>>>>> 647833f902a93004781d594d81479271f9b228f3
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="730" extended-state="6" />
