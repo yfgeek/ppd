@@ -7,7 +7,11 @@ class IndexController extends CommonController {
         if( !UID ){
             $this->redirect('Public/login');
         }else{
-            $this->redirect('index/today');
+            if(!S('token')){
+                $this->redirect('index/ppdapi');
+            }else{
+                $this->redirect('index/today');
+            }
         }
     }
     public function today(){
