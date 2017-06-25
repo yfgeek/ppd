@@ -55,7 +55,7 @@ class ApiController extends CommonController {
     }
     public function update(){
         $data = D('Data');
-        echo $data->update();
+        echo $this->ajaxReturn($data->update());
     }
 
     public function amount(){

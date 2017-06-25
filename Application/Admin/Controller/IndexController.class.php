@@ -29,8 +29,16 @@ class IndexController extends CommonController {
         $this->assign('bid',$bidmodel);
         $this->display();
     }
-
+    public function setting(){
+        $user = M('user');
+        $usermodel = $user->where('uid = '.session('user.uid'))->select();
+        $this->assign('user',$usermodel[0]);
+        $this->display();
+    }
     public function real(){
+        $user = M('user');
+        $usermodel = $user->where('uid = '.session('user.uid'))->select();
+        $this->assign('user',$usermodel[0]);
         $this->display();
     }
 }

@@ -145,8 +145,6 @@
             <!-- /.sidebar -->
         </aside>
 
-
-        <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
@@ -156,11 +154,14 @@
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
-                    <li class="active">投资专区</li>
+                    <li class="active">新手模拟</li>
                 </ol>
             </section>
+
             <!-- Main content -->
             <section class="content">
+
+
 
                 <div class="row">
 
@@ -172,84 +173,72 @@
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
-                                <table id="example2" class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>编号</th>
-                                            <th>借款金额</th>
-                                            <th>期数</th>
-                                            <th>利率</th>
-                                            <th>初始评级</th>
-                                            <th>操作</th>
-                                            <th>操作</th>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">昵称更改</label>
 
-                                        </tr>
-                                    </thead>
-                                    <tbody class='zhcon'>
-                                        <tr class='list<?php echo ($data["ListingId"]); ?>'>
-                                            <td>
-                                                <div class="loadingsb" style="padding:50px 0 0px 30px;display:none;">
-                                                    <div class="loader">
-                                                        <div class="loader-inner ball-scale-multiple">
-                                                            <div></div>
-                                                            <div></div>
-                                                            <div></div>
-                                                            <p class="load" style="margin-left: 100px !important;padding-top:15px !important;font-size: 18px;">加载中...</p>
-                                                        </div>
-                                                    </div>
-                                                </div></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-
-                                            </tr>
-
-                                        </table>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
                                     </div>
-                                    <!-- /.box-body -->
                                 </div>
-                                <!-- /.box -->
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-primary btn-refresh">重建缓存</button>
+
                             </div>
-                            <!-- /.col -->
+                            <!-- /.box-body -->
                         </div>
-                        <!-- /.row -->
-                    </section>
-                    <!-- /.content -->
-                </div>
-                <!-- /.content-wrapper -->
-                <footer class="main-footer">
-                    <div class="pull-right hidden-xs">
-                        <b>Version</b> 1.0.0
+                        <!-- /.box -->
                     </div>
-                    <strong>©拉普拉斯团队</strong> 2017-2017
-                </footer>
-
-
-                <!-- Add the sidebar's background. This div must be placed
-                immediately after the control sidebar -->
-                <div class="control-sidebar-bg"></div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 1.0.0
             </div>
-            <!-- ./wrapper -->
-            <!-- jQuery 2.2.3 -->
-            <script src="/ppd/Public//plugins/jQuery/jquery-2.2.3.min.js"></script>
-            <script src="/ppd/Public//dist/js/header.js"></script>
+            <strong>©拉普拉斯团队</strong> 2017-2017
+        </footer>
 
-            <!-- Bootstrap 3.3.6 -->
-            <script src="/ppd/Public//bootstrap/js/bootstrap.min.js"></script>
-            <!-- DataTables -->
-            <script src="/ppd/Public//plugins/datatables/jquery.dataTables.min.js"></script>
-            <script src="/ppd/Public//plugins/datatables/dataTables.bootstrap.min.js"></script>
-            <!-- SlimScroll -->
-            <script src="/ppd/Public//plugins/slimScroll/jquery.slimscroll.min.js"></script>
-            <!-- FastClick -->
-            <script src="/ppd/Public//plugins/fastclick/fastclick.js"></script>
-            <!-- AdminLTE App -->
-            <script src="/ppd/Public//dist/js/app.min.js"></script>
-            <!-- This page's js -->
-            <script src="/ppd/Public//dist/js/real.js"></script>
-            <!-- page script -->
-        </body>
-        </html>
+
+        <!-- Add the sidebar's background. This div must be placed
+        immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+    </div>
+
+
+    <!-- ./wrapper -->
+    <!-- jQuery 2.2.3 -->
+    <script src="/ppd/Public//plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="/ppd/Public//dist/js/header.js"></script>
+
+    <!-- Bootstrap 3.3.6 -->
+    <script src="/ppd/Public//bootstrap/js/bootstrap.min.js"></script>
+    <!-- DataTables -->
+    <script src="/ppd/Public//plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/ppd/Public//plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="/ppd/Public//plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="/ppd/Public//plugins/fastclick/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/ppd/Public//dist/js/app.min.js"></script>
+    <script>
+    $(function () {
+        $(".btn-refresh").click(function(){
+            $.getJSON("../api/update", function(json){
+                alert(json.content);
+            });
+        });
+    });
+    </script>
+</body>
+</html>
