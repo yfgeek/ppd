@@ -19,6 +19,9 @@ class IndexController extends CommonController {
     public function today(){
         $user = M('user');
         $usermodel = $user->where('uid = '.session('user.uid'))->find();
+        if(!$usermodel["token"]){
+            $this->redirect('index/ppdapi');
+        }
         $this->assign('user',$usermodel);
         $this->display();
     }
