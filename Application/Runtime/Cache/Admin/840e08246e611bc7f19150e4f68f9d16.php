@@ -74,7 +74,6 @@
 
                                     <p>
                                         <?php echo ($user["nickname"]); ?>
-                                        <small>投资者</small>
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
@@ -107,7 +106,9 @@
                     </div>
                     <div class="pull-left info">
                         <p> <?php echo ($user["nickname"]); ?></p>
-                        <a href="#"><i class="fa fa-circle text-success"></i> 投资者</a>
+                        <a href="#">
+                            <?php if(S('token')){echo "<span class='label label-success'>已授权";} else {echo "<span class='label label-warning'>未授权";} ?>
+                        </span></a>
                     </div>
                 </div>
                 <!-- /.search form -->
@@ -188,6 +189,8 @@
                                     </div>
                                 </div>
                                 <button type="button" class="btn btn-primary btn-refresh">重建缓存</button>
+                                <button type="button" class="btn btn-primary btn-login">清空授权</button>
+                                <button type="button" class="btn btn-primary btn-login">拍拍贷授权</button>
 
                             </div>
                             <!-- /.box-body -->
@@ -237,6 +240,9 @@
             $.getJSON("../api/update", function(json){
                 alert(json.content);
             });
+        });
+        $(".btn-login").click(function(){
+            window.location.href="https://ac.ppdai.com/oauth2/login?AppID=5223d676d9dd48f5bf486b73d60e206c&ReturnUrl=http://ppd.yfgeek.com/index/setting";
         });
     });
     </script>
