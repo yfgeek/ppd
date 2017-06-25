@@ -101,10 +101,15 @@ $(function () {
                             color: '#629dc4'
                         },
                         emphasis: {
-                            color: '#48a3e0'
+                            color: '#03a9f4'
                         }
                     },
-                    data: data1
+                    data: data1,
+                    markLine: {
+                        data: [
+                            {type: 'average', name: '平均值'}
+                        ]
+                    }
                 }
             ]
         };
@@ -178,10 +183,15 @@ $(function () {
                             color: '#629dc4'
                         },
                         emphasis: {
-                            color: '#48a3e0'
+                            color: '#03a9f4'
                         }
                     },
-                    data: data2
+                    data: data2,
+                    markLine: {
+                        data: [
+                            {type: 'average', name: '平均值'}
+                        ]
+                    }
                 }
             ]
         };
@@ -198,17 +208,17 @@ $(function () {
 
     $.when(data3json, data4json).done(function(){
         creditoption = {
-                backgroundColor: '#fff',
+            backgroundColor: '#fff',
 
-                title: {
-                    text: '信用评级与历史正常还款比例图',
-                    left: 'center',
-                    top: 20,
-                    textStyle: {
-                        color: '#333'
-                    }
-                },
-                tooltip : {
+            title: {
+                text: '信用评级与历史正常还款比例图',
+                left: 'center',
+                top: 20,
+                textStyle: {
+                    color: '#333'
+                }
+            },
+            tooltip : {
                 trigger: 'item',
                 formatter: "{a} <br/>{b} : {c} ({d}%)"
             },
@@ -246,10 +256,33 @@ $(function () {
                     }
                 }
             ]
-            };
-            creditDiagram.setOption(creditoption);
-　　　});
+        };
+        creditDiagram.setOption(creditoption);
+    });
 
+    $('.btn-analysis').on('click', function() {
+        var lid = $(this).attr("data-lid");
+        var amount =  parseInt($(".list" + lid).attr("data-amount") / 1000);
+        var rate =  parseInt($(".list" + lid).attr("data-rate")); // 暂时无解，可用解决方案：隐藏域，但是不太好，我觉得
+
+        var name = $(".list" + lid).attr("data-code");
+        console.log(rate);
+
+        creditDiagram.dispatchAction({
+            type: 'highlight',
+            name: name
+        });
+
+        amountDiagram.dispatchAction({
+            type: 'highlight',
+            dataIndex: amount
+        });
+
+        rateDiagram.dispatchAction({
+            type: 'highlight',
+            name: rate
+        });
+    });
 
 
 });
