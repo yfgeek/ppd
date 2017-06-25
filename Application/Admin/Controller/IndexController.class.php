@@ -33,7 +33,9 @@ class IndexController extends CommonController {
         if(I('code')){
             //去拿token
             $authorizeResult = authorize(I('code'));
-            echo $authorizeResult;
+            if(S('token',json_decode($authorizeResult)->AccessToken,$authorizeResult)->ExpiresIn)){
+                echo 获取缓存并且缓存缓存成功！
+            };
         }
         $user = M('user');
         $usermodel = $user->where('uid = '.session('user.uid'))->select();
