@@ -9,7 +9,9 @@ class ApiController extends CommonController {
         if( !UID ){
             $this->redirect('Public/login');
         }else{
-            if(!S('token')){
+            $user = M('user');
+            $usermodel = $user->where('uid = '.session('user.uid'))->find();
+            if(!$usermodel["token"]){
                 $this->redirect('index/ppdapi');
             }else{
                 $this->redirect('index/today');
