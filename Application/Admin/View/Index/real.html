@@ -86,6 +86,93 @@
                 immediately after the control sidebar -->
                 <div class="control-sidebar-bg"></div>
             </div>
+            <div class="modal fade" id="modal-deal" style="display: none;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span></button>
+                                <h4 class="modal-title">确认要投标吗?</h4>
+                            </div>
+                            <div class="modal-body">
+                                <table class="table table-striped">
+                                    <tbody><tr>
+                                        <th>属性</th>
+                                        <th>值</th>
+                                    </tr>
+                                    <tr>
+                                        <td>编号</td>
+                                        <td class="table-lid">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>可投金额</td>
+                                        <td class="table-amount">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>期数</td>
+                                        <td class="table-months">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>利率</td>
+                                        <td>
+                                            <span class="table-currentrate"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>生效时间</td>
+                                        <td>
+                                            <span class="table-auditingtime"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>信用评级</td>
+                                        <td>
+                                            <span class="table-creditcode"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>年龄</td>
+                                        <td>
+                                            <span class="table-age"></span>
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+                                <button type="button" class="btn btn-primary btn-dealcfm">确认</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+
+                <div class="modal fade" id="modal-analysis" style="display: none;">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span></button>
+                                    <h4 class="modal-title">数据分析</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="amount-diagram" style="width: 850px;height:500px;"></div>
+                                    <div id="rate-diagram" style="width: 850px;height:500px;"></div>
+                                    <div id="credit-diagram" style="width: 850px;height:500px;"></div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+
             <!-- ./wrapper -->
             <!-- jQuery 2.2.3 -->
             <script src="__STATIC__/plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -105,5 +192,7 @@
             <!-- This page's js -->
             <script src="__STATIC__/dist/js/real.js"></script>
             <!-- page script -->
+            <script src="__STATIC__/dist/js/simulate.js"></script>
+
         </body>
         </html>
