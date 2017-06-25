@@ -1,7 +1,15 @@
 <?php
+/**
+** 控制层
+** 主要负责界面展示与VIEW层沟通的控制器
+*/
 namespace Admin\Controller;
 use Think\Controller;
 class IndexController extends CommonController {
+    /**
+    ** Index/index
+    ** 该页面用于判断首次登录是否已授权，如果未取得API授权则跳转到授权页面
+    */
     public function index(){
         define('UID',is_login());
         if( !UID ){
@@ -16,6 +24,10 @@ class IndexController extends CommonController {
             }
         }
     }
+    /**
+    ** Index/today
+    ** 大厅页面
+    */
     public function today(){
         $user = M('user');
         $usermodel = $user->where('uid = '.session('user.uid'))->find();
@@ -26,6 +38,10 @@ class IndexController extends CommonController {
         $this->display();
     }
 
+    /**
+    ** Index/simulate
+    ** 模拟投资页面
+    */
     public function simulate(){
         $data = M('data');
         $list = $data->where('AuditingTime = "2015-01-01"')->order('ListingId desc')->select();
@@ -41,6 +57,11 @@ class IndexController extends CommonController {
         $this->assign('bid',$bidmodel);
         $this->display();
     }
+
+    /**
+    ** Index/setting
+    ** 设置页面
+    */
     public function setting(){
         if(I('code')){
             //去拿token
@@ -56,12 +77,21 @@ class IndexController extends CommonController {
         $this->assign('user',$usermodel);
         $this->display();
     }
+    /**
+    ** Index/real
+    ** 真实投资页面
+    */
     public function real(){
         $user = M('user');
         $usermodel = $user->where('uid = '.session('user.uid'))->find();
         $this->assign('user',$usermodel);
         $this->display();
     }
+    /**
+    ** Index/ppdapi
+    ** 用于跳转到拍拍贷API
+    ** 该页面为临时方案
+    */
     public function ppdapi(){
         $this->display();
     }

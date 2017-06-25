@@ -54,7 +54,7 @@ class PublicController extends Controller {
             $this->redirect('login');
         }
     }
-
+    
     public function verify(){
         ob_end_clean();
         $verify = new \Think\Verify();
