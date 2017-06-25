@@ -42,7 +42,7 @@
                                     </div>
                                 </div>
                                 <button type="button" class="btn btn-primary btn-refresh">重建缓存</button>
-                                <button type="button" class="btn btn-primary btn-clear">清空授权</button>
+                                <button type="button" class="btn btn-primary btn-login">清空授权</button>
                                 <button type="button" class="btn btn-primary btn-login">拍拍贷授权</button>
 
                             </div>
@@ -91,11 +91,6 @@
     $(function () {
         $(".btn-refresh").click(function(){
             $.getJSON("../api/update", function(json){
-                alert(json.content);
-            });
-        });
-        $(".btn-clear").click(function(){
-            $.getJSON("../api/cleartoken", function(json){
                 alert(json.content);
             });
         });

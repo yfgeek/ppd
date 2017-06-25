@@ -75,7 +75,6 @@ class ApiController extends CommonController {
 
     public function cleartoken(){
         S('token',null);
-        echo $this->ajaxReturn("已经清除授权登录的token");
     }
 }
 ?>
