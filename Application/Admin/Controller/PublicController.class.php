@@ -34,7 +34,7 @@ class PublicController extends Controller {
                 'last_login_time' => $data['last_login_time'],
             );
             session('user', $auth);
-                $this->redirect('index/today');
+            $this->redirect('index/index');
 
         } else {
             if(is_login()){
