@@ -15,6 +15,7 @@ class IndexController extends CommonController {
             }
         }
     }
+    }
     public function today(){
         $this->display();
     }
