@@ -8,7 +8,7 @@ $(function () {
     });
     $.getJSON("../api/ppdbalance",function(result){
         if(result.Balance){
-            $(".ppd-blance").html(result.Balance[4].Balance);
+            $(".ppd-balance").html(result.Balance[4].Balance);
         }else{
             $(".ppd-name").html("当前未绑定账户");
         }
