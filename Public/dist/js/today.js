@@ -1,7 +1,14 @@
 $(function () {
-    $.getJSON("../api/ppdname", {'openid': $(".ppd-name").attr("data-openid")},function(result){
+    $.getJSON("../api/ppdname",function(result){
         if(result.status == 1){
             $(".ppd-name").html(result.name);
+        }else{
+            $(".ppd-name").html("当前未绑定账户");
+        }
+    });
+    $.getJSON("../api/ppdblance",function(result){
+        if(result.Balance){
+            $(".ppd-blance").html(result.Balance[4].Balance);
         }else{
             $(".ppd-name").html("当前未绑定账户");
         }
