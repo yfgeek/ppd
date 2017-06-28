@@ -54,11 +54,55 @@ class PublicController extends Controller {
             $this->redirect('login');
         }
     }
-    
+
     public function verify(){
         ob_end_clean();
         $verify = new \Think\Verify();
         $verify->entry();
+    }
+
+    public function reg(){
+        $this->display();
+    }
+
+    function regging()
+    {
+         header('Content-Type:text/html; charset=utf-8');
+        $User =  M("user");
+
+        $data['username'] = $_POST["username"];
+        $data['nickname'] = $_POST["nickname"];
+        $data['password'] = md5($_POST["password"]);
+        $data['passwordcheck'] = md5($_POST["passwordcheck"]);
+        $data['balance'] = 50000;
+
+        if($data['username'] == "" || $data['nickname'] == "" || $data['password'] == ""|| $data['passwordcheck'] == "")
+        {
+            echo "<script>alert('请填写完整！');history.back(); </script>";  //js程序，弹出对话框显示信息，并返回上个页面
+        }
+        else
+        if($data['password'] == $data['passwordcheck'])     //密码和确认密码是否一致
+        {
+            mysql_query("set names utf8");
+            $sql = "select username from tp_user where username = '" . $data['username'] ."'";
+            $result = $User ->query($sql);
+            if($result)    //如果为真，则已存在
+            {
+                echo "<script>alert('用户名已存在');history.back();</script>";
+            }
+            else
+            {
+                $User->add($data);
+                if($User)
+                echo "<script>alert('注册成功！');window.location.href='login';</script>";
+                else
+                throw_exception("数据库添加失败");
+            }
+        }
+        else
+        {
+            echo "<script>alert('密码不一致！');history.back();</script>";
+        }
     }
 }
 ?>
