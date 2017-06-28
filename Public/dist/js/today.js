@@ -6,7 +6,7 @@ $(function () {
             $(".ppd-name").html("当前未绑定账户");
         }
     });
-    $.getJSON("../api/ppdblance",function(result){
+    $.getJSON("../api/ppdbalance",function(result){
         if(result.Balance){
             $(".ppd-blance").html(result.Balance[4].Balance);
         }else{
