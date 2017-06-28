@@ -64,23 +64,54 @@ class ApiController extends CommonController {
 
 
     /**
-    ** Api/getppdname
-    ** 获得具体标的API，利用openid获取用户名字
+    ** Api/ppdname
+    ** 获得具体用户名的API，利用openid获取用户名字
     ** 需要请求：openid
     ** 返回格式为JSON
     */
     public function ppdname(){
-        header("Content-type:text/html;charset=utf-8");
-        $url = "http://gw.open.ppdai.com/open/openApiPublicQueryService/QueryUserNameByOpenID";
-        date_default_timezone_set("Etc/GMT-8");
-        $request = '{
-          "OpenID": "'. I('openid') .'"
-        }';
-        $result = send($url, $request);
-        if($username = json_decode($result)->UserName){
-            $data["status"] = 1;
-            $data["name"] = decrypt($username);
-            echo $this->ajaxReturn($data);
+        $user = M('user');
+        $usermodel = $user->where('uid = '.session('user.uid'))->find();
+        if($usermodel){
+            header("Content-type:text/html;charset=utf-8");
+            $url = "http://gw.open.ppdai.com/open/openApiPublicQueryService/QueryUserNameByOpenID";
+            date_default_timezone_set("Etc/GMT-8");
+            $request = '{
+              "OpenID": "'. $usermodel["openid"] .'"
+            }';
+            $result = send($url, $request);
+            if($username = json_decode($result)->UserName){
+                $data["status"] = 1;
+                $data["name"] = decrypt($username);
+                echo $this->ajaxReturn($data);
+            }else{
+                $data["status"] = 0;
+                echo $this->ajaxReturn($data);
+            }
+        else{
+                $data["status"] = 0;
+                echo $this->ajaxReturn($data);
+        }
+    }
+
+    /**
+    ** Api/ppdbalance
+    ** 获得具体用户金额的API，利用openid获取用户名字
+    ** 需要请求：openid
+    ** 返回格式为JSON
+    */
+    public function ppdbalance(){
+        $user = M('user');
+        $usermodel = $user->where('uid = '.session('user.uid'))->find();
+        if($usermodel){
+            header("Content-type:text/html;charset=utf-8");
+            $url = "http://gw.open.ppdai.com/balance/balanceService/QueryBalance";
+            date_default_timezone_set("Etc/GMT-8");
+            $accessToken=$usermodel["token"];
+            $request = '{
+            }';
+            $result = send($url, $request,$accessToken);
+            echo $result;
         }else{
             $data["status"] = 0;
             echo $this->ajaxReturn($data);
