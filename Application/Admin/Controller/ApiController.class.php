@@ -88,6 +88,7 @@ class ApiController extends CommonController {
                 $data["status"] = 0;
                 echo $this->ajaxReturn($data);
             }
+        }
         else{
                 $data["status"] = 0;
                 echo $this->ajaxReturn($data);
