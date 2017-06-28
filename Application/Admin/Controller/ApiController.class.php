@@ -62,6 +62,24 @@ class ApiController extends CommonController {
         echo $result;
     }
 
+
+    /**
+    ** Api/getppdname
+    ** 获得具体标的API，利用openid获取用户名字
+    ** 需要请求：openid
+    ** 返回格式为JSON
+    */
+    public function ppdname(){
+        header("Content-type:text/html;charset=utf-8");
+        $url = "http://gw.open.ppdai.com/open/openApiPublicQueryService/QueryUserNameByOpenID";
+        date_default_timezone_set("Etc/GMT-8");
+        $request = '{
+            "OpenID": [' .I('openid') . ']
+        }';
+        $result = send($url, $request);
+        echo $result;
+    }
+
     /**
     ** Api/deal
     ** 用于模拟投资
