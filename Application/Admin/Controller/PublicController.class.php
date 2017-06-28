@@ -15,7 +15,7 @@ class PublicController extends Controller {
             $map['username'] = $username;
             $map['status'] = 1;
             $user = $db->where($map)->find();
-            if($user['password'] != md5($password)){
+            if($user['password'] != md5($_POST["password"]){
                 $this->error('密码错误，请重新输入');
             }
 
