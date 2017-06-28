@@ -12,10 +12,12 @@ class PublicController extends Controller {
     public function login($username = null,$password = null, $verify = null){
         if(IS_POST){
             $db = M('user');
+            $password =  $_POST["password"];
             $map['username'] = $username;
             $map['status'] = 1;
             $user = $db->where($map)->find();
-            if($user['password'] != md5($_POST["password"]){
+
+            if($user['password'] != md5($password)){
                 $this->error('密码错误，请重新输入');
             }
 
