@@ -69,6 +69,7 @@ class IndexController extends CommonController {
             $user = D('user');
             $userdata["token"] = json_decode($authorizeResult)->AccessToken;
             $userdata["tokentime"] = json_decode($authorizeResult)->ExpiresIn;
+            $userdata["openid"] = json_decode($authorizeResult)->OpenID;
             $user->where('uid = '.session('user.uid'))->save($userdata);
             $this->redirect('index/setting');
         }

@@ -60,11 +60,11 @@ class PublicController extends Controller {
         $verify = new \Think\Verify();
         $verify->entry();
     }
-
+    /* 显示注册页面 */
     public function reg(){
         $this->display();
     }
-
+    /* 用户注册 */
     function regging()
     {
          header('Content-Type:text/html; charset=utf-8');
