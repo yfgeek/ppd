@@ -74,10 +74,17 @@ class ApiController extends CommonController {
         $url = "http://gw.open.ppdai.com/open/openApiPublicQueryService/QueryUserNameByOpenID";
         date_default_timezone_set("Etc/GMT-8");
         $request = '{
-            "OpenID": [' .I('openid') . ']
+          "OpenID": "'. I('openid') .'"
         }';
         $result = send($url, $request);
-        echo $result;
+        if($username = json_decode($result)->UserName){
+            $data["status"] = 1;
+            $data["name"] = decrypt($username);
+            echo $this->ajaxReturn($data);
+        }else{
+            $data["status"] = 0;
+            echo $this->ajaxReturn($data);
+        }
     }
 
     /**
