@@ -29,6 +29,16 @@ class IndexController extends CommonController {
     ** 大厅页面
     */
     public function today(){
+        if(I('code')){
+            //去拿token
+            $authorizeResult = authorize(I('code'));
+            $user = D('user');
+            $userdata["token"] = json_decode($authorizeResult)->AccessToken;
+            $userdata["tokentime"] = json_decode($authorizeResult)->ExpiresIn;
+            $userdata["openid"] = json_decode($authorizeResult)->OpenID;
+            $user->where('uid = '.session('user.uid'))->save($userdata);
+            $this->redirect('index/today');
+        }
         $user = M('user');
         $usermodel = $user->where('uid = '.session('user.uid'))->find();
         if(!$usermodel["token"]){
@@ -78,6 +88,7 @@ class IndexController extends CommonController {
         $this->assign('user',$usermodel);
         $this->display();
     }
+
     /**
     ** Index/real
     ** 真实投资页面
