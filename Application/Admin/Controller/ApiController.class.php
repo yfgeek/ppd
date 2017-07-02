@@ -51,12 +51,12 @@ class ApiController extends CommonController {
     ** 需要请求：lid 是listing id
     ** 返回格式为JSON
     */
-    public function bidd(){
+    public function bidd($lid){
         header("Content-type:text/html;charset=utf-8");
         $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingInfos";
         date_default_timezone_set("Etc/GMT-8");
         $request = '{
-            "ListingIds": [' .I('lid') . ']
+            "ListingIds": [' . $lid . ']
         }';
         $result = send($url, $request);
         echo $result;
@@ -152,11 +152,10 @@ class ApiController extends CommonController {
     ** 需要请求 lid 是listing id
     ** 返回格式为JSON
     */
-    public function listd(){
-        $lid = I('get.lid');
+    public function listd($lid){
         $data = M('data');
-        $datamodel = $data->where('Listingid = '.$lid )->select();
-        echo $this->ajaxReturn($datamodel[0]);
+        $datamodel = $data->where('Listingid = '.$lid )->find();
+        echo $this->ajaxReturn($datamodel);
     }
 
     /**
@@ -168,6 +167,33 @@ class ApiController extends CommonController {
     public function update(){
         $data = D('Data');
         echo $this->ajaxReturn($data->update());
+    }
+
+
+    public function test(){
+        $data = M('data');
+        $datamodel = $data->limit(3000)->select();
+        foreach($datamodel as $n => $item){
+            if($this->beyes($item["ListingId"])){
+                echo $item["ListingId"];
+            }
+        }
+
+    }
+    /**
+    ** Api/beyesi
+    ** 贝叶斯模型
+    ** 输入：$lid
+    ** loan, age, cellphonetag, hukoutag, shipintag, xuelitag,  zhengxintag, gendertag, pingjitag
+    ** 返回格式为JSON
+    */
+    public function beyes($lid){
+        echo $lid;
+        $data = M('data');
+        $datamodel = $data->where('ListingId = '.$lid )->find();
+        $data = D('Beyesi');
+        $result =  $data->getmappos($datamodel["Amount"],$datamodel["Age"],$datamodel["PhoneValidate"],$datamodel["NciicIdentityCheck"],$datamodel["VideoValidate"],$datamodel["EducateValidate"],$datamodel["CreditValidate"],$datamodel["Gender"],$datamodel["CreditCode"]);
+        return $this->ajaxReturn($result);
     }
 
     /**
