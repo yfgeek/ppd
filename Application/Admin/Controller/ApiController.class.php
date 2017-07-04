@@ -132,7 +132,7 @@ class ApiController extends CommonController {
             $row["uid"] = session('user.uid');
             $row["listingid"] = $lid;
             $row["share"] = "500";
-            $row["biddate"] = time();
+            $row["biddate"] = date('Y-m-d');
             $row["trandate"] = "NaN";
             if($bid->add($row)){
                 $usrInfo = array('status'=>'success');

@@ -41,7 +41,7 @@
                                 <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-number">编号 {$data.listingid}</span>
-                                    <span class="info-box-text biddate">起始日期:{$data.biddate} </span>
+                                    <span class="info-box-text biddate">起始日期: {$data.biddate}</span>
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 70%"></div>
                                     </div>
@@ -258,6 +258,7 @@
     <script src="__STATIC__/dist/js/app.min.js"></script>
     <!-- page script -->
     <script>
+    $(function () {
     $('#example2').DataTable({
         "paging": true,
         "lengthChange": false,
@@ -265,6 +266,7 @@
         "ordering": true,
         "info": true,
         "autoWidth": false
+    });
     });
     </script>
     <script src="__STATIC__/dist/js/simulate.js"></script>
