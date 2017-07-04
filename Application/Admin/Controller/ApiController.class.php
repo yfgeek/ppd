@@ -125,20 +125,29 @@ class ApiController extends CommonController {
     ** @param lid 是listing id
     ** 返回格式为JSON，投资结果，正确与否
     */
-    public function deal($lid){
+    public function deal($lid,$share){
+        $user = M('user');
+        $usermodel = $user->where('uid = '.session('user.uid'))->find();
+
+
         $bid = M('bid');
         $bidmodel = $bid->where('uid = '.session('user.uid') . 'AND Listingid = '. $lid )->count();
         if($bidmodel==0){
-            $row["uid"] = session('user.uid');
-            $row["listingid"] = $lid;
-            $row["share"] = "500";
-            $row["biddate"] = date('Y-m-d');
-            $row["trandate"] = "NaN";
-            if($bid->add($row)){
-                $usrInfo = array('status'=>'success');
-
+            if($usermodel["balance"]>=$share){
+                $row["uid"] = session('user.uid');
+                $row["listingid"] = $lid;
+                $row["share"] = $share;
+                $row["biddate"] = date('Y-m-d');
+                $row["trandate"] = "NaN";
+                if($bid->add($row)){
+                    $usrInfo = array('status'=>'success');
+                    $userdata["balance"] = $bidmodel["balance"] - $share;
+                    $user->where('uid = '.session('user.uid'))->save($userdata);
+                }else{
+                    $usrInfo = array('status'=>'fail','content'=>'这个您已经投资过了');
+                }
             }else{
-                $usrInfo = array('status'=>'fail','content'=>'这个您已经投资过了');
+                $usrInfo = array('status'=>'fail','content'=>'您用户余额不足');
             }
         }else{
             $usrInfo = array('status'=>'fail','content'=>'这个您已经投资过了');

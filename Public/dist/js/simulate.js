@@ -1,8 +1,6 @@
 $(function () {
 
 
-
-
     $(".btn-deal").click(function(){
         $.getJSON("../Api/listd", {'lid': $(this).attr("data-lid")}, function(json){
             $(".table-lid").html(json.ListingId);
@@ -16,15 +14,22 @@ $(function () {
     });
 
     $(".btn-dealcfm").click(function(){
-        $.getJSON("../Api/deal", {'lid': $(".table-lid").html()}, function(json){
-            if(json.status == 'success'){
-                alert("投资成功！");
-                $("#modal-deal").modal('hide');
-            }
-            else{
-                alert(json.content);
-            };
-        });
+        var lid = $(".table-lid").html();
+        var share = $(".input-share").val();
+        if(lid!="" && share!=""){
+            $.getJSON("../Api/deal", {'lid': lid, 'share': share}, function(json){
+                if(json.status == 'success'){
+                    alert("投资成功！");
+                    $("#modal-deal").modal('hide');
+                }
+                else{
+                    alert(json.content);
+                };
+            });
+        }else{
+            alert("请填写金额~");
+        }
+
     });
 
     var amountDiagram = echarts.init(document.getElementById('amount-diagram'));
