@@ -53,6 +53,7 @@ class IndexController extends CommonController {
     ** 模拟投资页面
     */
     public function simulate(){
+        date_default_timezone_set('Asia/Shanghai');
         $data = M('data');
         $list = $data->where('AuditingTime = "2015-01-01"')->order('ListingId desc')->select();
         $this->assign('list',$list);
