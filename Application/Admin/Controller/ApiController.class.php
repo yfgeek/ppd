@@ -181,18 +181,17 @@ class ApiController extends CommonController {
 
     }
     /**
-    ** Api/beyesi
+    ** Api/beyes
     ** 贝叶斯模型
     ** 输入：$lid
     ** loan, age, cellphonetag, hukoutag, shipintag, xuelitag,  zhengxintag, gendertag, pingjitag
     ** 返回格式为JSON
     */
     public function beyes($lid){
-        echo $lid;
         $data = M('data');
         $datamodel = $data->where('ListingId = '.$lid )->find();
         $data = D('Beyesi');
-        $result =  $data->getmappos($datamodel["Amount"],$datamodel["Age"],$datamodel["PhoneValidate"],$datamodel["NciicIdentityCheck"],$datamodel["VideoValidate"],$datamodel["EducateValidate"],$datamodel["CreditValidate"],$datamodel["Gender"],$datamodel["CreditCode"]);
+        $result["status"] =  $data->getmappos($datamodel["Amount"],$datamodel["Age"],$datamodel["PhoneValidate"],$datamodel["NciicIdentityCheck"],$datamodel["VideoValidate"],$datamodel["EducateValidate"],$datamodel["CreditValidate"],$datamodel["Gender"],$datamodel["CreditCode"]);
         return $this->ajaxReturn($result);
     }
 
