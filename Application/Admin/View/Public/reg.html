@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>拍拍哒 | 用户登录</title>
+  <title>拍拍哒 | 注册</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="__STATIC__/dist/css/AdminLTE.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="__STATIC__/plugins/iCheck/square/blue.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,30 +34,50 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">开始你的投资选择！</p>
+    <p class="login-box-msg">注册中心</p>
+    <form name="form1" id="form1" method="post" action="regging">
+      <div class="form-group has-feedback">
+         <input type="text" name="username" maxlength="16" class="form-control" placeholder="用户名">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
 
-    <form action="{:U('login','','','')}" role="form" method="post">
-      <div class="form-group has-feedback">
-        <input type="text" name="username" class="form-control" placeholder="用户名">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" name="password" class="form-control" placeholder="密码">
+          <input type="text" name="nickname" maxlength="16" class="form-control" placeholder="昵称">
+         <span class="glyphicon glyphicon-user form-control-feedback"></span>
+
+      </div>
+
+
+      <div class="form-group has-feedback">
+          <input type="password" name="password"  maxlength="16"  class="form-control" placeholder="密码" />
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+
+
       </div>
+      <div class="form-group has-feedback">
+          <input type="password"name="passwordcheck" maxlength="16"  class="form-control" placeholder="确认密码" />
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+
+      </div>
+
+
+
       <div class="row">
-        <div class="col-xs-4">
-        </div>
-        <div class="col-xs-4">
-            <a class="btn btn-primary btn-block btn-flat" href="reg">注册</a>
-        </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" name="submit" class="btn btn-primary btn-block btn-flat">登录</button>
-        </div>
-        <!-- /.col -->
+           <div class="col-xs-4"></div><div class="col-xs-4"><a  class="btn btn-primary btn-block btn-flat" href="login">返回</a></div>
+
+
+          <div class="col-xs-4">
+              <button type="submit" name="btn1" id="btn1" class="btn btn-primary btn-block btn-flat">注册</button>
+          </div>
       </div>
-    </form>
+
+        <!-- /.col -->
+        <!-- <div class="col-xs-4">
+          <button type="submit" name="submit" class="btn btn-primary btn-block btn-flat">返回</button>
+        </div> -->
+        <!-- /.col -->
+        </form>
+      </div>
     <!-- /.social-auth-links -->
 
 
@@ -63,6 +85,7 @@
   <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
+
 
 </body>
 </html>

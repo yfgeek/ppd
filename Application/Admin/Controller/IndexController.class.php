@@ -1,45 +1,111 @@
 <?php
+/**
+** 控制层
+** 主要负责界面展示与VIEW层沟通的控制器
+*/
 namespace Admin\Controller;
 use Think\Controller;
 class IndexController extends CommonController {
+    /**
+    ** Index/index
+    ** 该页面用于判断首次登录是否已授权，如果未取得API授权则跳转到授权页面
+    */
     public function index(){
         define('UID',is_login());
-        if( !UID ){// 还没登录 跳转到登录页面
+        if( !UID ){
             $this->redirect('Public/login');
         }else{
-			$this->redirect('Admin/index/today');
-		}
+            $user = M('user');
+            $usermodel = $user->where('uid = '.session('user.uid'))->find();
+            if(!$usermodel["token"]){
+                $this->redirect('index/ppdapi');
+            }else{
+                $this->redirect('index/today');
+            }
+        }
     }
+    /**
+    ** Index/today
+    ** 大厅页面
+    */
     public function today(){
-        	$this->display(); // 输出模板
+        if(I('code')){
+            //去拿token
+            $authorizeResult = authorize(I('code'));
+            $user = D('user');
+            $userdata["token"] = json_decode($authorizeResult)->AccessToken;
+            $userdata["tokentime"] = json_decode($authorizeResult)->ExpiresIn;
+            $userdata["openid"] = json_decode($authorizeResult)->OpenID;
+            $user->where('uid = '.session('user.uid'))->save($userdata);
+            $this->redirect('index/today');
+        }
+        $user = M('user');
+        $usermodel = $user->where('uid = '.session('user.uid'))->find();
+        if(!$usermodel["token"]){
+            $this->redirect('index/ppdapi');
+        }
+        $this->assign('user',$usermodel);
+        $this->display();
     }
 
+    /**
+    ** Index/simulate
+    ** 模拟投资页面
+    */
     public function simulate(){
-    $data = M('data'); // 实例化User对象
-	$count      = $data->count();// 查询满足要求的总记录数
-	$Page       = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数(25)
-	$Page -> setConfig('first','首页');
-	$Page -> setConfig('prev','上一页');
-	$Page -> setConfig('next','下一页');
-	$Page -> setConfig('link','indexpagenumb');//pagenumb 会替换成页码
-	$show       = $Page->show();// 分页显示输出
-	// 进行分页数据查询 注意limit方法的参数要使用Page类的属性
-	$list = $data->where('AuditingTime = "2015-01-01"')->order('ListingId desc')->limit($Page->firstRow.','.$Page->listRows)->select();
-	$this->assign('list',$list);// 赋值数据集
-	$this->assign('page',$show);// 赋值分页输出
-	$this->display(); // 输出模板
-	}
+        $data = M('data');
+        $list = $data->where('AuditingTime = "2015-01-01"')->order('ListingId desc')->select();
+        $this->assign('list',$list);
 
-    public function real(){
-	$this->display();
+
+        $user = M('user');
+        $usermodel = $user->where('uid = '.session('user.uid'))->find();
+        $this->assign('user',$usermodel);
+
+        $bid = M('bid');
+        $bidmodel = $bid->where('uid = '.session('user.uid'))->select();
+        $this->assign('bid',$bidmodel);
+        $this->display();
     }
-	public function social(){
 
-		$this->display();
-	}
-	public function photo(){
-		$this->display();
-	}
+    /**
+    ** Index/setting
+    ** 设置页面
+    */
+    public function setting(){
+        if(I('code')){
+            //去拿token
+            $authorizeResult = authorize(I('code'));
+            $user = D('user');
+            $userdata["token"] = json_decode($authorizeResult)->AccessToken;
+            $userdata["tokentime"] = json_decode($authorizeResult)->ExpiresIn;
+            $userdata["openid"] = json_decode($authorizeResult)->OpenID;
+            $user->where('uid = '.session('user.uid'))->save($userdata);
+            $this->redirect('index/setting');
+        }
+        $user = M('user');
+        $usermodel = $user->where('uid = '.session('user.uid'))->find();
+        $this->assign('user',$usermodel);
+        $this->display();
+    }
 
+    /**
+    ** Index/real
+    ** 真实投资页面
+    */
+    public function real(){
+        $user = M('user');
+        $usermodel = $user->where('uid = '.session('user.uid'))->find();
+        $this->assign('user',$usermodel);
+        $this->display();
+    }
+    /**
+    ** Index/ppdapi
+    ** 用于跳转到拍拍贷API
+    ** 该页面为临时方案
+    */
+    public function ppdapi(){
+        $this->display();
+    }
 }
 ?>

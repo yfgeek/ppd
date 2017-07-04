@@ -1,4 +1,9 @@
 <?php
+/**
+** 函数层
+** 主要集成了拍拍贷API
+** 部分功能根据框架进行了改进
+*/
 function getPV(){
     $str= C('APPPV');
     $str=chunk_split($str, 64, "\n");
@@ -12,10 +17,10 @@ function getPUB(){
     return $key;
 }
 /**
- * 排序Request至待签名字符串
- *
- * @param $request: json格式Request
- */
+* 排序Request至待签名字符串
+*
+* @param $request: json格式Request
+*/
 function sortToSign($request){
     $obj = json_decode($request);
     $arr = array();
@@ -37,39 +42,39 @@ function sortToSign($request){
 
 
 /**
- * RSA私钥签名
- *
- * @param $signdata: 待签名字符串
- */
+* RSA私钥签名
+*
+* @param $signdata: 待签名字符串
+*/
 function sign($signdata){
     $appPrivateKey =getPV();
     if(openssl_sign($signdata,$sign,$appPrivateKey))
-        $sign = base64_encode($sign);
+    $sign = base64_encode($sign);
     return $sign;
 }
 
 
 /**
- * RSA公钥验签
- *
- * @param $signdata: 待签名字符串
- * @param $signeddata: 已签名字符串
- */
+* RSA公钥验签
+*
+* @param $signdata: 待签名字符串
+* @param $signeddata: 已签名字符串
+*/
 function verify($signdata,$signeddata){
     $appPublicKey = getPUB();
     $signeddata = base64_decode($signeddata);
     if (openssl_verify($signdata, $signeddata, $appPublicKey))
-        return true;
+    return true;
     else
-        return false;
+    return false;
 }
 
 
 /**
- * RSA公钥加密
- *
- * @param $encryptdata: 待加密字符串
- */
+* RSA公钥加密
+*
+* @param $encryptdata: 待加密字符串
+*/
 function encrypt($encryptdata){
     $appPublicKey = getPUB();
     openssl_public_encrypt($encryptdata,$encrypted,$appPublicKey);
@@ -78,12 +83,12 @@ function encrypt($encryptdata){
 
 
 /**
- * RSA私钥解密
- *
- * @param $decryptdata: 待解密字符串
- */
+* RSA私钥解密
+*
+* @param $decryptdata: 待解密字符串
+*/
 function decrypt($encrypteddata){
-     $appPrivateKey =getPV();
+    $appPrivateKey =getPV();
     openssl_private_decrypt(base64_decode($encrypteddata),$decrypted,$appPrivateKey);
     return $decrypted;
 }
@@ -108,11 +113,11 @@ function SendAuthRequest($url, $request) {
     $result = curl_exec ( $curl );
     curl_close ( $curl );
 
-// 	$auth = json_decode ( $result, true );
-// 	if ($auth == NULL || $auth == false) {
-// 		return $result;
-// 	}
-// 	return $auth;
+    // 	$auth = json_decode ( $result, true );
+    // 	if ($auth == NULL || $auth == false) {
+    // 		return $result;
+    // 	}
+    // 	return $auth;
 
     return $result;
 }
@@ -135,24 +140,24 @@ function SendRequest ( $url, $request, $appId, $accessToken ){
     $header [] = 'X-PPD-APPID:' . $appId;
     $header [] = 'X-PPD-SIGN:' . $request_sign;
     if ($accessToken!= null)
-        $header [] = 'X-PPD-ACCESSTOKEN:' . $accessToken;
-        curl_setopt ( $curl, CURLOPT_HTTPHEADER, $header );
-        curl_setopt ( $curl, CURLOPT_POST, 1 );
-        curl_setopt ( $curl, CURLOPT_POSTFIELDS, $request );
-        curl_setopt ( $curl, CURLOPT_RETURNTRANSFER, 1 );
-        $result = curl_exec ( $curl );
-        curl_close ( $curl );
-//         $j = json_decode ( $result, true );
-        return $result ;
+    $header [] = 'X-PPD-ACCESSTOKEN:' . $accessToken;
+    curl_setopt ( $curl, CURLOPT_HTTPHEADER, $header );
+    curl_setopt ( $curl, CURLOPT_POST, 1 );
+    curl_setopt ( $curl, CURLOPT_POSTFIELDS, $request );
+    curl_setopt ( $curl, CURLOPT_RETURNTRANSFER, 1 );
+    $result = curl_exec ( $curl );
+    curl_close ( $curl );
+    //         $j = json_decode ( $result, true );
+    return $result ;
 }
 
 
 /**
- * 获取授权
- *
- * @param $appid: 应用ID
- * @param $code
- */
+* 获取授权
+*
+* @param $appid: 应用ID
+* @param $code
+*/
 function authorize($code) {
     $appid = C('APPID');
     $request = '{"AppID": "'.$appid.'","Code": "'.$code.'"}';
@@ -161,12 +166,12 @@ function authorize($code) {
 }
 
 /**
- * 刷新AccessToken
- *
- * @param $openid: 用户唯一标识
- * @param $openid: 应用ID
- * @param $refreshtoken: 刷新令牌Token
- */
+* 刷新AccessToken
+*
+* @param $openid: 用户唯一标识
+* @param $openid: 应用ID
+* @param $refreshtoken: 刷新令牌Token
+*/
 function refresh_token($openid, $refreshtoken) {
     $appid = C('APPID');
     $request = '{"AppID":"' . $appid . '","OpenID":"' . $openid. '","RefreshToken":"' . $refreshtoken. '"}';
@@ -175,17 +180,17 @@ function refresh_token($openid, $refreshtoken) {
 }
 
 /**
- * 向拍拍贷网关发送请求
- * Url 请求地址
- * Data 请求报文
- * AppId 应用编号
- * Sign 签名信息
- * AccessToken 访问令牌
- *
- * @param unknown $url
- * @param unknown $data
- * @param string $accesstoken
- */
+* 向拍拍贷网关发送请求
+* Url 请求地址
+* Data 请求报文
+* AppId 应用编号
+* Sign 签名信息
+* AccessToken 访问令牌
+*
+* @param unknown $url
+* @param unknown $data
+* @param string $accesstoken
+*/
 function send($url, $request, $accesstoken = '') {
     $appid = C('APPID');
     $appPrivateKey =getPV();
