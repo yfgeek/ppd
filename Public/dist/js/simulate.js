@@ -1,12 +1,7 @@
 $(function () {
-    $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false
-    });
+
+
+
 
     $(".btn-deal").click(function(){
         $.getJSON("../Api/listd", {'lid': $(this).attr("data-lid")}, function(json){
@@ -266,8 +261,15 @@ $(function () {
         var rate =  parseInt($(".list" + lid).attr("data-rate")); // 暂时无解，可用解决方案：隐藏域，但是不太好，我觉得
 
         var name = $(".list" + lid).attr("data-code");
-        console.log(rate);
-
+        //数据预测
+        $.getJSON("../Api/beyes", {'lid': lid}, function(json){
+            if(json.status == 'true'){
+                $(".sp-hz").html("推荐买入");
+            }
+            else{
+                $(".sp-hz").html("预测情况");
+            };
+        });
         creditDiagram.dispatchAction({
             type: 'highlight',
             name: name
@@ -282,7 +284,14 @@ $(function () {
             type: 'highlight',
             name: rate
         });
+
+
     });
 
-
+    $('.btn-analysis-close').on('click', function() {
+    // 存留bug
+    // creditDiagram.restore();
+    // amountDiagram.restore();
+    // rateDiagram.restore();
+    });
 });
