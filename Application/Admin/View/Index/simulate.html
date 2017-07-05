@@ -34,6 +34,28 @@
                         <!-- /.info-box -->
                     </div>
                     <!-- /.col -->
+
+
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+
+                        <div class="info-box bg-aqua">
+                            <span class="info-box-icon"><i class="fa fa-calendar"></i></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">当前日期</span>
+                                <span class="info-box-number"> {$currentdate}</span>
+
+                                <a href="#" class="small-box-footer" style="color:#fff">下一天 <i class="fa fa-arrow-circle-right"></i></a>  |
+                                <a href="#" class="small-box-footer" style="color:#fff">下一个月 <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+
+
+
                     <volist name="bid" id="data">
 
                         <div class="col-md-4 col-sm-6 col-xs-12">
@@ -58,17 +80,14 @@
                 </div>
 
 
-
                 <div class="row">
 
                     <div class="col-xs-12">
 
                         <div class="box">
                             <div class="box-header">
-                                <div class="col-md-8 col-sm-8 col-xs-12"><h3 class="box-title">当前可投资标</h3></div>
-                                <div class="col-md-2 col-sm-2"><button type="button" class="btn btn-block btn-info btn-sm btn-analysis" data-toggle="modal" data-lid="{$data.ListingId}" data-target="#modal-analysis">一天后</button></div>
+                                <h3 class="box-title">当前可投资标</h3>
 
-                                <div class="col-md-2 col-sm-2"><button type="button" class="btn btn-block btn-info btn-sm btn-deal" data-lid="{$data.ListingId}" data-toggle="modal" data-target="#modal-deal" >一个月后</button></div>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">

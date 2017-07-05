@@ -66,7 +66,11 @@ class IndexController extends CommonController {
         $bid = M('bid');
         $bidmodel = $bid->where('uid = '.session('user.uid'))->select();
         $this->assign('bid',$bidmodel);
+        $this->assign('currentdate',$bidmodel[0]["current_date"]);
+
         $this->display();
+
+
     }
 
     /**
