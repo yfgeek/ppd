@@ -141,15 +141,20 @@ class ApiController extends CommonController {
                     $row["uid"] = session('user.uid');
                     $row["listingid"] = $lid;
                     $row["share"] = $share;
-                    $row["biddate"] = date('Y-m-d');
-                    $row["current_date"] = date('Y-m-d');
-                    $row["trandate"] = "NaN";
+                    // 这个标的生效时间
+                    $row["biddate"] = $datamodel["AuditingTime"];
+                    // 这个标的期数
+                    $row["bidmonth"] = $datamodel["Months"];
+                    // 交易时间
+                    $row["trandate"] = $usermodel["current_date"];
+                    // 可见性 1 为可见
+                    $row["status"] = 1;
                     if($bid->add($row)){
                         $usrInfo = array('status'=>'success');
                         $userdata["balance"] = $usermodel["balance"] - $share;
                         $user->where('uid = '.session('user.uid'))->save($userdata);
                     }else{
-                        $usrInfo = array('status'=>'fail','content'=>'数据更新异常');
+                        $usrInfo = array('status'=>'fail','content'=>'这个您已经投资过了');
                     }
                 }else{
                     $usrInfo = array('status'=>'fail','content'=>'您用户余额不足');
@@ -269,8 +274,8 @@ class ApiController extends CommonController {
     ** 返回格式为JSON
     */
     public function aftermonth(){
-        $data = D('Bid');
-        $data->month();
+        $data = D('User');
+        $data->month(session('user.uid'));
         $this->redirect('index/simulate');
     }
     /**
@@ -279,8 +284,8 @@ class ApiController extends CommonController {
     ** 返回格式为JSON
     */
     public function afterday(){
-        $data = D('Bid');
-        $data->day();
+        $data = D('User');
+        $data->day(session('user.uid'));
         $this->redirect('index/simulate');
     }
 }

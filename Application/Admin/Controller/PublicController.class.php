@@ -77,6 +77,7 @@ class PublicController extends Controller {
         $data['password'] = md5($_POST["password"]);
         $data['passwordcheck'] = md5($_POST["passwordcheck"]);
         $data['balance'] = 50000;
+        $data['current_date'] = '2015-01-01';
         $data['status'] = 1;
 
         if($data['username'] == "" || $data['nickname'] == "" || $data['password'] == ""|| $data['passwordcheck'] == "")
