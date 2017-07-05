@@ -4,15 +4,19 @@ use Think\Model;
 
 class BidModel extends Model{
     /**
-    ** 重建评级比率函数
+    ** 日期+1
+    */
+    public function day(){
+        $sql = "update tp_bid set tp_bid.`current_date` = date_add(tp_bid.`current_date`, interval 1 day)";
+        $this->query($sql);
+        return true;
+    }
+    /**
+    ** 月份+1
     */
     public function month(){
-        $sql = "update tp_bid set biddate = case when biddate is not null then biddate = date_add(biddate, interval 1 month) else biddate = date_add(biddate, interval 1 month) end";
-        $datamodel = $this->query($sql);
-        if($datamodel){
-            return true;
-        }else{
-            return false;
-        }
+        $sql = "update tp_bid set tp_bid.`current_date` = date_add(tp_bid.`current_date`, interval 1 month)";
+        $this->query($sql);
+        return true;
     }
 }

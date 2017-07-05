@@ -270,7 +270,18 @@ class ApiController extends CommonController {
     */
     public function aftermonth(){
         $data = D('Bid');
-        echo $this->ajaxReturn($data->month());
+        $data->month();
+        $this->redirect('index/simulate');
+    }
+    /**
+    ** Api/afterday
+    ** 后延一天
+    ** 返回格式为JSON
+    */
+    public function afterday(){
+        $data = D('Bid');
+        $data->day();
+        $this->redirect('index/simulate');
     }
 }
 ?>

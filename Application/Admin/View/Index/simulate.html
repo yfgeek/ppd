@@ -45,8 +45,8 @@
                                 <span class="info-box-text">当前日期</span>
                                 <span class="info-box-number"> {$currentdate}</span>
 
-                                <a href="#" class="small-box-footer" style="color:#fff">下一天 <i class="fa fa-arrow-circle-right"></i></a>  |
-                                <a href="#" class="small-box-footer" style="color:#fff">下一个月 <i class="fa fa-arrow-circle-right"></i></a>
+                                <a class="small-box-footer btn-next-day" style="color:#fff" href="../api/afterday">下一天 <i class="fa fa-arrow-circle-right"></i></a>  |
+                                <a class="small-box-footer btn-next-month" style="color:#fff" href="../api/aftermonth">下一个月 <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -292,6 +292,8 @@
         "info": true,
         "autoWidth": false
     });
+
+
     });
     </script>
     <script src="__STATIC__/dist/js/simulate.js"></script>
