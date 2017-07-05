@@ -80,7 +80,7 @@
                     </div>
                     <strong>©拉普拉斯妖</strong> 2017-2017
                 </footer>
-                          <div class="modal fade" id="modal-deal" style="display: none;">
+                          <div class="modal fade" id="modal-realdeal" style="display: none;">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -193,6 +193,19 @@
             <!-- This page's js -->
             <script src="__STATIC__/dist/js/real.js"></script>
             <!-- page script -->
+            <script>
+            $(".btn-realdeal").click(function(){
+                $.getJSON("../Api/bidd", {'lid': $(this).attr("data-lid")}, function(json){
+                     $(".table-lid").html(json.LoanInfos[0].ListingId);
+                     $(".table-amount").html(json.LoanInfos[0].Amount);
+                     $(".table-months").html(json.LoanInfos[0].Months);
+                     $(".table-currentrate").html(json.LoanInfos[0].CurrentRate);
+                     $(".table-auditingtime").html(json.LoanInfos[0].AuditingTime);
+                     $(".table-creditcode").html(json.LoanInfos[0].CreditCode);
+                     $(".table-age").html(json.LoanInfos[0].age);
+                });
+            });
+            </script>
             <script src="__STATIC__/dist/js/simulate.js"></script>
 
         </body>
