@@ -17,7 +17,7 @@ return array(
     'COOKIE_PREFIX'  => 'blog_', // Cookie前缀 避免冲突
     'VAR_SESSION_ID' => 'session_id',	//修复uploadify插件无法传递session_id的bug
     'URL_MODEL' => '2',
-    'SHOW_PAGE_TRACE'        =>true,
+    'SHOW_PAGE_TRACE'        =>false,
     /* 拍拍贷 API ID */
     'APPID' =>  "5223d676d9dd48f5bf486b73d60e206c",
     /* 拍拍贷 API 私钥 */

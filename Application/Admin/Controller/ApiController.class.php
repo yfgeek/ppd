@@ -142,6 +142,7 @@ class ApiController extends CommonController {
                     $row["listingid"] = $lid;
                     $row["share"] = $share;
                     $row["biddate"] = date('Y-m-d');
+                    $row["current_date"] = date('Y-m-d');
                     $row["trandate"] = "NaN";
                     if($bid->add($row)){
                         $usrInfo = array('status'=>'success');
@@ -260,6 +261,16 @@ class ApiController extends CommonController {
         $user->where('uid = '.session('user.uid'))->save($userdata);
         $data["content"] = "清除授权成功";
         echo $this->ajaxReturn($data);
+    }
+
+    /**
+    ** Api/aftermonth
+    ** 后延一个月
+    ** 返回格式为JSON
+    */
+    public function aftermonth(){
+        $data = D('Bid');
+        echo $this->ajaxReturn($data->month());
     }
 }
 ?>

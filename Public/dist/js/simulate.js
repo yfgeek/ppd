@@ -269,10 +269,10 @@ $(function () {
         //数据预测
         $.getJSON("../Api/beyes", {'lid': lid}, function(json){
             if(json.status == 'true'){
-                $(".sp-hz").html("推荐买入");
+                $(".sp-hz").html("预测情况");
             }
             else{
-                $(".sp-hz").html("预测情况");
+                $(".sp-hz").html("推荐买入");
             };
         });
         creditDiagram.dispatchAction({
