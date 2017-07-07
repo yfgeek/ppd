@@ -9,39 +9,39 @@ class BeyesiModel extends Model {
     public static $pbad = 0.0320;
     public static $pgood = 0.968;
     //cellphone
-    public static $plcellphonebad = [0.5160, 0.4840];
-    public static $plcellphonegood = [0.4522, 0.5478];
+    public static $plcellphonebad = array(0.5160, 0.4840);
+    public static $plcellphonegood = array(0.4522, 0.5478);
     public static $pphonegood = 0.5457;
     public static $pphonebad = 0.4543;
     //hukou
-    public static $plhukoubad = [0.0504, 0.9496];
-    public static $plhukougood = [0.04, 0.96];
+    public static $plhukoubad = array(0.0504, 0.9496);
+    public static $plhukougood = array(0.04, 0.96);
     public static $phukougood = 0.9597;
     public static $phukoubad = 0.0403;
     //shipin
-    public static $plshipinbad = [0.0907, 0.9093];
-    public static $plshipingood = [0.0717, 0.9283];
+    public static $plshipinbad = array(0.0907, 0.9093);
+    public static $plshipingood = array(0.0717, 0.9283);
     public static $pshipingood = 0.0723;
     public static $pshipingbad = 0.9277;
     //xueli
-    public static $plxuelibad = [0.2298, 0.7702];
-    public static $plxueligood = [0.3578, 0.6422];
+    public static $plxuelibad = array(0.2298, 0.7702);
+    public static $plxueligood = array(0.3578, 0.6422);
     public static $pxueligood = 0.3537;
     public static $pxuelibad = 0.6463;
     //zhengxin
-    public static $plzhengxinbad = [0.0449, 0.9551];
-    public static $plzhengxingood = [0.0350, 0.9650];
+    public static $plzhengxinbad = array(0.0449, 0.9551);
+    public static $plzhengxingood = array(0.0350, 0.9650);
     public static $pzhengxingood = 0.0353;
     public static $pzhengxinbad = 0.9647;
     //gender
-    public static $plMFbad = [0.7751, 0.2249];
-    public static $plMFgood = [0.6891, 0.3109];
+    public static $plMFbad = array(0.7751, 0.2249);
+    public static $plMFgood = array(0.6891, 0.3109);
     public static $pM = 0.3109;
     public static $pF = 0.3081;
     //pingji
-    public static $pabcdef = [0.0355, 0.1083, 0.3921, 0.3906, 0.0681, 0.0053];
-    public static $pabcdefbad = [0.0193, 0.0828, 0.2813, 0.4672, 0.1332, 0.0161];
-    public static $pabcdefgood = [0.0360, 0.1091, 0.3958, 0.3881, 0.0660, 0.0050];
+    public static $pabcdef = array(0.0355, 0.1083, 0.3921, 0.3906, 0.0681, 0.0053);
+    public static $pabcdefbad = array(0.0193, 0.0828, 0.2813, 0.4672, 0.1332, 0.0161);
+    public static $pabcdefgood = array(0.0360, 0.1091, 0.3958, 0.3881, 0.0660, 0.0050);
     //借款金额
     public static $minbad = 3961.0;
     public static $stdbad = 2424.9;
@@ -52,7 +52,7 @@ class BeyesiModel extends Model {
     public static $agestdbad = 7.1271;
     public static $agemingood = 29.1104;
     public static $agestdgood = 6.6349;
-
+    
     public function getmappos($loan, $age, $cellphonetag, $hukoutag, $shipintag, $xuelitag, $zhengxintag, $gendertag, $pingjitag) {
 
         $pingjitag = $this->pingjiconvert($pingjitag);
