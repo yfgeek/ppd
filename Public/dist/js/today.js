@@ -16,19 +16,15 @@ $(function () {
 
     $.getJSON("../api/historylist",function(result){
         if(result.Result == 0){
-            result.BidList.each(function(item){
-                alert(item.Title);
-            });
-            // <tr>
-            // <td><a href="pages/examples/invoice.html">1718801</a></td>
-            //     <td>01</td>
-            //     <td>12</td>
-            //     <td><span class="label label-warning">进行中</span></td>
-            //     <td>
-            //         <div class="sparkbar" data-color="#00a65a" data-height="20">2017-06-25</div>
-            //     </td>
-            // </tr>
-            // $(".tb-history").html(result.Balance[4].Balance);
+            var str = '';
+            if(result.TotalRecord<=0){
+                str = '<tr><td>当前用户暂无成交纪录</td><td></td><td></td><td></td><td></td><td></td></tr>';
+            }else{
+                $.each(result.BidList, function( index, item ) {
+                    str = str + '<tr><td><a href="pages/examples/invoice.html">' + item.ListingId + '</a></td><td>' + item.Title + '</td><td><span class="label label-success">' + item.Months + '</span></td><td><span class="label label-warning">'+ item.Rate + '%</span></td><td><span class="label label-info">'+ item.Amount + '</span></td><td><span class="label label-info">'+ item.BidAmount + '</span></td></tr>';
+                });
+            }
+            $(".tb-history").html(str);
         }else{
         }
     });
