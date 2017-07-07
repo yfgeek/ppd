@@ -21,6 +21,7 @@ $(function () {
                 if(json.status == 'success'){
                     alert("投资成功！");
                     $("#modal-deal").modal('hide');
+                    location.reload();
                 }
                 else{
                     alert(json.content);
