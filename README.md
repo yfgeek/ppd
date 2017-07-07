@@ -6,16 +6,16 @@
 
 投资平台——获取真实数据，实时分析，真实交易
 
-## 技术栈
+## 所用技术
 
 **数据分析**
 
 * Java
-* python
+* Python
 
 **Web前端**
 
-* bootstrap
+* Bootstrap
 * jQuery
 * DataTables
 * Echarts
@@ -23,7 +23,7 @@
 **Web后端**
 
 * Thinkphp 3.2
-* Mysql
+* MySQL
 
 ## 截图
 
