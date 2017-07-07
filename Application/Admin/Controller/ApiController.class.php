@@ -213,8 +213,9 @@ class ApiController extends CommonController {
     public function beyes($lid){
         $data = M('data');
         $datamodel = $data->where('ListingId = '.$lid )->find();
-        $datab = D('Beyesi');
-        $result["status"] = $datab->getmappos($datamodel["Amount"],$datamodel["Age"],$datamodel["PhoneValidate"],$datamodel["NciicIdentityCheck"],$datamodel["VideoValidate"],$datamodel["EducateValidate"],$datamodel["CreditValidate"],$datamodel["Gender"],$datamodel["CreditCode"]);
+        $result["status"] = "false";
+        // $datab = D('Beyesi');
+        // $result["status"] = $datab->getmappos($datamodel["Amount"],$datamodel["Age"],$datamodel["PhoneValidate"],$datamodel["NciicIdentityCheck"],$datamodel["VideoValidate"],$datamodel["EducateValidate"],$datamodel["CreditValidate"],$datamodel["Gender"],$datamodel["CreditCode"]);
         echo $this->ajaxReturn($result);
     }
 
