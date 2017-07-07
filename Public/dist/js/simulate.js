@@ -296,14 +296,13 @@ $(function () {
 
     });
     $('#modal-analysis').on('hide.bs.modal', function () {
-
+        $(".sp-hz").html("分析中...");
         $(".bg-ay").removeClass("bg-blue");
         $(".bg-ay").removeClass("bg-green");
         creditDiagram.setOption(creditoption,true);
         amountDiagram.setOption(option,true);
         rateDiagram.setOption(rateoption,true);
-
-    })
+    });
 
 
 });

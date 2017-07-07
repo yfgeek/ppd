@@ -105,7 +105,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>期数</td>
+                                                    <td>期限</td>
                                                     <td class="table-months">
                                                     </td>
                                                 </tr>
@@ -116,7 +116,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>生效时间</td>
+                                                    <td>成交日期</td>
                                                     <td>
                                                         <span class="table-auditingtime"></span>
                                                     </td>
@@ -128,9 +128,39 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
+                                                    <td>借款人姓名</td>
+                                                    <td>
+                                                        <span class="table-borrowname"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>性别</td>
+                                                    <td>
+                                                        <span class="table-gender"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
                                                     <td>年龄</td>
                                                     <td>
                                                         <span class="table-age"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>学历</td>
+                                                    <td>
+                                                        <span class="table-educationdegree"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>毕业院校</td>
+                                                    <td>
+                                                        <span class="table-graduateschool"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>投标金额</td>
+                                                    <td>
+                                                        <input type="text" class="input-share" placeholder="" class="form-control">
                                                     </td>
                                                 </tr>
                                             </tbody></table>
@@ -145,7 +175,7 @@
                                     <!-- /.modal-dialog -->
                             </div>
 
-                            <div class="modal fade" id="modal-analysis" style="display: none;">
+                            <div class="modal fade" id="modal-real-analysis" style="display: none;">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -154,10 +184,29 @@
                                                 <h4 class="modal-title">数据分析</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <div id="amount-diagram" style="width: 850px;height:500px;"></div>
-                                            <div id="rate-diagram" style="width: 850px;height:500px;"></div>
-                                            <div id="credit-diagram" style="width: 850px;height:500px;"></div>
+                                            <div class="box box-widget widget-user-2">
+                                                <!-- Add the bg color to the header using any of the bg-* classes -->
+                                                <div class="widget-user-header bg-ay">
+                                                    <div class="widget-user-image">
+                                                        <img class="img" src="__STATIC__/dist/img/money.png" >
+                                                    </div>
+                                                    <h3 class="widget-user-username sp-hz">分析中...</h3>
+                                                    <h5 class="widget-user-desc">以上分析结果基于神经网络算法进行逾期率预测，供投资者参考。</h5>
+                                                </div>
+                                                <div class="box-footer no-padding">
+                                                    <ul class="nav nav-stacked">
+                                                    <li><a href="#">更多分析情况<span class="pull-right badge bg-aqua">开发中</span></a></li>
+                                                    <!-- <li><a href="#">Completed Projects <span class="pull-right badge bg-green">12</span></a></li>
+                                                    <li><a href="#">Followers <span class="pull-right badge bg-red">842</span></a></li> -->
+                                                    <li><a href="#">以下图表是基于历史数据生成的分布图，高亮部分显示为该标的情况相比于近期历史数据。推荐使用以下图与其它理想标的图比对。</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                                <div id="amount-diagram" style="width: 850px;height:500px;"></div>
+                                                <div id="rate-diagram" style="width: 850px;height:500px;"></div>
+                                                <div id="credit-diagram" style="width: 850px;height:500px;"></div>
                                         </div>
+
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                                         </div>
@@ -193,20 +242,7 @@
             <!-- This page's js -->
             <script src="__STATIC__/dist/js/real.js"></script>
             <!-- page script -->
-            <script>
-            $(".btn-realdeal").click(function(){
-                $.getJSON("../Api/bidd", {'lid': $(this).attr("data-lid")}, function(json){
-                     $(".table-lid").html(json.LoanInfos[0].ListingId);
-                     $(".table-amount").html(json.LoanInfos[0].Amount);
-                     $(".table-months").html(json.LoanInfos[0].Months);
-                     $(".table-currentrate").html(json.LoanInfos[0].CurrentRate);
-                     $(".table-auditingtime").html(json.LoanInfos[0].AuditingTime);
-                     $(".table-creditcode").html(json.LoanInfos[0].CreditCode);
-                     $(".table-age").html(json.LoanInfos[0].age);
-                });
-            });
-            </script>
-            <script src="__STATIC__/dist/js/simulate.js"></script>
+            <!-- <script src="__STATIC__/dist/js/simulate.js"></script> -->
 
         </body>
         </html>

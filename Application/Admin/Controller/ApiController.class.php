@@ -207,7 +207,6 @@ class ApiController extends CommonController {
     ** Api/beyes
     ** 贝叶斯模型
     ** 输入：$lid
-    ** loan, age, cellphonetag, hukoutag, shipintag, xuelitag,  zhengxintag, gendertag, pingjitag
     ** 返回格式为JSON
     */
     public function beyes($lid){
@@ -216,6 +215,20 @@ class ApiController extends CommonController {
         // $result["status"] = "false";
         $datab = D('beyesi');
         $result["status"] = $datab->getmappos($datamodel["Amount"],$datamodel["Age"],$datamodel["PhoneValidate"],$datamodel["NciicIdentityCheck"],$datamodel["VideoValidate"],$datamodel["EducateValidate"],$datamodel["CreditValidate"],$datamodel["Gender"],$datamodel["CreditCode"]);
+        echo $this->ajaxReturn($result);
+    }
+
+    /**
+    ** Api/beyes
+    ** 贝叶斯模型
+    ** 输入
+    ** loan, age, cellphonetag, hukoutag, shipintag, xuelitag,  zhengxintag, gendertag, pingjitag
+    ** 返回格式为JSON
+    */
+    public function mbeyes($Amount,$Age,$PhoneValidate,$NciicIdentityCheck,$VideoValidate,$EducateValidate,$CreditValidate,$Gender,$CreditCode){
+        // $result["status"] = "false";
+        $datab = D('beyesi');
+        $result["status"] = $datab->getmappos($Amount,$Age,$PhoneValidate,$NciicIdentityCheck,$VideoValidate,$EducateValidate,$CreditValidate,$Gender,$CreditCode);
         echo $this->ajaxReturn($result);
     }
 
