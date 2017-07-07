@@ -288,5 +288,30 @@ class ApiController extends CommonController {
         $data->day(session('user.uid'));
         $this->redirect('index/simulate');
     }
+    /**
+    ** Api/historylist
+    ** 用户最近投资标的信息（批量）
+    ** 返回格式为JSON
+    */
+    public function historylist(){
+        $user = M('user');
+        $usermodel = $user->where('uid = '.session('user.uid'))->find();
+        date_default_timezone_set("Etc/GMT-8");
+        $url = "http://gw.open.ppdai.com/invest/BidService/BidList";
+        $accessToken=$usermodel["token"];
+        $dt = date("Y-m-d");
+        $dtbefore = date("Y-m-d",strtotime("$dt - 30days"));
+        $request = '{
+          "ListingId": 9575229,
+          "StartTime": "'.$dtbefore.'",
+          "EndTime": "' . $dt . '",
+          "PageIndex": 1,
+          "PageSize": 200
+        }';
+        $result = send($url, $request,$accessToken);
+        echo $result;
+    }
+
+
 }
 ?>
