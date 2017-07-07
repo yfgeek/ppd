@@ -269,9 +269,11 @@ $(function () {
         //数据预测
         $.getJSON("../Api/beyes", {'lid': lid}, function(json){
             if(json.status == 'true'){
-                $(".sp-hz").html("预测情况");
+                $(".bg-ay").addClass("bg-blue");
+                $(".sp-hz").html("存在一定风险");
             }
             else{
+                $(".bg-ay").addClass("bg-green");
                 $(".sp-hz").html("推荐买入");
             };
         });
@@ -292,13 +294,15 @@ $(function () {
 
 
     });
+    $('#modal-analysis').on('hide.bs.modal', function () {
 
-    $('.btn-analysis-close').on('click', function() {
-    // 存留bug
-    alert("hh");
-    console.log(creditoption);
-    creditDiagram.setOption(creditoption,true);
-    amountDiagram.setOption(option,true);
-    rateDiagram.setOption(rateoption,true);
-    });
+        $(".bg-ay").removeClass("bg-blue");
+        $(".bg-ay").removeClass("bg-green");
+        creditDiagram.setOption(creditoption,true);
+        amountDiagram.setOption(option,true);
+        rateDiagram.setOption(rateoption,true);
+
+    })
+
+
 });

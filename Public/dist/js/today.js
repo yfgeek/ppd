@@ -24,9 +24,11 @@ $(function () {
                     str = str + '<tr><td><a href="pages/examples/invoice.html">' + item.ListingId + '</a></td><td>' + item.Title + '</td><td><span class="label label-success">' + item.Months + '</span></td><td><span class="label label-warning">'+ item.Rate + '%</span></td><td><span class="label label-info">'+ item.Amount + '</span></td><td><span class="label label-info">'+ item.BidAmount + '</span></td></tr>';
                 });
             }
-            $(".tb-history").html(str);
         }else{
+            str = '<tr><td>获取历史成交标失败，请检查授权情况</td><td></td><td></td><td></td><td></td><td></td></tr>';
         }
+        $(".tb-history").html(str);
+
     });
 
 });
