@@ -214,7 +214,8 @@ class ApiController extends CommonController {
         $data = M('data');
         $datamodel = $data->where('ListingId = '.$lid )->find();
         $data = D('Beyesi');
-        $result["status"] =  $data->getmappos($datamodel["Amount"],$datamodel["Age"],$datamodel["PhoneValidate"],$datamodel["NciicIdentityCheck"],$datamodel["VideoValidate"],$datamodel["EducateValidate"],$datamodel["CreditValidate"],$datamodel["Gender"],$datamodel["CreditCode"]);
+        $result["status"] = 'false';
+        // $result["status"] = $data->getmappos($datamodel["Amount"],$datamodel["Age"],$datamodel["PhoneValidate"],$datamodel["NciicIdentityCheck"],$datamodel["VideoValidate"],$datamodel["EducateValidate"],$datamodel["CreditValidate"],$datamodel["Gender"],$datamodel["CreditCode"]);
         echo $this->ajaxReturn($result);
     }
 
