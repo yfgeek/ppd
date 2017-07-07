@@ -54,13 +54,12 @@ class IndexController extends CommonController {
     */
     public function simulate(){
         date_default_timezone_set('Asia/Shanghai');
-        $data = M('data');
-        $list = $data->where('AuditingTime = "2015-01-01"')->order('ListingId desc')->select();
-        $this->assign('list',$list);
-
-
         $user = M('user');
         $usermodel = $user->where('uid = '.session('user.uid'))->find();
+        $data = M('data');
+        $list = $data->where('AuditingTime = "' . $usermodel["current_date"] . '"')->order('ListingId desc')->select();
+
+        $this->assign('list',$list);
         $this->assign('user',$usermodel);
 
         $bid = M('bid');
