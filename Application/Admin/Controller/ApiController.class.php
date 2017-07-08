@@ -144,7 +144,7 @@ class ApiController extends CommonController {
                     // 这个标的生效时间
                     $row["biddate"] = $datamodel["AuditingTime"];
                     // 这个标的期数
-                    $row["bidmonth"] = $datamodel["Months"];
+                    $row["bidmonths"] = $datamodel["Months"];
                     // 交易时间
                     $row["trandate"] = $usermodel["current_date"];
                     // 可见性 1 为可见
