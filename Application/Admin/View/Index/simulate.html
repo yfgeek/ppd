@@ -146,7 +146,7 @@
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-            <b>Version</b> 1.0.0
+            <b>Version</b> 2.5.1
         </div>
         <strong>©拉普拉斯妖</strong> 2017-2017
     </footer>
@@ -212,7 +212,10 @@
                         <tr>
                             <td>投标金额</td>
                             <td>
-                                <input type="text" class="input-share" placeholder="" class="form-control">
+                                <div class="input-group">
+                                  <span class="input-group-addon">￥</span>
+                                  <input type="text" class="form-control input-share">
+                                </div>
                             </td>
                         </tr>
                     </tbody></table>
@@ -248,13 +251,20 @@
                         </div>
                         <div class="box-footer no-padding">
                             <ul class="nav nav-stacked">
-                            <li><a href="#">更多分析情况<span class="pull-right badge bg-aqua">开发中</span></a></li>
+                                <li><a href="#">以下图表是基于历史数据生成的分布图，高亮部分显示为该标的情况相比于近期历史数据。推荐使用以下图与其它理想标的图比对。</a></li>
+                                <li><a href="#"><i class="fa fa-credit-card" aria-hidden="true"></i> 当前借款金额<span class="pull-right badge bg-aqua list-amount">加载中</span></a></li>
+                                <li><a href="#"><i class="fa fa-credit-card" aria-hidden="true"></i> 借款额度累计<span class="pull-right badge bg-aqua list-amounttotal">加载中</span></a></li>
+                                <li><a href="#"><i class="fa fa-tag" aria-hidden="true"></i> 当前借款利率<span class="pull-right badge bg-green list-rate">加载中</span></a></li>
+                                <li><a href="#"><i class="fa fa-tag" aria-hidden="true"></i> 借款利率累计<span class="pull-right badge bg-green list-ratetotal">加载中</span></a></li>
+                                <li><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i> 当前信用评级<span class="pull-right badge bg-blue list-credit">加载中</span></a></li>
+                                <li><a href="#">更多分析情况<span class="pull-right badge bg-grey">开发中</span></a></li>
                             <!-- <li><a href="#">Completed Projects <span class="pull-right badge bg-green">12</span></a></li>
                             <li><a href="#">Followers <span class="pull-right badge bg-red">842</span></a></li> -->
-                            <li><a href="#">以下图表是基于历史数据生成的分布图，高亮部分显示为该标的情况相比于近期历史数据。推荐使用以下图与其它理想标的图比对。</a></li>
+
                             </ul>
                         </div>
                     </div>
+
                         <div id="amount-diagram" style="width: 850px;height:500px;"></div>
                         <div id="rate-diagram" style="width: 850px;height:500px;"></div>
                         <div id="credit-diagram" style="width: 850px;height:500px;"></div>

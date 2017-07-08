@@ -325,7 +325,24 @@ class ApiController extends CommonController {
         $result = send($url, $request,$accessToken);
         echo $result;
     }
-
+    /**
+    ** Api/realdeal
+    ** 真实的投资功能
+    ** 返回格式为JSON
+    */
+    public function realdeal($lid,$amount,$coupon){
+        $user = M('user');
+        $usermodel = $user->where('uid = '.session('user.uid'))->find();
+        $url = "http://gw.open.ppdai.com/invest/BidService/Bidding";
+        $accessToken=$usermodel["token"];
+        $request = '{
+          "ListingId": '.$lid . ',
+          "Amount": '. $amount .',
+          "UseCoupon":"' . $coupon . '"
+        }';
+        $result = send($url, $request,$accessToken);
+        echo $result;
+    }
 
 }
 ?>
