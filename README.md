@@ -37,6 +37,12 @@
 
 ![](About/5.png)
 
+![](About/6.png)
+
+![](About/7.png)
+
+![](About/8.png)
+
 ## 开发日志
 
 - [x] 完整的用户登录、注册逻辑
