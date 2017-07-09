@@ -155,10 +155,16 @@ $(function(){
 
             var xAxis2 = [];
             var data2 = [];
+            var xnow = 0;
+            var ynow = 0;
             $.getJSON('../api/rate', function (rawData) {
                 $.each(rawData, function(i, item){
                     data2.push(item['y']);
                     xAxis2.push(item['x']);
+                    if(item['x']==rate){
+                        ynow = item['y'];
+                        xnow = i;
+                    }
                 });
                 $(".list-ratetotal").html(data2[rate]);
 
@@ -222,7 +228,7 @@ $(function(){
                             },
                             data: data2,
                             markPoint:{
-                                data: [{name:'当前借款利率: ' + rate +'%' ,xAxis: rate,yAxis: data2[rate]}]
+                                data: [{name:'当前借款利率: ' + rate +'%' ,xAxis: xnow ,yAxis: ynow}]
                             },
                             markLine: {
                                 data: [
