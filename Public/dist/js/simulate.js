@@ -33,10 +33,8 @@ $(function () {
 
     });
 
-
-
-    $('.btn-analysis').on('click', function() {
-
+    // 如此写法可以修复翻页bug
+    $("body").delegate('.btn-analysis','click', function () {
         // 传递数据
         var lid = $(this).attr("data-lid");
         var amount =  parseInt($(".list" + lid).attr("data-amount") / 1000);

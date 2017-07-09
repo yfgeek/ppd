@@ -16,7 +16,8 @@ $(function(){
             "info": false,
             "autoWidth": false
         });
-        $('.btn-real-analysis').on('click', function() {
+
+        $("body").delegate('.btn-real-analysis','click', function () {
             var lid = $(this).attr("data-lid");
             var amount =  parseInt($(".list" + lid).attr("data-amount") / 1000);
             var rate =  parseInt($(".list" + lid).attr("data-rate")); // 暂时无解，可用解决方案：隐藏域，但是不太好，我觉得
