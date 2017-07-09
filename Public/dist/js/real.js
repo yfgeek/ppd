@@ -241,7 +241,7 @@ $(function(){
                 rateDiagram.setOption(rateoption);
                 rateDiagram.dispatchAction({
                     type: 'highlight',
-                    name: rate
+                    dataIndex: xnow
                 });
 
             });
