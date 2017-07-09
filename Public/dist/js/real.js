@@ -343,10 +343,10 @@ $(function(){
             });
         });
 
-        $(".btn-cfm-realdeal").click(function(){
-            var coupon = false;
+        $("body").delegate('.btn-cfm-realdeal','click', function () {
+                var coupon = false;
             if($(".input-coupon").val()=="yes"){
-                coupon = true;
+                    coupon = true;
             }
             $.getJSON("../Api/realdeal", {'lid': $(".table-lid").html(),'amount': $(".input-share").val(),'coupon': coupon}, function(json){
                 if(json.Result==0){

@@ -1,7 +1,7 @@
 $(function () {
 
 
-    $(".btn-deal").click(function(){
+    $("body").delegate('.btn-deal','click', function () {
         $.getJSON("../Api/listd", {'lid': $(this).attr("data-lid")}, function(json){
             $(".table-lid").html(json.ListingId);
             $(".table-amount").html(json.Amount);
