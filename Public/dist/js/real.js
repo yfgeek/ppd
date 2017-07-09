@@ -339,7 +339,7 @@ $(function(){
             $(".bg-ay").removeClass("bg-green");
         });
 
-        $(".btn-realdeal").click(function(){
+        $("body").delegate('.btn-realdeal','click', function () {
             $.getJSON("../Api/bidd", {'lid': $(this).attr("data-lid")}, function(json){
                 $(".table-lid").html(json.LoanInfos[0].ListingId);
                 $(".table-amount").html(json.LoanInfos[0].Amount);
