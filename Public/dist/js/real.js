@@ -345,7 +345,7 @@ $(function(){
                 $(".table-amount").html(json.LoanInfos[0].Amount);
                 $(".table-months").html(json.LoanInfos[0].Months);
                 $(".table-currentrate").html(json.LoanInfos[0].CurrentRate);
-                $(".table-auditingtime").html(json.LoanInfos[0].AuditingTime);
+                $(".table-deadlinetime").html(json.LoanInfos[0].DeadLineTimeOrRemindTimeStr);
                 $(".table-creditcode").html(json.LoanInfos[0].CreditCode);
                 $(".table-age").html(json.LoanInfos[0].Age);
                 $(".table-educatiodegree").html(json.LoanInfos[0].EducationDegree);
