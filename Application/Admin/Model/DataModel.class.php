@@ -15,15 +15,15 @@ class DataModel extends Model{
     public function update(){
         $ua = $this->updateamount();
         $ur = $this->updaterate();
-        // $uc =$this->updatecredit();
-        // $ucr = $this->updatecreditratio();
-        // if($data["success"] = $ua && $ur && $uc & $ucr){
-        //     $data["content"] = "恭喜您，重建缓存成功！";
-        // }else{
-        //     $data["content"] = "仅有部分项重建缓存成功";
-        // }
-        // return $data;
-        return true;
+        $uc =$this->updatecredit();
+        $ucr = $this->updatecreditratio();
+        if($data["success"] = $ua && $ur && $uc & $ucr){
+            $data["content"] = "恭喜您，重建缓存成功！";
+        }else{
+            $data["content"] = "仅有部分项重建缓存成功";
+        }
+        return $data;
+
     }
     /**
     ** 重建金额函数
