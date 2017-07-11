@@ -1,6 +1,5 @@
 $(function () {
 
-
     $("body").delegate('.btn-deal','click', function () {
         $.getJSON("../Api/listd", {'lid': $(this).attr("data-lid")}, function(json){
             $(".table-lid").html(json.ListingId);
@@ -64,12 +63,12 @@ $(function () {
         var xAxis1 = [];
         var data1 = [];
         $.getJSON('../api/amount', function (rawData) {
+
             $.each(rawData, function(i, item){
                 data1.push(item['y']);
                 xAxis1.push(item['x']);
             });
-
-            $(".list-amounttotal").html(data1[amount]);
+            $(".list-amounttotal").html(data1[amount]+"%");
 
             var itemStyle = {
                 normal: {
@@ -85,7 +84,7 @@ $(function () {
 
             option = {
                 title: {
-                    text: '借款额度累计图',
+                    text: '当前借款额度所占总数百分比',
                     left: 'center',
                     top: 20,
                     textStyle: {
@@ -106,14 +105,14 @@ $(function () {
                 tooltip: {},
                 xAxis: {
                     data: xAxis1,
-                    name: '借款金额',
+                    name: '借款金额(￥)',
                     silent: false,
                     axisLine: {onZero: true},
                     splitLine: {show: false},
                     splitArea: {show: false}
                 },
                 yAxis: {
-                    name: '借款额度累计',
+                    name: '借款额度累计比率(%)',
                     inverse: false,
                     splitArea: {show: false}
                 },
@@ -122,7 +121,7 @@ $(function () {
                 },
                 series: [
                     {
-                        name: '借款额度累计',
+                        name: '借款额度累计比率(%)',
                         type: 'bar',
                         stack: 'one',
                         itemStyle: {
@@ -133,7 +132,7 @@ $(function () {
                                 color: '#3f51b5'
                             }
                         },
-                        data: data1,
+                        data: data1 ,
                         markPoint:{
                             data: [{name:'当前借款金额: '+ $(".list" + lid).attr("data-amount") ,xAxis: amount,yAxis: data1[amount]}]
                         },
@@ -169,7 +168,7 @@ $(function () {
                     xnow = i;
                 }
             });
-            $(".list-ratetotal").html(ynow);
+            $(".list-ratetotal").html(ynow+"%");
 
             var itemStyle = {
                 normal: {
@@ -185,7 +184,7 @@ $(function () {
 
             rateoption = {
                 title: {
-                    text: '借款利率累计图',
+                    text: '当前借款利率所占总数百分比',
                     left: 'center',
                     top: 20,
                     textStyle: {
@@ -202,14 +201,14 @@ $(function () {
                 tooltip: {},
                 xAxis: {
                     data: xAxis2,
-                    name: '借款利率',
+                    name: '借款利率(%)',
                     silent: false,
                     axisLine: {onZero: true},
                     splitLine: {show: false},
                     splitArea: {show: false}
                 },
                 yAxis: {
-                    name: '借款利率累计',
+                    name: '借款利率累计比率(%)',
                     inverse: false,
                     splitArea: {show: false}
                 },
@@ -218,7 +217,7 @@ $(function () {
                 },
                 series: [
                     {
-                        name: '借款利率累计',
+                        name: '借款利率累计比率(%)',
                         type: 'bar',
                         stack: 'one',
                         itemStyle: {
@@ -241,6 +240,7 @@ $(function () {
                     }
                 ]
             };
+
             rateDiagram.setOption(rateoption);
             rateDiagram.dispatchAction({
                 type: 'highlight',

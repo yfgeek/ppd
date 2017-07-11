@@ -18,8 +18,10 @@ $(function () {
             html = '';
             color = ['green','blue','orange','red','purple','grey','black','blue','green','yellow','red','orange'];
             $.each(result.Balance, function(i, item){
-                category = item.AccountCategory.replace('.', "<br/>").replace('用户', "拍拍贷用户");
-                html = html + '<div class="col-md-3 col-sm-6 col-xs-12"><div class="info-box"><span class="info-box-icon bg-' + color[i] +'"><i class="fa fa-cny"></i></span><div class="info-box-content"><span class="info-box-text">' + category + '</span><span class="info-box-number ppd-balance">' + item.Balance + '</span></div></div></div>';
+                if(item.AccountCategory.indexOf("现金余额")!=-1){
+                    category = item.AccountCategory.replace('.', "<br/>").replace('用户', "拍拍贷用户");
+                    html = html + '<div class="col-md-3 col-sm-6 col-xs-12"><div class="info-box"><span class="info-box-icon bg-' + color[i] +'"><i class="fa fa-cny"></i></span><div class="info-box-content"><span class="info-box-text">' + category + '</span><span class="info-box-number ppd-balance">' + item.Balance + '</span></div></div></div>';
+                }
             });
             $(".info-balance").html(html);
         }
