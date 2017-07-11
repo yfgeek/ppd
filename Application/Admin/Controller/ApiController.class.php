@@ -138,6 +138,7 @@ class ApiController extends CommonController {
         if($bidmodel==0){
             if($datamodel["Amount"]>=$share){
                 if($usermodel["balance"]>=$share){
+                    if($share>=50 && $share<=500){
                     $row["uid"] = session('user.uid');
                     $row["listingid"] = $lid;
                     $row["share"] = $share;
@@ -156,6 +157,9 @@ class ApiController extends CommonController {
                     }else{
                         $usrInfo = array('status'=>'fail','content'=>'这个您已经投资过了');
                     }
+                }else{
+                    $usrInfo = array('status'=>'fail','content'=>'投资金额必须大于50或小于500');
+                }
                 }else{
                     $usrInfo = array('status'=>'fail','content'=>'您用户余额不足');
                 }
