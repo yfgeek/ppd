@@ -38,7 +38,7 @@ class DataModel extends Model{
                 $ysum = $data[$i]["y"] + $ysum;
             }
             for($i=0; $i<count($data); $i++){
-                $newdata[$i]["y"]= round($data[$i]["y"] / $ysum,6) * 100;
+                $newdata[$i]["y"]= round($data[$i]["y"] / $ysum,4) * 100;
                 $newdata[$i]["x"] = $data[$i]["x"];
             }
             F('amount',$newdata);
@@ -60,7 +60,7 @@ class DataModel extends Model{
                 $ysum = $data[$i]["y"] + $ysum;
             }
             for($i=0; $i<count($data); $i++){
-                $newdata[$i]["y"]= round($data[$i]["y"] / $ysum,6) * 100;
+                $newdata[$i]["y"]= round($data[$i]["y"] / $ysum,4) * 100;
                 $newdata[$i]["x"] = $data[$i]["x"];
             }
             F('rate',$newdata);
