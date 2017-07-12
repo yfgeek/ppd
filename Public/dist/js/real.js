@@ -98,8 +98,9 @@ $(function(){
                 option = {
                     title: {
                         text: '当前借款额度所占总数百分比',
+                        subtext: '反应当前标的借款额度在历史中的数据分布',
                         left: 'center',
-                        top: 20,
+                        top: 0,
                         textStyle: {
                             color: '#333'
                         }
@@ -168,97 +169,139 @@ $(function(){
 
             var rateDiagram = echarts.init(document.getElementById('rate-diagram'));
 
-            var xAxis2 = [];
-            var data2 = [];
-            var xnow = 0;
-            var ynow = 0;
-            $.getJSON('../api/rate', function (rawData) {
-                $.each(rawData, function(i, item){
-                    data2.push(item['y']);
-                    xAxis2.push(item['x']);
-                    if(item['x']==rate){
-                        ynow = item['y'];
-                        xnow = i;
-                    }
-                });
-                $(".list-ratetotal").html(data2[rate]+"%");
 
-                var itemStyle = {
-                    normal: {
-                    },
-                    emphasis: {
-                        barBorderWidth: 1,
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowOffsetY: 0,
-                        shadowColor: 'rgba(0,0,0,0.5)'
-                    }
-                };
+            $.getJSON('../api/rate', function (rawData) {
+                // $.each(rawData, function(i, item){
+                //     data2.push(item['y']);
+                //     xAxis2.push(item['x']);
+                //     if(item['x']==rate){
+                //         ynow = item['y'];
+                //         xnow = i;
+                //     }
+                // });
+                // $(".list-ratetotal").html(rate+"%");
 
                 rateoption = {
-                    title: {
-                        text: '当前借款利率所占总数百分比',
-                        left: 'center',
-                        top: 20,
-                        textStyle: {
-                            color: '#333'
-                        }
-                    },
-                    backgroundColor: '#fff',
-                    legend: {
-                        data: ['bar'],
-                        align: 'left',
-                        left: 10
-                    },
-                    toolbox: false,
-                    tooltip: {},
-                    xAxis: {
-                        data: xAxis2,
-                        name: '借款利率(%)',
-                        silent: false,
-                        axisLine: {onZero: true},
-                        splitLine: {show: false},
-                        splitArea: {show: false}
-                    },
-                    yAxis: {
-                        name: '借款利率累计比率(%)',
-                        inverse: false,
-                        splitArea: {show: false}
-                    },
-                    grid: {
-                        left: 100
-                    },
-                    series: [
-                        {
-                            name: '借款利率累计比率(%)',
-                            type: 'bar',
-                            stack: 'one',
-                            itemStyle: {
-                                normal: {
-                                    color: '#629dc4'
-                                },
-                                emphasis: {
-                                    color: '#3f51b5'
-                                }
-                            },
-                            data: data2,
-                            markPoint:{
-                                data: [{name:'当前借款利率: ' + rate +'%' ,xAxis: xnow ,yAxis: ynow}]
-                            },
-                            markLine: {
-                                data: [
-                                    {type: 'average', name: '平均值'}
-                                ]
-                            }
-                        }
-                    ]
-                };
-                rateDiagram.setOption(rateoption);
-                rateDiagram.dispatchAction({
-                    type: 'highlight',
-                    dataIndex: xnow
-                });
+                        backgroundColor: '#fff',
 
+                        title: {
+                            text: '当前借款利率所占总数百分比',
+                            subtext: '反应当前标的借款利率在历史中的数据分布',
+                            left: 'center',
+                            top: 0,
+                            textStyle: {
+                                color: '#333'
+                            }
+                        },
+                        tooltip : {
+                            trigger: 'item',
+                            formatter: "{a} <br/>{b} : {c} ({d}%)"
+                        },
+                        legend: {
+                            orient: 'vertical',
+                            left: 'left',
+                            data: rawData.name
+                        },
+                        series : [
+                            {
+                                name: '借款利率所占总数百分比',
+                                type: 'pie',
+                                radius : '50%',
+                                data: rawData,
+                                itemStyle: {
+                                    emphasis: {
+                                        shadowBlur: 10,
+                                        shadowOffsetX: 0,
+                                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                    }
+                                }
+                            }
+                        ]
+                    };
+                    rateDiagram.setOption(rateoption);
+                    rateDiagram.dispatchAction({
+                        type: 'highlight',
+                        name: rate.toString(),
+                    });
+
+
+            //     var itemStyle = {
+            //         normal: {
+            //         },
+            //         emphasis: {
+            //             barBorderWidth: 1,
+            //             shadowBlur: 10,
+            //             shadowOffsetX: 0,
+            //             shadowOffsetY: 0,
+            //             shadowColor: 'rgba(0,0,0,0.5)'
+            //         }
+            //     };
+            //
+            //     rateoption = {
+            //         title: {
+            //             text: '当前借款利率所占总数百分比',
+            //             left: 'center',
+            //             top: 20,
+            //             textStyle: {
+            //                 color: '#333'
+            //             }
+            //         },
+            //         backgroundColor: '#fff',
+            //         legend: {
+            //             data: ['bar'],
+            //             align: 'left',
+            //             left: 10
+            //         },
+            //         toolbox: false,
+            //         tooltip: {},
+            //         xAxis: {
+            //             data: xAxis2,
+            //             name: '借款利率(%)',
+            //             silent: false,
+            //             axisLine: {onZero: true},
+            //             splitLine: {show: false},
+            //             splitArea: {show: false}
+            //         },
+            //         yAxis: {
+            //             name: '借款利率累计比率(%)',
+            //             inverse: false,
+            //             splitArea: {show: false}
+            //         },
+            //         grid: {
+            //             left: 100
+            //         },
+            //         series: [
+            //             {
+            //                 name: '借款利率累计比率(%)',
+            //                 type: 'bar',
+            //                 stack: 'one',
+            //                 itemStyle: {
+            //                     normal: {
+            //                         color: '#629dc4'
+            //                     },
+            //                     emphasis: {
+            //                         color: '#3f51b5'
+            //                     }
+            //                 },
+            //                 data: data2,
+            //                 markPoint:{
+            //                     data: [{name:'当前借款利率: ' + rate +'%' ,xAxis: xnow ,yAxis: ynow}]
+            //                 },
+            //                 markLine: {
+            //                     data: [
+            //                         {type: 'average', name: '平均值'}
+            //                     ]
+            //                 }
+            //             }
+            //         ]
+            //     };
+            //
+            //     rateDiagram.setOption(rateoption);
+            //     rateDiagram.dispatchAction({
+            //         type: 'highlight',
+            //         dataIndex: xnow
+            //     });
+            //
             });
 
             var creditDiagram = echarts.init(document.getElementById('credit-diagram'));
@@ -274,8 +317,9 @@ $(function(){
 
                     title: {
                         text: '信用评级与历史正常还款比例图',
+                        subtext: '反应当前标的信用评级在历史中的数据分布',
                         left: 'center',
-                        top: 20,
+                        top: 0,
                         textStyle: {
                             color: '#333'
                         }
@@ -368,7 +412,12 @@ $(function(){
                     $("#modal-realdeal").modal('hide');
                     location.reload();
                 }else{
-                    alert(json.ResultMessage);
+                    if(json.ResultMessage){
+                        alert(json.ResultMessage);
+                    }else{
+                        alert("投资遇到错误：请到设置中心重新授权拍拍贷用户");
+                    }
+
                 }
             });
         });

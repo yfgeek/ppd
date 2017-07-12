@@ -36,6 +36,7 @@ class IndexController extends CommonController {
             $userdata["token"] = json_decode($authorizeResult)->AccessToken;
             $userdata["tokentime"] = json_decode($authorizeResult)->ExpiresIn;
             $userdata["openid"] = json_decode($authorizeResult)->OpenID;
+            $userdata["lasttokentime"] = NOW_TIME;
             $user->where('uid = '.session('user.uid'))->save($userdata);
             $this->redirect('index/today');
         }
@@ -84,6 +85,7 @@ class IndexController extends CommonController {
             $userdata["token"] = json_decode($authorizeResult)->AccessToken;
             $userdata["tokentime"] = json_decode($authorizeResult)->ExpiresIn;
             $userdata["openid"] = json_decode($authorizeResult)->OpenID;
+            $userdata["lasttokentime"] = NOW_TIME;
             $user->where('uid = '.session('user.uid'))->save($userdata);
             $this->redirect('index/setting');
         }

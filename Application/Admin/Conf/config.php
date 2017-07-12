@@ -12,7 +12,7 @@ return array(
     ),
 
     /* 版本 */
-    'VERSION' => '3.1.1',
+    'VERSION' => '3.2.1',
 	/* SESSION 和 COOKIE 配置 */
     'SESSION_PREFIX' => 'blog', //session前缀
     'COOKIE_PREFIX'  => 'blog_', // Cookie前缀 避免冲突

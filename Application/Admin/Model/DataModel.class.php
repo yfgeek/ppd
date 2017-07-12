@@ -51,19 +51,19 @@ class DataModel extends Model{
     ** 重建比率函数
     */
     public function updaterate(){
-        $sql = "select CurrentRate as x, count(CurrentRate) as y from tp_data group by x";
+        $sql = "select CurrentRate as name, count(CurrentRate) as value from tp_data group by name";
         $datamodel = $this->query($sql);
         if($datamodel){
-            $data =  (array) $datamodel;
-            $ysum = 0;
-            for($i=0; $i<count($data); $i++){
-                $ysum = $data[$i]["y"] + $ysum;
-            }
-            for($i=0; $i<count($data); $i++){
-                $newdata[$i]["y"]= round($data[$i]["y"] / $ysum,4) * 100;
-                $newdata[$i]["x"] = $data[$i]["x"];
-            }
-            F('rate',$newdata);
+            // $data =  (array) $datamodel;
+            // $ysum = 0;
+            // for($i=0; $i<count($data); $i++){
+            //     $ysum = $data[$i]["y"] + $ysum;
+            // }
+            // for($i=0; $i<count($data); $i++){
+            //     $newdata[$i]["y"]= round($data[$i]["y"] / $ysum,4) * 100;
+            //     $newdata[$i]["x"] = $data[$i]["x"];
+            // }
+            F('rate',$datamodel);
             return true;
         }else{
             return false;
