@@ -63,11 +63,17 @@ $(function () {
         var xAxis1 = [];
         var data1 = [];
         $.getJSON('../api/amount', function (rawData) {
-
+            var amoutpercent = 0;
             $.each(rawData, function(i, item){
                 data1.push(item['y']);
+                if(Number(data1[amount]) > Number(item['y'])){
+                    amoutpercent = amoutpercent + Number(item['y']);
+                }
                 xAxis1.push(item['x']);
             });
+
+            $(".list-jb-amount").html(amoutpercent.toFixed(2)+"%");
+
             $(".list-amounttotal").html(data1[amount]+"%");
 
             var itemStyle = {
@@ -155,17 +161,34 @@ $(function () {
 
 
         var rateDiagram = echarts.init(document.getElementById('rate-diagram'));
-
+        var data2 = [];
+        var xzhou = [];
         $.getJSON('../api/rate', function (rawData) {
-            // $.each(rawData, function(i, item){
-            //     data2.push(item['y']);
-            //     xAxis2.push(item['x']);
-            //     if(item['x']==rate){
-            //         ynow = item['y'];
-            //         xnow = i;
-            //     }
-            // });
-            // $(".list-ratetotal").html(rate+"%");
+            var ratepercent = 0;
+            var sum = 0;
+            $.each(rawData, function(i, item){
+                data2.push(item['value']);
+                sum = sum +  Number(item['value']);
+                xzhou.push(item['name']);
+            });
+            var currentdata = data2[i]/sum*100;
+            var k = 0;
+            for(var i=0; i< xzhou.length; i++){
+                console.log(xzhou[i]);
+                if(Number(rate) == Number(xzhou[i])){
+                    k = i;
+                }
+            }
+            for(var i = 0; i < data2.length; i++){
+                // console.log(data2[i]);
+
+                if(Number(data2[k]) > Number(data2[i])){
+                    var currentdata = data2[i]/sum*100;
+                    ratepercent = ratepercent + Number(currentdata);
+                }
+            }
+            $(".list-jb-rate").html(ratepercent.toFixed(2)+"%");
+
 
             rateoption = {
                     backgroundColor: '#fff',
