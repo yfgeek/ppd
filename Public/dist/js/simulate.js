@@ -63,7 +63,7 @@ $(function () {
         var xAxis1 = [];
         var data1 = [];
         $.getJSON('../api/amount', function (rawData) {
-            var amoutpercent = 0;
+            var amoutpercent = 0 ;
             $.each(rawData, function(i, item){
                 data1.push(item['y']);
                 if(Number(data1[amount]) > Number(item['y'])){
@@ -179,14 +179,15 @@ $(function () {
                     k = i;
                 }
             }
-            for(var i = 0; i < data2.length; i++){
+            for(var i = 0; i < xzhou.length; i++){
                 // console.log(data2[i]);
 
-                if(Number(data2[k]) > Number(data2[i])){
+                if(Number(xzhou[k]) > Number(xzhou[i])){
                     var currentdata = data2[i]/sum*100;
                     ratepercent = ratepercent + Number(currentdata);
                 }
             }
+
             $(".list-jb-rate").html(ratepercent.toFixed(2)+"%");
 
 

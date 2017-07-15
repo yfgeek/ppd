@@ -191,16 +191,17 @@ $(function(){
                         k = i;
                     }
                 }
-                for(var i = 0; i < data2.length; i++){
+                for(var i = 0; i < xzhou.length; i++){
                     // console.log(data2[i]);
 
-                    if(Number(data2[k]) > Number(data2[i])){
+                    if(Number(xzhou[k]) > Number(xzhou[i])){
                         var currentdata = data2[i]/sum*100;
                         ratepercent = ratepercent + Number(currentdata);
                     }
                 }
+
                 $(".list-jb-rate").html(ratepercent.toFixed(2)+"%");
-                $(".list-amounttotal").html(data1[amount]+"%");
+                $(".list-amounttotal").html(data1o[amount]+"%");
 
                 rateoption = {
                         backgroundColor: '#fff',
