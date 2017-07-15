@@ -201,7 +201,7 @@ $(function(){
                 }
 
                 $(".list-jb-rate").html(ratepercent.toFixed(2)+"%");
-                $(".list-amounttotal").html(data1o[amount]+"%");
+                $(".list-amounttotal").html(data1[amount]+"%");
 
                 rateoption = {
                         backgroundColor: '#fff',
