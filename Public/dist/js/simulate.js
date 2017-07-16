@@ -64,9 +64,10 @@ $(function () {
         var data1 = [];
         $.getJSON('../api/amount', function (rawData) {
             var amoutpercent = 0 ;
+            var amountdata = rawData[amount]['x'];
             $.each(rawData, function(i, item){
                 data1.push(item['y']);
-                if(Number(data1[amount]) > Number(item['y'])){
+                if(Number(amountdata) > Number(item['x'])){
                     amoutpercent = amoutpercent + Number(item['y']);
                 }
                 xAxis1.push(item['x']);
@@ -174,7 +175,6 @@ $(function () {
             var currentdata = data2[i]/sum*100;
             var k = 0;
             for(var i=0; i< xzhou.length; i++){
-                console.log(xzhou[i]);
                 if(Number(rate) == Number(xzhou[i])){
                     k = i;
                 }

@@ -76,10 +76,11 @@ $(function(){
             var xAxis1 = [];
             var data1 = [];
             $.getJSON('../api/amount', function (rawData) {
-                var amoutpercent = 0;
+                var amoutpercent = 0 ;
+                var amountdata = rawData[amount]['x'];
                 $.each(rawData, function(i, item){
                     data1.push(item['y']);
-                    if(Number(data1[amount]) > Number(item['y'])){
+                    if(Number(amountdata) > Number(item['x'])){
                         amoutpercent = amoutpercent + Number(item['y']);
                     }
                     xAxis1.push(item['x']);
