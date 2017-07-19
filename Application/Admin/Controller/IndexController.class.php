@@ -11,18 +11,19 @@ class IndexController extends CommonController {
     ** 该页面用于判断首次登录是否已授权，如果未取得API授权则跳转到授权页面
     */
     public function index(){
-        define('UID',is_login());
-        if( !UID ){
-            $this->redirect('Public/login');
-        }else{
-            $user = M('user');
-            $usermodel = $user->where('uid = '.session('user.uid'))->find();
-            if(!$usermodel["token"]){
-                $this->redirect('index/ppdapi');
-            }else{
-                $this->redirect('index/today');
-            }
-        }
+        // define('UID',is_login());
+        // if( !UID ){
+        //     $this->redirect('Public/login');
+        // }else{
+        //     $user = M('user');
+        //     $usermodel = $user->where('uid = '.session('user.uid'))->find();
+        //     if(!$usermodel["token"]){
+        //         $this->redirect('index/ppdapi');
+        //     }else{
+        //         $this->redirect('index/today');
+        //     }
+        // }
+         $this->redirect('index/today');
     }
     /**
     ** Index/today

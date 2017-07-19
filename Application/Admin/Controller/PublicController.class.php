@@ -66,6 +66,62 @@ class PublicController extends Controller {
     public function reg(){
         $this->display();
     }
+
+    public function logging(){
+        if(I('code')){
+            //去拿token
+            $User =  M("user");
+            $authorizeResult = authorize(I('code'));
+            $userdata["token"] = json_decode($authorizeResult)->AccessToken;
+            $userdata["tokentime"] = json_decode($authorizeResult)->ExpiresIn;
+            $userdata["openid"] = json_decode($authorizeResult)->OpenID;
+            $userdata["lasttokentime"] = NOW_TIME;
+            // header("Content-type:text/html;charset=utf-8");
+            // $url = "http://gw.open.ppdai.com/open/openApiPublicQueryService/QueryUserNameByOpenID";
+            // date_default_timezone_set("Etc/GMT-8");
+            // $request = '{
+            //   "OpenID": "'. $userdata["openid"] .'"
+            // }';
+            // $result = send($url, $request);
+            // if($username = json_decode($result)->UserName){
+                // $realname = decrypt($realname);
+                // $map['username'] = $realname;
+                // $map['status'] = 1;
+                // $finduser = $User->where($map)->find();
+                // if($finduser){
+                //     $auth = array(
+                //         'uid'             => $finduser['uid'],
+                //         'username'        => $realname
+                //     );
+                //     session('user', $auth);
+                //     $this->redirect('index/today');
+                // }else{
+                    $realname = "游客" . rand(0,1000);
+                    $data['balance'] = 50000;
+                    $data['current_date'] = '2015-01-01';
+                    $data['status'] = 1;
+                    $data["username"] = $realname;
+                    $data["nickname"] = $realname;
+                    $data["token"] = $userdata["token"];
+                    $data["tokentime"] = $userdata["tokentime"];
+                    $data["openid"] = $userdata["openid"];
+
+                    $userreturn  = $User->add($data);
+                    $auth = array(
+                        'uid'             => $userreturn,
+                        'username'        => $realname
+                    );
+                    session('user', $auth);
+                    $this->redirect('index/today');
+                // }
+
+            // }else{
+            //     $this->redirect('public/login');
+            // }
+
+        }
+
+    }
     /* 用户注册 */
     function regging()
     {
