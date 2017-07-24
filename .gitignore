@@ -1,3 +1,5 @@
 Application/Runtime
-Application/Common/Conf/config.php
-Application/Admin/Conf/config.php
+Application/Common/Conf
+Application/Admin/Conf
+
+
