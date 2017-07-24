@@ -50,7 +50,7 @@
 
 4. 确认 在目录`Application\Admin\Conf`与`Application\Common\Conf`下分别有config.sample.php
 
-5. 分别执行y以下命令，并根据config.php中的注释修改相应的私密内容
+5. 分别执行以下命令，并根据config.php中的注释修改相应的私密内容，怎么修改，你懂的
 
    ```bash
    cp config.sample.php config.php
