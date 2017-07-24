@@ -42,11 +42,11 @@
 
 # 项目部署
 
-1. 克隆本项目 clone https://github.com/yfgeek/ppd
+1. 克隆本项目 git clone https://github.com/yfgeek/ppd
 
-2. 在本项目的 database 分支下 下载`sql`文件倒入到数据库
+2. 在本项目的 [database 分支](https://github.com/yfgeek/ppd/tree/database)下 下载`sql`文件导入到数据库
 
-3. 如果您使用的是Nginx，不要忘记开启 path_info 或者添加 重写，[详见](http://www.thinkphp.cn/topic/3138.html)
+3. 如果您使用的是Nginx，**不要忘记开启 path_info 或者添加 重写**，[详见](http://www.thinkphp.cn/topic/3138.html)
 
 4. 确认 在目录`Application\Admin\Conf`与`Application\Common\Conf`下分别有config.sample.php
 
