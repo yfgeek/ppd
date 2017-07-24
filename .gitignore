@@ -1,5 +1,5 @@
-Application/Runtime
-Application/Common/Conf
-Application/Admin/Conf
+Application/Runtime/*
+Application/Common/Conf/*
+Application/Admin/Conf/*
 
 
