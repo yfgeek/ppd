@@ -1,0 +1,3 @@
+/Public/plugins/* linguist-vendored
+/Application/Admin/View/* linguist-vendored
+/Application/Home/View/* linguist-vendored
